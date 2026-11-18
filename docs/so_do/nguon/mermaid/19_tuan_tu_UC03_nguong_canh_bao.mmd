@@ -1,0 +1,43 @@
+sequenceDiagram
+    autonumber
+    actor U as Người dùng
+    participant CP as ConditionPanel / ChatPanel
+    participant MW as MainWindow
+    participant T as _AssistantTask (QThreadPool)
+    participant SA as SafetyAssistant
+    participant API as Claude API
+    participant SF as safety.py
+    participant CFG as AppConfig
+    participant DB as Database
+    U->>CP: Bấm nút điều kiện (vd "Mưa to") hoặc gõ mô tả
+    CP->>MW: send_requested(text)
+    MW->>T: ask_assistant(text): policy, speed_kmh, scene
+    T->>SA: ask(message, policy, speed_kmh, scene)
+    alt use_cloud = False (mặc định)
+        SA->>SA: offline_advice(): từ khóa tiếng Việt
+        SA->>SF: condition_policy(key, modifiers, visibility)
+    else use_cloud = True
+        SA->>API: messages.create(system, messages, output_config json_schema)
+        alt Thành công
+            API-->>SA: JSON: reply, policy, speed_kmh
+        else Lỗi mạng / API key / từ chối
+            SA->>SA: offline_advice() + ghi chú lỗi
+        end
+    end
+    SA->>SA: clamp_policy() theo LIMITS
+    SA-->>T: AssistantResult(reply, policy, speed_kmh, source)
+    T-->>MW: done(result)
+    MW->>CFG: update_inplace(cfg.policy, result.policy)
+    opt Tài xế có nêu tốc độ
+        MW->>MW: speed_panel.set_speed(v)
+    end
+    MW->>SF: compute_thresholds(speed_kmh, policy)
+    SF-->>MW: Thresholds(safe_m, danger_m, legal_m)
+    MW-->>U: "Đã áp dụng … cảnh báo #lt; X m, nguy hiểm #lt; Y m"
+    MW->>CFG: save("Trợ lý AI (nguồn): điều kiện")
+    CFG->>DB: system_config + config_history
+    Note over MW,CFG: ProcessingWorker đọc cfg.policy ở khung kế tiếp
+    opt Chỉnh trong Cài đặt
+        U->>MW: "Cài đặt" → SettingsDialog → "Lưu"
+        MW->>CFG: update_inplace(cfg, dlg.cfg), save("Cài đặt hệ thống")
+    end

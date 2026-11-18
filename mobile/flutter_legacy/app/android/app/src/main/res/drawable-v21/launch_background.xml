@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Màn hình khởi động: nền đen OLED + biểu tượng app ở giữa (trước khi Flutter vẽ khung đầu) -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/adas_bg" />
+    <item android:width="96dp" android:height="96dp" android:gravity="center"
+        android:drawable="@mipmap/ic_launcher" />
+</layer-list>

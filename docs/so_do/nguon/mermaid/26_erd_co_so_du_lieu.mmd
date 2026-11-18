@@ -1,0 +1,82 @@
+erDiagram
+    video_sources ||--o{ camera_calibrations : "có ma trận camera (CASCADE)"
+    video_sources |o--o{ monitoring_sessions : "được giám sát (SET NULL)"
+    monitoring_sessions ||--o{ violations : "ghi nhận (CASCADE)"
+    system_config ||--o{ config_history : "bản chụp khi thay đổi"
+
+    video_sources {
+        INTEGER id PK
+        TEXT name "NOT NULL"
+        TEXT source_type "video, camera, stream, image"
+        TEXT uri UK "đường dẫn / chỉ số / URL"
+        TEXT description
+        TEXT created_at "NOT NULL"
+        TEXT last_used_at
+    }
+    camera_calibrations {
+        INTEGER id PK
+        INTEGER source_id FK
+        TEXT created_at "NOT NULL"
+        TEXT method "manual, auto, imported"
+        INTEGER frame_width "NOT NULL"
+        INTEGER frame_height "NOT NULL"
+        TEXT intrinsic_matrix "K 3x3 (JSON)"
+        TEXT homography_matrix "H 3x3 (JSON)"
+        TEXT rotation_matrix "R 3x3 (JSON)"
+        REAL focal_px
+        REAL horizon_y
+        REAL camera_height_m
+        REAL camera_offset_m
+        REAL pitch_deg
+        TEXT params_json "4 điểm, W, L, d0 ..."
+        TEXT note
+    }
+    system_config {
+        TEXT section PK
+        TEXT key PK
+        TEXT value "JSON"
+        TEXT updated_at "NOT NULL"
+    }
+    config_history {
+        INTEGER id PK
+        TEXT changed_at "NOT NULL"
+        TEXT reason "NOT NULL"
+        TEXT config_json "NOT NULL"
+    }
+    monitoring_sessions {
+        INTEGER id PK
+        TEXT started_at "NOT NULL"
+        TEXT ended_at
+        INTEGER source_id FK
+        TEXT source "NOT NULL"
+        TEXT source_type "NOT NULL"
+        TEXT model_weights
+        TEXT device "GPU, CPU"
+        INTEGER frame_width
+        INTEGER frame_height
+        INTEGER frames_processed "DEFAULT 0"
+        REAL avg_fps
+        TEXT config_json "NOT NULL"
+    }
+    violations {
+        INTEGER id PK
+        INTEGER session_id FK "NOT NULL"
+        TEXT started_at "NOT NULL"
+        TEXT ended_at
+        REAL video_time_s
+        REAL duration_s
+        TEXT level "warning, danger"
+        INTEGER track_id
+        TEXT vehicle_class
+        REAL distance_m "NOT NULL"
+        REAL min_distance_m "NOT NULL"
+        REAL min_ttc_s
+        REAL closing_speed_kmh
+        REAL ego_speed_kmh "NOT NULL"
+        REAL safe_threshold_m "NOT NULL"
+        REAL danger_threshold_m "NOT NULL"
+        REAL legal_min_gap_m
+        TEXT road_condition
+        REAL weather_factor
+        TEXT snapshot_path
+    }

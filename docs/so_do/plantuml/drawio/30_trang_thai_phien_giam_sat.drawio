@@ -1,0 +1,91 @@
+<mxfile host="drawio-plantuml" type="device">
+  <diagram id="30_trang_thai_phien_giam_sat" name="30_trang_thai_phien_giam_sat">
+<mxGraphModel>
+  <root>
+    <mxCell id="0"></mxCell>
+    <mxCell id="1" parent="0"></mxCell>
+    <mxCell id="s_0" value="Chờ" style="swimlane;collapsible=0;startSize=26;whiteSpace=wrap;align=center;html=1;fontSize=14;fontStyle=0;rounded=1;absoluteArcSize=1;arcSize=25;fillColor=#F1F1F1;swimlaneFillColor=#F1F1F1;strokeColor=#181818;strokeWidth=0.5;" vertex="1" parent="1">
+      <mxGeometry x="44.5" y="110" width="217" height="56" as="geometry"/>
+    </mxCell>
+    <mxCell id="sdesc_1" value="màn hình chào / khung cuối" style="text;align=left;verticalAlign=top;spacingLeft=3;spacingTop=-1;whiteSpace=wrap;fillColor=none;strokeColor=none;html=1;fontSize=14;" vertex="1" parent="s_0">
+      <mxGeometry x="0" y="26" width="217" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="s_2" value="Khởi động" style="swimlane;collapsible=0;startSize=26;whiteSpace=wrap;align=center;html=1;fontSize=14;fontStyle=0;rounded=1;absoluteArcSize=1;arcSize=25;fillColor=#F1F1F1;swimlaneFillColor=#F1F1F1;strokeColor=#181818;strokeWidth=0.5;" vertex="1" parent="1">
+      <mxGeometry x="30.1" y="226" width="246" height="56" as="geometry"/>
+    </mxCell>
+    <mxCell id="sdesc_3" value="mở nguồn, tải YOLOv11, warmup" style="text;align=left;verticalAlign=top;spacingLeft=3;spacingTop=-1;whiteSpace=wrap;fillColor=none;strokeColor=none;html=1;fontSize=14;" vertex="1" parent="s_2">
+      <mxGeometry x="0" y="26" width="246" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="s_4" value="Đang giám sát" style="swimlane;collapsible=0;startSize=26;whiteSpace=wrap;align=center;html=1;fontSize=14;fontStyle=0;rounded=1;absoluteArcSize=1;arcSize=25;fillColor=#F1F1F1;swimlaneFillColor=#F1F1F1;strokeColor=#181818;strokeWidth=0.5;" vertex="1" parent="1">
+      <mxGeometry x="59.7" y="342" width="187" height="56" as="geometry"/>
+    </mxCell>
+    <mxCell id="sdesc_5" value="xử lý (1) → (5) mỗi khung" style="text;align=left;verticalAlign=top;spacingLeft=3;spacingTop=-1;whiteSpace=wrap;fillColor=none;strokeColor=none;html=1;fontSize=14;" vertex="1" parent="s_4">
+      <mxGeometry x="0" y="26" width="187" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="s_6" value="Tạm dừng" style="swimlane;collapsible=0;startSize=26;whiteSpace=wrap;align=center;html=1;fontSize=14;fontStyle=0;rounded=1;absoluteArcSize=1;arcSize=25;fillColor=#F1F1F1;swimlaneFillColor=#F1F1F1;strokeColor=#181818;strokeWidth=0.5;" vertex="1" parent="1">
+      <mxGeometry x="92.8" y="458" width="121" height="56" as="geometry"/>
+    </mxCell>
+    <mxCell id="sdesc_7" value="giữ khung cuối" style="text;align=left;verticalAlign=top;spacingLeft=3;spacingTop=-1;whiteSpace=wrap;fillColor=none;strokeColor=none;html=1;fontSize=14;" vertex="1" parent="s_6">
+      <mxGeometry x="0" y="26" width="121" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="s_8" value="Kết thúc phiên" style="swimlane;collapsible=0;startSize=26;whiteSpace=wrap;align=center;html=1;fontSize=14;fontStyle=0;rounded=1;absoluteArcSize=1;arcSize=25;fillColor=#F1F1F1;swimlaneFillColor=#F1F1F1;strokeColor=#181818;strokeWidth=0.5;" vertex="1" parent="1">
+      <mxGeometry x="38.4" y="574" width="230" height="56" as="geometry"/>
+    </mxCell>
+    <mxCell id="sdesc_9" value="đóng đợt vi phạm, end_session" style="text;align=left;verticalAlign=top;spacingLeft=3;spacingTop=-1;whiteSpace=wrap;fillColor=none;strokeColor=none;html=1;fontSize=14;" vertex="1" parent="s_8">
+      <mxGeometry x="0" y="26" width="230" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="s_10" value="" style="ellipse;fillColor=#222222;strokeColor=#222222;" vertex="1" parent="1">
+      <mxGeometry x="143.5" y="30" width="20" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_11" value="" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;" edge="1" source="s_10" target="s_0" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_12" value="Bắt đầu (F5) / chọn nguồn mới" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;exitX=0.18;exitY=1;exitDx=0;exitDy=0;entryX=0.18;entryY=0;entryDx=0;entryDy=0;" edge="1" source="s_0" target="s_2" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="-101" y="0" as="offset"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="t_13" value="mở được nguồn, start_session()" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;labelPosition=right;align=left;" edge="1" source="s_2" target="s_4" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_14" value="lỗi → hộp thoại &quot;Lỗi xử lý&quot;" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;exitX=0.82;exitY=0;exitDx=0;exitDy=0;entryX=0.82;entryY=1;entryDx=0;entryDy=0;" edge="1" source="s_2" target="s_0" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="84" y="0" as="offset"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="t_15" value="Tạm dừng (Space) /&#10;mở Căn chỉnh camera" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;exitX=0.82;exitY=1;exitDx=0;exitDy=0;entryX=0.82;entryY=0;entryDx=0;entryDy=0;" edge="1" source="s_4" target="s_6" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="76" y="0" as="offset"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="t_16" value="Tiếp tục&#10;(restart_clock với file video)" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;exitX=0.18;exitY=0;exitDx=0;exitDy=0;entryX=0.18;entryY=1;entryDx=0;entryDy=0;" edge="1" source="s_6" target="s_4" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="-92" y="0" as="offset"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="t_17" value="calibration_changed /&#10;classes_changed (khung kế tiếp)" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;segment=17.5;curved=1;labelPosition=right;align=left;spacingLeft=4;" edge="1" source="s_4" target="s_4" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_18" value="Dừng (Esc) / hết video /&#10;ảnh tĩnh xử lý xong" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;labelPosition=right;align=left;curved=1;" edge="1" source="s_4" target="s_8" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="228" y="448"/>
+          <mxPoint x="228" y="524"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="t_19" value="Dừng (Esc)" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;labelPosition=right;align=left;" edge="1" source="s_6" target="s_8" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_20" value="&quot;Phiên #id: đã ghi n vi phạm&quot;" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;labelPosition=right;align=left;curved=1;" edge="1" source="s_8" target="s_0" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="290" y="524"/>
+          <mxPoint x="290" y="216"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+  </root>
+</mxGraphModel>
+  </diagram>
+</mxfile>

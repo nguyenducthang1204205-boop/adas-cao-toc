@@ -1,0 +1,60 @@
+classDiagram
+    direction TB
+    namespace gui {
+        class MainWindow
+        class ProcessingWorker
+        class SourceDialog
+        class CalibrationDialog
+        class SettingsDialog
+        class HistoryDialog
+        class VideoStage
+        class StatusCard
+        class SpeedPanel
+        class ConditionPanel
+        class ChatPanel
+        class EventLog
+    }
+    namespace adas {
+        class AppConfig
+        class ADASPipeline
+        class VehicleDetector
+        class GroundPlaneMapper
+        class EgoLaneDetector
+        class DistanceEstimator
+        class AlertManager
+        class ViolationRecorder
+        class SafetyAssistant
+        class Database
+        class FrameSource
+        class FrameResult
+    }
+    MainWindow "1" --> "0..1" ProcessingWorker : điều khiển
+    MainWindow "1" *-- "1" VideoStage
+    MainWindow "1" *-- "1" StatusCard
+    MainWindow "1" *-- "1" SpeedPanel
+    MainWindow "1" *-- "1" ConditionPanel
+    MainWindow "1" *-- "1" ChatPanel
+    MainWindow "1" *-- "1" EventLog
+    MainWindow ..> SourceDialog : mở
+    MainWindow ..> CalibrationDialog : mở
+    MainWindow ..> SettingsDialog : mở
+    MainWindow ..> HistoryDialog : mở
+    MainWindow "1" --> "1" SafetyAssistant
+    MainWindow "1" --> "1" AppConfig : dùng chung
+    ProcessingWorker "1" --> "1" ADASPipeline
+    ProcessingWorker "1" --> "1" FrameSource
+    ProcessingWorker "1" --> "1" ViolationRecorder
+    ProcessingWorker "1" --> "1" Database
+    ADASPipeline "1" --> "1" VehicleDetector
+    ADASPipeline "1" *-- "1" GroundPlaneMapper
+    ADASPipeline "1" *-- "1" EgoLaneDetector
+    ADASPipeline "1" *-- "1" DistanceEstimator
+    ADASPipeline "1" *-- "1" AlertManager
+    ADASPipeline "1" --> "1" AppConfig : đọc mỗi khung
+    ADASPipeline ..> FrameResult : tạo
+    DistanceEstimator --> GroundPlaneMapper
+    EgoLaneDetector --> GroundPlaneMapper
+    ViolationRecorder "1" --> "1" Database
+    SourceDialog --> Database
+    HistoryDialog --> Database
+    AppConfig ..> Database : load / save

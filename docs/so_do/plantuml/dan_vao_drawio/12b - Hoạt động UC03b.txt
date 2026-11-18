@@ -1,0 +1,34 @@
+@startuml 12b_hoat_dong_UC03_tro_ly_AI
+|Người dùng|
+start
+:Bấm 1 trong 8 nút điều kiện đường
+hoặc gõ mô tả tình huống vào khung chat;
+|Giao diện|
+:Hiện câu hỏi, khóa nút Gửi;
+:Chạy tác vụ nền kèm chính sách, tốc độ hiện tại
+và mô tả cảnh quan (xe phía trước, TTC, mức cảnh báo);
+|Trợ lý AI|
+if (Dùng Claude (use_cloud)?) then (Có)
+  :Gọi Claude API, đầu ra JSON theo lược đồ;
+  if (Thành công?) then (Có)
+    :Đọc JSON: trả lời, chính sách, tốc độ;
+  else (Lỗi / không có mạng)
+    :Tư vấn offline + ghi chú lỗi;
+  endif
+else (Không - mặc định)
+  :Tư vấn offline: nhận diện từ khóa tiếng Việt
+  (có / không dấu), tốc độ, tầm nhìn;
+endif
+:Giới hạn tham số theo phạm vi cho phép,
+giữ ngưỡng theo dải tốc độ của người dùng;
+|Giao diện|
+:Hiển thị trả lời, áp dụng chính sách mới,
+đổi tốc độ nếu tài xế có nêu (tắt tự đo);
+:Báo "Đã áp dụng: … cảnh báo < X m,
+nguy hiểm < Y m";
+:Lưu cấu hình + lịch sử "Trợ lý AI (…)";
+|Người dùng|
+:Xem ngưỡng mới trên thẻ tốc độ
+và thẻ điều kiện đường;
+stop
+@enduml

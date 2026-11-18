@@ -1,0 +1,38 @@
+@startuml 03_bpmn_giam_sat_canh_bao
+|Tài xế|
+start
+:Bấm "Bắt đầu" (F5);
+|Giao diện ADAS|
+:Khởi động luồng xử lý nền;
+|Luồng xử lý ADAS|
+:Mở nguồn, tải YOLOv11,
+mở phiên giám sát;
+repeat
+  :Đọc khung hình;
+  :Nhận diện xe: YOLOv11 mỗi N khung,
+  bám vết mẫu ở các khung giữa;
+  :Nhận diện làn xe chủ, đo tốc độ xe chủ,
+  tính khoảng cách IPM, lọc Kalman, TTC;
+  :So với ngưỡng theo tốc độ
+  và điều kiện đường;
+  if (Có cảnh báo / nguy hiểm?) then (Có)
+    :Phát âm thanh cảnh báo;
+    :Ghi / cập nhật đợt vi phạm
+    kèm ảnh bằng chứng;
+  else (Không)
+  endif
+  |Giao diện ADAS|
+  :Hiển thị khung màu, banner,
+  BEV, thẻ trạng thái;
+  |Tài xế|
+  :Quan sát, giảm tốc /
+  giữ khoảng cách;
+  |Luồng xử lý ADAS|
+repeat while (Còn khung và chưa bấm Dừng?) is (Có) not (Không)
+:Đóng đợt vi phạm đang mở,
+kết thúc phiên;
+|Giao diện ADAS|
+:Báo số vi phạm đã ghi vào CSDL;
+|Tài xế|
+stop
+@enduml

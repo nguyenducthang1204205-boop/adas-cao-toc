@@ -1,0 +1,43 @@
+@startuml 14_hoat_dong_UC05_nhat_ky
+|Người dùng|
+start
+:Bấm "Lịch sử" (thanh tiêu đề
+hoặc tab "Vi phạm");
+|Hệ thống|
+:Mở cửa sổ Lịch sử: thống kê và danh sách phiên,
+dòng đầu "Tất cả phiên";
+|Người dùng|
+:Chọn phiên, lọc theo ngày, mức, loại xe;
+|Hệ thống|
+:Hiển thị các vi phạm khớp bộ lọc;
+|Người dùng|
+:Chọn một vi phạm;
+|Hệ thống|
+:Hiển thị ảnh bằng chứng và tóm tắt;
+|Người dùng|
+switch (Thao tác tiếp?)
+case (Xuất CSV)
+  |Hệ thống|
+  :Chọn nơi lưu, ghi CSV UTF-8 BOM
+  (không có vi phạm → báo);
+case (Xóa)
+  |Người dùng|
+  :Chọn "Xóa vi phạm đã chọn" /
+  "Xóa phiên đã chọn", xác nhận;
+  |Hệ thống|
+  :Xóa bản ghi (phiên → xóa cả vi phạm)
+  và file ảnh, làm mới danh sách;
+case (Lịch sử cấu hình)
+  |Hệ thống|
+  :Hiển thị bản chụp cấu hình;
+  :"Khôi phục cấu hình này" → xác nhận →
+  áp dụng, lưu "Khôi phục từ lịch sử cấu hình";
+case (Ma trận camera)
+  |Hệ thống|
+  :Hiển thị K, H, R, tiêu cự,
+  chiều cao, góc chúc, chân trời;
+case (Đóng)
+endswitch
+|Người dùng|
+stop
+@enduml

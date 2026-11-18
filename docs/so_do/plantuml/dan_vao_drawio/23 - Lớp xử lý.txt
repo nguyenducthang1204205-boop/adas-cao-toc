@@ -1,0 +1,188 @@
+@startuml 23_lop_xu_ly
+set separator none
+hide empty members
+
+class ADASPipeline {
+  +cfg : AppConfig
+  +detector : VehicleDetector
+  +tracker : TemplateTracker
+  +mapper : GroundPlaneMapper
+  +lane_detector : EgoLaneDetector
+  +speed_estimator : EgoSpeedEstimator
+  +estimator : DistanceEstimator
+  +alert : AlertManager
+  +frame_size : (int, int)
+  --
+  +process(frame, t, track) : FrameResult
+  +stride() : int
+  +update_calibration()
+}
+
+package "adas.detection" {
+  class VehicleDetector {
+    +model : YOLO
+    +device : str
+    +confidence : float
+    +iou : float
+    +imgsz : int
+    +weights_used : str
+    --
+    +detect(frame, track) : List[Detection]
+    +set_enabled_classes(enabled)
+    +warmup()
+  }
+  class TemplateTracker {
+    +tracks : Dict[int, _Track]
+    --
+    +refresh(dets, gray, t, k) : List[Detection]
+    +track(gray, t) : List[Detection]
+    +reset()
+  }
+}
+
+package "adas.distance" {
+  class GroundPlaneMapper {
+    +calib : CalibrationConfig
+    +H, H_inv : ndarray 3x3
+    +horizon_y : Optional[float]
+    {field} +model : dict (K, R, f, chiều cao, góc chúc)
+    +focal_px : Optional[float]
+    --
+    +image_to_ground(pts) : ndarray
+    +ground_to_image(pts_m) : ndarray
+    +bev_matrix(...) : ndarray
+    +warp_to_bev(frame, ...) : ndarray
+    -_decompose() : dict
+  }
+  class EgoLaneDetector {
+    +ACQUIRE_FRAMES = 3
+    +LOST_FRAMES = 20
+    +state : Optional[LaneEstimate]
+    +confirmed : bool
+    --
+    +update(frame, boxes) : Optional[LaneEstimate]
+    +reset()
+  }
+  class EgoSpeedEstimator {
+    +Y_MIN, Y_MAX = 5, 26 m
+    +SMOOTH_TAU_S = 1.0
+    --
+    +update(frame, lane, t) : Optional[float]
+    +reset()
+  }
+  class DistanceEstimator {
+    +mapper : GroundPlaneMapper
+    +calib : CalibrationConfig
+    +tracks : Dict[int, _Track]
+    --
+    +estimate(detections, t, lane) : List[VehicleState]
+    +reset()
+  }
+  class RangeKalman {
+    +x : [d, d', d'']
+    +P : 3x3
+    --
+    +predict(t)
+    +update(z, sigma) : bool
+    +distance() : float
+    +closing_speed() : float
+    +rate_std() : float
+  }
+}
+
+package "adas.alert" {
+  class AlertManager {
+    +INTERVALS = {danger: 0,28 s, warning: 0,9 s}
+    +cfg : AlertConfig
+    +level : str
+    --
+    +update(raw_level, now) : str
+    +preview(level) : bool
+    +reset()
+  }
+  class ViolationRecorder {
+    +db : Database
+    +session_id : int
+    +ep : Optional[_Episode]
+    +count : int
+    --
+    +update(result, t, speed, condition, save_snapshot) : List[dict]
+    +close(t) : Optional[dict]
+  }
+  class thresholds <<module>> {
+    +compute_thresholds(speed_kmh, policy) : Thresholds
+    +classify_risk(d, ttc, thr, policy) : str
+    +band_gap_m(speed_kmh, policy)
+    +condition_policy(key, modifiers, ...) : SafetyPolicy
+    +threshold_basis(thr, policy) : str
+  }
+}
+
+package "adas.assistant" {
+  class SafetyAssistant {
+    +cfg : AssistantConfig
+    +history : list
+    --
+    +ask(message, policy, speed_kmh, scene) : AssistantResult
+    +set_api_key(key)
+    +clear_history()
+  }
+  class offline <<module>> {
+    +offline_advice(message, policy, speed_kmh) : AssistantResult
+  }
+}
+
+package "adas.stream" {
+  abstract class FrameSource {
+    +is_live, is_image : bool
+    +fps : float
+    +total_frames : int
+    +last_decode_ms : float
+    --
+    +read() : (bool, frame, t)
+    +release()
+  }
+  class VideoFileSource {
+    +realtime : bool
+    +frame_idx : int
+    --
+    +restart_clock()
+  }
+  class CameraSource {
+    -_grab_loop()
+  }
+  class ImageSource
+}
+
+package "adas.storage" {
+  class Database {
+    +path : Path
+    --
+    +init_schema()
+    +register_source() / add_source() / delete_source() / list_sources()
+    +save_calibration() / latest_calibration() / list_calibrations()
+    +load_config() / save_config() / config_history()
+    +start_session() / end_session() / list_sessions() / delete_session()
+    +insert_violation() / update_violation() / list_violations() / delete_violations()
+    +stats() : dict
+  }
+}
+
+ADASPipeline --> VehicleDetector
+ADASPipeline *-- TemplateTracker
+ADASPipeline *-- GroundPlaneMapper
+ADASPipeline *-- EgoLaneDetector
+ADASPipeline *-- EgoSpeedEstimator
+ADASPipeline *-- DistanceEstimator
+ADASPipeline *-- AlertManager
+ADASPipeline ..> thresholds
+EgoLaneDetector --> GroundPlaneMapper
+EgoSpeedEstimator --> GroundPlaneMapper
+DistanceEstimator --> GroundPlaneMapper
+DistanceEstimator *-- "0..*" RangeKalman
+ViolationRecorder --> Database
+SafetyAssistant ..> offline
+FrameSource <|-- VideoFileSource
+FrameSource <|-- CameraSource
+FrameSource <|-- ImageSource
+@enduml

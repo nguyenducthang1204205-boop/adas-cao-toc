@@ -1,0 +1,31 @@
+@startuml 07_usecase_UC03_nguong_canh_bao
+left to right direction
+actor "Người dùng" as user
+actor "Dịch vụ\nClaude API" as ai
+
+rectangle "Hệ thống cảnh báo khoảng cách an toàn" {
+  usecase "UC03. Cấu hình ngưỡng\ncảnh báo" as base
+  usecase "Chọn nấc tốc độ hoặc\nbật tự đo tốc độ từ video" as s1
+  usecase "Đặt ngưỡng cảnh báo\ntheo từng dải tốc độ" as s2
+  usecase "Chọn nhanh điều kiện đường\n(8 nút)" as s3
+  usecase "Hỏi Trợ lý AI\ngợi ý ngưỡng" as s4
+  usecase "Tinh chỉnh tham số nâng cao" as s5
+  usecase "Bật / tắt và nghe thử\nâm thanh cảnh báo" as s6
+  usecase "Khôi phục ngưỡng mặc định" as s7
+  usecase "Tính lại & hiển thị ngưỡng\ncảnh báo / nguy hiểm" as s8
+  usecase "Gọi Claude API\n(tùy chọn, lỗi → offline)" as s9
+}
+
+user -- base
+base <.. s1 : <<extend>>
+base <.. s2 : <<extend>>
+base <.. s3 : <<extend>>
+base <.. s4 : <<extend>>
+base <.. s5 : <<extend>>
+base <.. s6 : <<extend>>
+base <.. s7 : <<extend>>
+base ..> s8 : <<include>>
+s3 ..> s4 : <<include>>
+s4 <.. s9 : <<extend>>
+s9 -- ai
+@enduml

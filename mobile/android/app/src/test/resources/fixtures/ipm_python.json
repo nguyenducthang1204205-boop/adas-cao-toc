@@ -1,0 +1,283 @@
+{
+ "frame": [
+  1280,
+  720
+ ],
+ "H": [
+  [
+   -0.00555015192118116,
+   -4.2008231952226024e-10,
+   3.5520974170806876
+  ],
+  [
+   4.142623344145017e-18,
+   0.004510586499867441,
+   -6.78754167506886
+  ],
+  [
+   5.311820755906075e-19,
+   -0.0025372123516344547,
+   1.0
+  ]
+ ],
+ "focal_px": 901.990783550691,
+ "horizon_y": 394.1333484979321,
+ "image_points": [
+  [
+   640,
+   650
+  ],
+  [
+   500,
+   600
+  ],
+  [
+   800,
+   470
+  ],
+  [
+   640,
+   446
+  ],
+  [
+   640,
+   300
+  ],
+  [
+   100,
+   700
+  ]
+ ],
+ "ground": [
+  [
+   1.3174728819958257e-07,
+   5.939204483935494
+  ],
+  [
+   -1.4876133017446944,
+   7.813470419800365
+  ],
+  [
+   4.613357658425904,
+   24.24838039410921
+  ],
+  [
+   -1.2768626510847945e-09,
+   36.29133386865331
+  ],
+  null,
+  [
+   -3.861976882243496,
+   4.677710789392329
+  ]
+ ],
+ "ground_in": [
+  [
+   0,
+   10
+  ],
+  [
+   -1.875,
+   20
+  ],
+  [
+   1.875,
+   50
+  ]
+ ],
+ "image_back": [
+  [
+   639.9999912669848,
+   561.7810990355719
+  ],
+  [
+   562.2857481588352,
+   484.79997065388784
+  ],
+  [
+   672.6866763423259,
+   432.26780230924936
+  ]
+ ],
+ "thresholds": {
+  "dry|40": [
+   22.222222,
+   11.111111
+  ],
+  "dry|60": [
+   35.0,
+   17.5
+  ],
+  "dry|75": [
+   55.0,
+   27.5
+  ],
+  "dry|100": [
+   70.0,
+   35.0
+  ],
+  "dry|130": [
+   108.333333,
+   54.166667
+  ],
+  "heavy_rain|40": [
+   53.333333,
+   26.666667
+  ],
+  "heavy_rain|60": [
+   84.0,
+   42.0
+  ],
+  "heavy_rain|75": [
+   132.0,
+   66.0
+  ],
+  "heavy_rain|100": [
+   168.0,
+   84.0
+  ],
+  "heavy_rain|130": [
+   260.0,
+   130.0
+  ]
+ },
+ "band_policy": {
+  "time_gap_s": 2.5,
+  "band_gaps_m": [
+   35.0,
+   40.0,
+   90.0,
+   120.0
+  ]
+ },
+ "bands": [
+  {
+   "cond": "dry",
+   "v": 30,
+   "safe": 20.833333,
+   "danger": 10.416667,
+   "band": null,
+   "basis": "Quy t\u1eafc 2,5 gi\u00e2y: 21 m"
+  },
+  {
+   "cond": "dry",
+   "v": 59.9,
+   "safe": 41.597222,
+   "danger": 20.798611,
+   "band": null,
+   "basis": "Quy t\u1eafc 2,5 gi\u00e2y: 42 m"
+  },
+  {
+   "cond": "dry",
+   "v": 60,
+   "safe": 35.0,
+   "danger": 17.5,
+   "band": 35.0,
+   "basis": "Theo lu\u1eadt (\u0111\u01b0\u1eddng kh\u00f4): 35 m"
+  },
+  {
+   "cond": "dry",
+   "v": 70,
+   "safe": 55.0,
+   "danger": 27.5,
+   "band": 55.0,
+   "basis": "Theo lu\u1eadt (\u0111\u01b0\u1eddng kh\u00f4): 55 m"
+  },
+  {
+   "cond": "dry",
+   "v": 80.1,
+   "safe": 90.0,
+   "danger": 45.0,
+   "band": 90.0,
+   "basis": "B\u1ea1n \u0111\u1eb7t 90 m (lu\u1eadt \u2265 70 m)"
+  },
+  {
+   "cond": "dry",
+   "v": 100,
+   "safe": 90.0,
+   "danger": 45.0,
+   "band": 90.0,
+   "basis": "B\u1ea1n \u0111\u1eb7t 90 m (lu\u1eadt \u2265 70 m)"
+  },
+  {
+   "cond": "dry",
+   "v": 110,
+   "safe": 120.0,
+   "danger": 60.0,
+   "band": 120.0,
+   "basis": "B\u1ea1n \u0111\u1eb7t 120 m (lu\u1eadt \u2265 100 m)"
+  },
+  {
+   "cond": "dry",
+   "v": 130,
+   "safe": 130.0,
+   "danger": 65.0,
+   "band": 130.0,
+   "basis": "B\u1ea1n \u0111\u1eb7t 130 m (lu\u1eadt \u2265 108 m)"
+  },
+  {
+   "cond": "wet",
+   "v": 30,
+   "safe": 29.166667,
+   "danger": 14.583333,
+   "band": null,
+   "basis": "Quy t\u1eafc 2,5 gi\u00e2y: 21 m\n\u00d7 1,4 do \u0111i\u1ec1u ki\u1ec7n \u0111\u01b0\u1eddng"
+  },
+  {
+   "cond": "wet",
+   "v": 59.9,
+   "safe": 58.236111,
+   "danger": 29.118056,
+   "band": null,
+   "basis": "Quy t\u1eafc 2,5 gi\u00e2y: 42 m\n\u00d7 1,4 do \u0111i\u1ec1u ki\u1ec7n \u0111\u01b0\u1eddng"
+  },
+  {
+   "cond": "wet",
+   "v": 60,
+   "safe": 49.0,
+   "danger": 24.5,
+   "band": 35.0,
+   "basis": "Theo lu\u1eadt (\u0111\u01b0\u1eddng kh\u00f4): 35 m\n\u00d7 1,4 do \u0111i\u1ec1u ki\u1ec7n \u0111\u01b0\u1eddng"
+  },
+  {
+   "cond": "wet",
+   "v": 70,
+   "safe": 77.0,
+   "danger": 38.5,
+   "band": 55.0,
+   "basis": "Theo lu\u1eadt (\u0111\u01b0\u1eddng kh\u00f4): 55 m\n\u00d7 1,4 do \u0111i\u1ec1u ki\u1ec7n \u0111\u01b0\u1eddng"
+  },
+  {
+   "cond": "wet",
+   "v": 80.1,
+   "safe": 126.0,
+   "danger": 63.0,
+   "band": 90.0,
+   "basis": "B\u1ea1n \u0111\u1eb7t 90 m (lu\u1eadt \u2265 70 m)\n\u00d7 1,4 do \u0111i\u1ec1u ki\u1ec7n \u0111\u01b0\u1eddng"
+  },
+  {
+   "cond": "wet",
+   "v": 100,
+   "safe": 126.0,
+   "danger": 63.0,
+   "band": 90.0,
+   "basis": "B\u1ea1n \u0111\u1eb7t 90 m (lu\u1eadt \u2265 70 m)\n\u00d7 1,4 do \u0111i\u1ec1u ki\u1ec7n \u0111\u01b0\u1eddng"
+  },
+  {
+   "cond": "wet",
+   "v": 110,
+   "safe": 168.0,
+   "danger": 84.0,
+   "band": 120.0,
+   "basis": "B\u1ea1n \u0111\u1eb7t 120 m (lu\u1eadt \u2265 100 m)\n\u00d7 1,4 do \u0111i\u1ec1u ki\u1ec7n \u0111\u01b0\u1eddng"
+  },
+  {
+   "cond": "wet",
+   "v": 130,
+   "safe": 182.0,
+   "danger": 91.0,
+   "band": 130.0,
+   "basis": "B\u1ea1n \u0111\u1eb7t 130 m (lu\u1eadt \u2265 108 m)\n\u00d7 1,4 do \u0111i\u1ec1u ki\u1ec7n \u0111\u01b0\u1eddng"
+  }
+ ]
+}

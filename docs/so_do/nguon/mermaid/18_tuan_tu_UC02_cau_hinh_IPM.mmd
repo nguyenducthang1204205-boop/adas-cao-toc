@@ -1,0 +1,47 @@
+sequenceDiagram
+    autonumber
+    actor U as Người dùng
+    participant MW as MainWindow
+    participant W as ProcessingWorker
+    participant CD as CalibrationDialog
+    participant AT as _AutoCalibThread
+    participant AC as autocalib
+    participant M as GroundPlaneMapper
+    participant CFG as AppConfig
+    participant DB as Database
+    U->>MW: "Căn chỉnh camera"
+    alt Đang giám sát
+        MW->>W: last_frame
+    else Chưa chạy
+        MW->>MW: read_first_frame(source_spec) hoặc hộp chọn file
+    end
+    MW->>W: set_paused(True)
+    MW->>CD: CalibrationDialog(frame, cfg.calibration, video_path, speed)
+    alt Thủ công
+        U->>CD: Chấm / kéo 4 điểm, nhập W, L, d0, nửa làn, tầm đo
+    else Tự động (file video)
+        U->>CD: "Tự động căn chỉnh", nhập tốc độ xe trong video
+        CD->>AT: start()
+        AT->>AC: auto_calibrate(video, speed, base, lane_w, offset)
+        AC->>AC: điểm tụ (Hough + RANSAC), chiều cao camera, K = f·h
+        AC-->>AT: CalibrationConfig, AutoCalibReport
+        AT-->>CD: done → _apply_auto(): 4 điểm, method = auto
+    end
+    loop Mỗi lần đổi điểm / thông số
+        CD->>M: GroundPlaneMapper(calib, frame_size)
+        M-->>CD: H, horizon_y, model (K, R, f, chiều cao, góc chúc)
+        CD-->>U: xem trước Bird's-Eye View (lưới 10 m)
+    end
+    U->>CD: "Áp dụng"
+    CD-->>MW: result_calib, method, note
+    MW->>CFG: update_inplace(cfg.calibration, result_calib)
+    MW->>CFG: save("Căn chỉnh camera (IPM)")
+    CFG->>DB: save_config() → system_config + config_history
+    MW->>DB: register_source(video_path)
+    MW->>DB: save_calibration(source_id, params, frame_size, method, note)
+    DB->>M: model: phân rã H → K, R
+    DB-->>MW: id ma trận camera
+    MW->>W: calibration_changed()
+    MW->>W: set_paused(False)
+    W->>W: khung kế tiếp: pipeline.update_calibration()
+    MW-->>U: "Đã lưu ma trận camera #35;id cho nguồn …"

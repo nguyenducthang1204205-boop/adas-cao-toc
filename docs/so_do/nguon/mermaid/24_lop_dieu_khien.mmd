@@ -1,0 +1,156 @@
+classDiagram
+    direction LR
+    class ADASPipeline {
+        +AppConfig cfg
+        +VehicleDetector detector
+        +GroundPlaneMapper mapper
+        +DistanceEstimator estimator
+        +EgoLaneDetector lane_detector
+        +AlertManager alert
+        +tuple frame_size
+        +process(frame, t, track) FrameResult
+        +update_calibration()
+    }
+    class VehicleDetector {
+        +YOLO model
+        +Dict~int,str~ names
+        +str device
+        +float confidence
+        +float iou
+        +int imgsz
+        +str weights_used
+        +bool using_fallback
+        +set_enabled_classes(enabled)
+        +warmup()
+        +detect(frame, track) List~Detection~
+    }
+    class GroundPlaneMapper {
+        +CalibrationConfig calib
+        +ndarray H
+        +ndarray H_inv
+        +Optional~float~ horizon_y
+        +dict model
+        +Optional~float~ focal_px
+        +image_to_ground(pts) ndarray
+        +ground_to_image(pts_m) ndarray
+        +bev_matrix(bev_size, x_half_m, y_min, y_max) ndarray
+        +warp_to_bev(frame, bev_size) ndarray
+        -_decompose() dict
+    }
+    class EgoLaneDetector {
+        +float X_HALF_M = 6
+        +int ACQUIRE_FRAMES = 3
+        +int LOST_FRAMES = 20
+        +GroundPlaneMapper mapper
+        +Optional~LaneEstimate~ state
+        +float width
+        +bool confirmed
+        +update(frame, boxes) Optional~LaneEstimate~
+        +reset()
+        -_paint_mask(frame, boxes)
+        -_find_lines(mask)
+        -_trace(mask, prior)
+        -_plausible(left, right) bool
+    }
+    class DistanceEstimator {
+        +float EMA_ALPHA = 0.35
+        +float HISTORY_WINDOW_S = 1.0
+        +float MIN_CLOSING_MPS = 0.5
+        +float TRACK_TIMEOUT_S = 2.0
+        +GroundPlaneMapper mapper
+        +CalibrationConfig calib
+        +Dict~int,_Track~ tracks
+        +estimate(detections, t, lane) List~VehicleState~
+        +reset()
+        -_pinhole(det)
+        -_update_track(track_id, d, t)
+        -_drop_stale(t)
+    }
+    class Track["_Track"] {
+        +deque history
+        +Optional~float~ smoothed
+        +Optional~float~ closing
+        +float last_seen
+    }
+    class AlertManager {
+        +dict INTERVALS
+        +AlertConfig cfg
+        +str level
+        -str _candidate
+        -int _candidate_count
+        -float _last_raise_time
+        +update(raw_level, now) str
+        +preview(level) bool
+        +reset()
+        +audio_available() bool
+    }
+    class ViolationRecorder {
+        +Database db
+        +int session_id
+        +Path snap_dir
+        +Optional~_Episode~ ep
+        +int count
+        +update(result, t, speed_kmh, condition, save_snapshot) List~dict~
+        +close(t) Optional~dict~
+        -_open(...) dict
+        -_close(t) dict
+    }
+    class SafetyAssistant {
+        +int MAX_HISTORY_TURNS = 8
+        +AssistantConfig cfg
+        +Optional~str~ api_key
+        +list history
+        +ask(message, policy, speed_kmh, scene) AssistantResult
+        +set_api_key(key)
+        +clear_history()
+        -_ask_claude(...) AssistantResult
+    }
+    class Database {
+        +Path path
+        +init_schema()
+        +register_source() / add_source() / update_source() / delete_source()
+        +list_sources() / get_source(uri)
+        +save_calibration() / latest_calibration() / list_calibrations()
+        +load_config() / save_config() / config_history()
+        +start_session() / end_session() / list_sessions() / delete_session()
+        +insert_violation() / update_violation() / list_violations() / delete_violations()
+        +stats() dict
+    }
+    class FrameSource {
+        <<abstract>>
+        +bool is_live
+        +bool is_image
+        +float fps
+        +int total_frames
+        +str name
+        +float last_decode_ms
+        +read() tuple
+        +release()
+    }
+    class VideoFileSource {
+        +bool realtime
+        +int frame_idx
+        +read() tuple
+        +restart_clock()
+    }
+    class CameraSource {
+        -Thread _thread
+        -_grab_loop()
+        +read() tuple
+    }
+    class ImageSource {
+        +ndarray frame
+        +read() tuple
+    }
+    ADASPipeline --> VehicleDetector
+    ADASPipeline *-- GroundPlaneMapper
+    ADASPipeline *-- EgoLaneDetector
+    ADASPipeline *-- DistanceEstimator
+    ADASPipeline *-- AlertManager
+    EgoLaneDetector --> GroundPlaneMapper
+    DistanceEstimator --> GroundPlaneMapper
+    DistanceEstimator *-- "0..*" Track
+    ViolationRecorder --> Database
+    FrameSource <|-- VideoFileSource
+    FrameSource <|-- CameraSource
+    FrameSource <|-- ImageSource

@@ -1,0 +1,37 @@
+@startuml 10_hoat_dong_UC01_nguon_video
+|Người dùng|
+start
+:Mở menu nguồn trên thanh tiêu đề,
+chọn "Quản lý nguồn…";
+|Hệ thống|
+:Mở cửa sổ Quản lý nguồn, đọc danh sách nguồn:
+tên, loại, địa chỉ, căn chỉnh, số phiên, lần dùng gần nhất;
+repeat
+  |Người dùng|
+  :Bấm "Thêm file video" hoặc "Thêm camera / URL",
+  chọn file hoặc nhập tên, địa chỉ, ghi chú;
+  |Hệ thống|
+  :Phân loại nguồn (video / camera / luồng / ảnh),
+  chuẩn hóa địa chỉ;
+  backward :Báo lỗi: chưa nhập địa chỉ /
+  không tìm thấy file / nguồn đã có;
+repeat while (Hợp lệ và chưa có?) is (Không) not (Có)
+:Thêm nguồn vào CSDL, làm mới danh sách;
+repeat
+  |Người dùng|
+  :Chọn nguồn, bấm "Kiểm tra kết nối";
+  |Hệ thống|
+  :Mở thử nguồn ở luồng nền, đọc một khung;
+  backward :Hiển thị "Không kết nối được: <lỗi>";
+repeat while (Kết nối được?) is (Không) not (Có)
+:Hiển thị khung xem trước,
+độ phân giải, FPS, số khung;
+|Người dùng|
+:Bấm "Mở nguồn đã chọn" (hoặc nhấp đúp);
+|Hệ thống|
+:Dừng phiên đang chạy (nếu có),
+đặt nguồn mới làm nguồn hiện hành;
+:Đăng ký nguồn, nạp căn chỉnh mới nhất của nguồn,
+bắt đầu giám sát (UC04);
+stop
+@enduml

@@ -1,0 +1,97 @@
+@startuml 21_erd_co_so_du_lieu
+hide circle
+skinparam linetype ortho
+
+entity "video_sources" as vs {
+  * id : INTEGER <<PK>>
+  --
+  * name : TEXT
+  * source_type : TEXT {video | camera | stream | image}
+  * uri : TEXT <<UNIQUE>>
+  description : TEXT
+  * created_at : TEXT
+  last_used_at : TEXT
+}
+
+entity "camera_calibrations" as cc {
+  * id : INTEGER <<PK>>
+  --
+  source_id : INTEGER <<FK>>
+  * created_at : TEXT
+  * method : TEXT {manual | auto | imported}
+  * frame_width : INTEGER
+  * frame_height : INTEGER
+  intrinsic_matrix : TEXT (JSON, K 3x3)
+  * homography_matrix : TEXT (JSON, H 3x3)
+  rotation_matrix : TEXT (JSON, R 3x3)
+  focal_px : REAL
+  horizon_y : REAL
+  camera_height_m : REAL
+  camera_offset_m : REAL
+  pitch_deg : REAL
+  * params_json : TEXT (JSON)
+  note : TEXT
+}
+
+entity "system_config" as sc {
+  * section : TEXT <<PK>>
+  * key : TEXT <<PK>>
+  --
+  * value : TEXT (JSON)
+  * updated_at : TEXT
+}
+
+entity "config_history" as ch {
+  * id : INTEGER <<PK>>
+  --
+  * changed_at : TEXT
+  * reason : TEXT
+  * config_json : TEXT (JSON)
+}
+
+entity "monitoring_sessions" as ms {
+  * id : INTEGER <<PK>>
+  --
+  * started_at : TEXT
+  ended_at : TEXT
+  source_id : INTEGER <<FK>>
+  * source : TEXT
+  * source_type : TEXT
+  model_weights : TEXT
+  device : TEXT {GPU | CPU}
+  frame_width : INTEGER
+  frame_height : INTEGER
+  * frames_processed : INTEGER = 0
+  avg_fps : REAL
+  * config_json : TEXT (JSON)
+}
+
+entity "violations" as v {
+  * id : INTEGER <<PK>>
+  --
+  * session_id : INTEGER <<FK>>
+  * started_at : TEXT
+  ended_at : TEXT
+  video_time_s : REAL
+  duration_s : REAL
+  * level : TEXT {warning | danger}
+  track_id : INTEGER
+  vehicle_class : TEXT
+  * distance_m : REAL
+  * min_distance_m : REAL
+  min_ttc_s : REAL
+  closing_speed_kmh : REAL
+  * ego_speed_kmh : REAL
+  * safe_threshold_m : REAL
+  * danger_threshold_m : REAL
+  legal_min_gap_m : REAL
+  road_condition : TEXT
+  weather_factor : REAL
+  snapshot_path : TEXT
+}
+
+vs ||--o{ cc : "có ma trận camera\n(ON DELETE CASCADE)"
+vs |o--o{ ms : "được giám sát\n(ON DELETE SET NULL)"
+ms ||--o{ v : "ghi nhận\n(ON DELETE CASCADE)"
+sc ||..o{ ch : "bản chụp khi thay đổi"
+@enduml

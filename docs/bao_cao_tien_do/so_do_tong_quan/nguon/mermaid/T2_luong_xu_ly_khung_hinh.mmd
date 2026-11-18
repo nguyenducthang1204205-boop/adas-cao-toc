@@ -1,0 +1,23 @@
+flowchart TB
+    B(["Bắt đầu giám sát"]) --> R["Đọc khung hình từ nguồn"]
+    R --> DET["Phát hiện và bám vết phương tiện (YOLOv11 + ByteTrack)"]
+    DET --> LANE["Xác định làn xe chủ từ vạch kẻ đường"]
+    LANE --> DIST["Đổi điểm chạm đất của từng xe sang mét (IPM)"]
+    DIST --> SM["Làm mượt khoảng cách, tính tốc độ tiếp cận và TTC"]
+    SM --> LEAD{"Có xe cùng làn<br/>phía trước?"}
+    LEAD -- "Không" --> SAFE["Mức: an toàn"]
+    LEAD -- "Có" --> THR["Tính ngưỡng theo tốc độ xe chủ và điều kiện đường"]
+    THR --> CMP{"So sánh khoảng cách<br/>và TTC với ngưỡng"}
+    CMP -- "dưới ngưỡng nguy hiểm" --> DG["Mức: nguy hiểm"]
+    CMP -- "dưới ngưỡng cảnh báo" --> WN["Mức: cảnh báo"]
+    CMP -- "trên ngưỡng" --> SAFE
+    DG --> HY["Chống báo nhầm: xác nhận qua nhiều khung liên tiếp"]
+    WN --> HY
+    SAFE --> HY
+    HY --> AL{"Mức ổn định là<br/>cảnh báo / nguy hiểm?"}
+    AL -- "Có" --> SND["Phát âm thanh, ghi đợt vi phạm kèm ảnh"]
+    AL -- "Không" --> SHOW
+    SND --> SHOW["Hiển thị khung màu, khoảng cách, ảnh nhìn từ trên xuống"]
+    SHOW --> MORE{"Còn khung hình và<br/>chưa dừng?"}
+    MORE -- "Có" --> R
+    MORE -- "Không" --> E(["Kết thúc phiên giám sát"])

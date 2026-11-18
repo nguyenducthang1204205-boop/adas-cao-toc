@@ -1,0 +1,128 @@
+classDiagram
+    direction LR
+    class MainWindow {
+        <<QMainWindow>>
+        +AppConfig cfg
+        +Optional~ProcessingWorker~ worker
+        +SafetyAssistant assistant
+        +str source_spec
+        +int source_id
+        +dict last_stats
+        +open_video() / open_image() / open_camera() / open_sources()
+        +start() / toggle_pause() / stop()
+        +calibrate() / open_settings() / open_history()
+        +ask_assistant(text) / reset_policy() / toggle_sound()
+        -_activate_source(spec) int
+        -_on_frame(overlay, bev, stats)
+        -_policy_changed()
+    }
+    class ProcessingWorker {
+        <<QThread>>
+        +Signal frame_ready
+        +Signal violation
+        +Signal session_started
+        +Signal status / failed / progress
+        +AppConfig cfg
+        +str source_spec
+        +ADASPipeline pipeline
+        +ndarray last_frame
+        +run() / stop() / set_paused(p)
+        +calibration_changed() / classes_changed()
+    }
+    class SourceDialog {
+        <<QDialog>>
+        +Database db
+        +str selected_uri
+        +refresh() / _add_file() / _add_other()
+        +_edit() / _delete() / _test() / _scan() / _open()
+    }
+    class SourceEditDialog {
+        <<QDialog>>
+        +values tuple
+        -_browse() / _accept()
+    }
+    class CalibrationDialog {
+        <<QDialog>>
+        +CalibrationConfig calib
+        +CalibrationView view
+        +CalibrationConfig result_calib
+        +str method
+        +str note
+        -_collect() / _update_preview()
+        -_auto_calibrate() / _apply_auto() / _accept()
+    }
+    class CalibrationView {
+        +list points
+        +mousePressEvent() / mouseMoveEvent()
+        +clear_points()
+    }
+    class SettingsDialog {
+        <<QDialog>>
+        +AppConfig cfg
+        +str api_key_value
+        -_general_tab() / _road_tab()
+        -_assistant_tab() / _advanced_tab()
+        -_apply_preset() / _preview_sound() / _accept()
+    }
+    class HistoryDialog {
+        <<QDialog>>
+        +Signal restore_config
+        +Database db
+        +refresh() / _load_violations()
+        +_show_snapshot() / _export_csv()
+        +_delete_violations() / _delete_session()
+        +_show_calibration() / _restore()
+    }
+    class ImageView {
+        <<QWidget>>
+        +set_image(img) / image_rect()
+    }
+    class VideoStage {
+        +WelcomePanel welcome
+        +show_welcome(on) / set_frames(overlay, bev)
+    }
+    class WelcomePanel {
+        +set_state(source, calibrated, desc)
+    }
+    class PlayBar {
+        +set_progress(idx, total, fps) / set_live(text)
+    }
+    class StatusCard {
+        +DistanceGauge gauge
+        +set_level(level) / update_stats(s) / reset()
+    }
+    class SpeedPanel {
+        +Signal speed_changed
+        +set_speed(v) / set_policy(p) / refresh()
+    }
+    class ConditionPanel {
+        +Signal preset_requested
+        +Signal reset_requested
+        +QUICK (8 nút)
+        +set_policy(p)
+    }
+    class ChatPanel {
+        +Signal send_requested
+        +submit(text) / add_message() / set_busy()
+    }
+    class EventLog {
+        +Signal history_requested
+        +start_session(id) / on_violation(e) / export_csv()
+    }
+    MainWindow "1" --> "0..1" ProcessingWorker
+    MainWindow *-- VideoStage
+    MainWindow *-- PlayBar
+    MainWindow *-- StatusCard
+    MainWindow *-- SpeedPanel
+    MainWindow *-- ConditionPanel
+    MainWindow *-- ChatPanel
+    MainWindow *-- EventLog
+    VideoStage *-- WelcomePanel
+    VideoStage *-- "2" ImageView : video, BEV
+    ImageView <|-- CalibrationView
+    CalibrationDialog *-- CalibrationView
+    SourceDialog ..> SourceEditDialog
+    MainWindow ..> SourceDialog
+    MainWindow ..> CalibrationDialog
+    MainWindow ..> SettingsDialog
+    MainWindow ..> HistoryDialog

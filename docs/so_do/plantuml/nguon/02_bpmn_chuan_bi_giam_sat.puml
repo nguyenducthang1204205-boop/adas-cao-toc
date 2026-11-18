@@ -1,0 +1,32 @@
+@startuml 02_bpmn_chuan_bi_giam_sat
+|Tài xế|
+start
+:Mở phần mềm, chọn nguồn
+video / camera;
+|Giao diện ADAS|
+:Đăng ký nguồn, nạp căn chỉnh
+mới nhất của nguồn;
+if (Nguồn đã căn chỉnh?) then (Chưa)
+  |Tài xế|
+  :Chấm 4 điểm trên vạch làn
+  hoặc chọn "Tự động căn chỉnh";
+  |Giao diện ADAS|
+  :Tính H, K, R, xem trước
+  ảnh nhìn từ trên xuống (BEV);
+  :Lưu ma trận camera vào CSDL;
+else (Rồi)
+endif
+|Tài xế|
+:Bật "Tự đo từ video" hoặc chọn nấc tốc độ,
+mô tả điều kiện đường;
+|Trợ lý AI|
+:Phân tích mô tả (offline / Claude),
+đề xuất chính sách ngưỡng;
+|Giao diện ADAS|
+:Tính ngưỡng theo dải tốc độ
+× hệ số điều kiện đường;
+:Lưu cấu hình và lịch sử cấu hình;
+|Tài xế|
+:Bấm "Bắt đầu" giám sát;
+stop
+@enduml

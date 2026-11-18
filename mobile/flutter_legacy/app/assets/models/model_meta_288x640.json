@@ -1,0 +1,32 @@
+{
+  "source": "best.pt",
+  "input": {
+    "height": 288,
+    "width": 640,
+    "layout": "NHWC",
+    "color": "RGB",
+    "scale": "0..1",
+    "letterbox_pad": 114
+  },
+  "output": {
+    "shape": [
+      1,
+      9,
+      null
+    ],
+    "layout": "[cx, cy, w, h, score_lớp...] x anchors",
+    "boxes": "chuẩn hóa 0..1 theo ô vào (nhân W/H rồi bỏ letterbox)",
+    "nms": "chưa có - app tự làm"
+  },
+  "classes": [
+    "Jeepney",
+    "bus",
+    "car",
+    "motorcycle",
+    "truck"
+  ],
+  "files": {
+    "fp16": "adas_yolo_288x640_fp16.tflite",
+    "int8": "adas_yolo_288x640_int8.tflite"
+  }
+}

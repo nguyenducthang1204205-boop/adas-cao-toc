@@ -1,0 +1,16 @@
+@startuml 28_trang_thai_muc_canh_bao
+hide empty description
+state "An toàn (safe)" as safe : không phát âm
+state "Cảnh báo (warning)" as warning : bíp 820 Hz mỗi 0,9 s
+state "Nguy hiểm (danger)" as danger : bíp 1250 Hz mỗi 0,28 s
+
+[*] --> safe : khởi tạo / reset()
+safe --> warning : raw = warning kéo dài\n≥ escalate_seconds (0,1 s, ≥ 2 khung)
+safe --> danger : raw = danger kéo dài ≥ 0,1 s
+warning --> danger : raw = danger kéo dài ≥ 0,1 s
+danger --> warning : raw = warning và đã giữ\n≥ hold_seconds (0,8 s)
+danger --> safe : raw = safe và đã giữ ≥ 0,8 s
+warning --> safe : raw = safe và đã giữ ≥ 0,8 s
+warning --> warning : raw = warning\n(làm mới thời điểm giữ)
+danger --> danger : raw = danger\n(làm mới thời điểm giữ)
+@enduml

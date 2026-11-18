@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="2020" viewBox="0 0 1260 2020">
+<rect width="100%" height="100%" fill="#fff"/>
+<rect x="10.0" y="10.0" width="560.0" height="2004.0" rx="0" fill="#fff" stroke="#1f1f1f" stroke-width="1.2"/>
+<rect x="10.0" y="10.0" width="560.0" height="34.0" rx="0" fill="#eef2f7" stroke="#1f1f1f" stroke-width="1.2"/>
+<text x="290.0" y="32.1" font-family="Times New Roman" font-size="15" text-anchor="middle" fill="#000" font-weight="bold">Người dùng</text>
+<rect x="570.0" y="10.0" width="680.0" height="2004.0" rx="0" fill="#fff" stroke="#1f1f1f" stroke-width="1.2"/>
+<rect x="570.0" y="10.0" width="680.0" height="34.0" rx="0" fill="#eef2f7" stroke="#1f1f1f" stroke-width="1.2"/>
+<text x="910.0" y="32.1" font-family="Times New Roman" font-size="15" text-anchor="middle" fill="#000" font-weight="bold">Hệ thống</text>
+<ellipse cx="290.0" cy="67.0" rx="11.0" ry="11.0" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1.3"/>
+<rect x="188.0" y="112.0" width="204.0" height="67.2" rx="12" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="290.0" y="133.3" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Bấm “Căn chỉnh camera” (hoặc</text>
+<text x="290.0" y="150.4" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">“Căn chỉnh ngay” trên thanh</text>
+<text x="290.0" y="167.5" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">nhắc)</text>
+<rect x="815.0" y="213.2" width="190.0" height="84.3" rx="12" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="910.0" y="234.5" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Lấy khung hình: khung đang</text>
+<text x="910.0" y="251.6" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">giám sát → khung đầu của</text>
+<text x="910.0" y="268.7" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">nguồn đã chọn → hộp chọn</text>
+<text x="910.0" y="285.8" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">ảnh / video</text>
+<polygon points="910.0,331.6 987.2,356.6 910.0,381.7 832.8,356.6" fill="#fff" stroke="#1f1f1f" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="910.0" y="361.4" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Có khung hình?</text>
+<rect x="1049.0" y="331.6" width="152.0" height="50.2" rx="12" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="1125.0" y="352.9" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Báo “Không đọc được</text>
+<text x="1125.0" y="369.9" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">khung hình”</text>
+<ellipse cx="1125.0" cy="449.3" rx="13.0" ry="13.0" fill="#fff" stroke="#1f1f1f" stroke-width="1.6"/>
+<ellipse cx="1125.0" cy="449.3" rx="8.0" ry="8.0" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1.3"/>
+<rect x="816.0" y="415.7" width="188.0" height="67.2" rx="12" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="910.0" y="437.0" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Tạm dừng luồng xử lý; mở</text>
+<text x="910.0" y="454.1" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">CalibrationDialog với khung</text>
+<text x="910.0" y="471.2" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">hình và 4 điểm hiện tại</text>
+<polygon points="290.0,517.0 368.8,542.0 290.0,567.1 211.2,542.0" fill="#fff" stroke="#1f1f1f" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="290.0" y="546.8" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Cách căn chỉnh?</text>
+<rect x="72.0" y="601.1" width="206.0" height="101.4" rx="12" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="175.0" y="622.4" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Chấm / kéo 4 điểm trên 2 vạch</text>
+<text x="175.0" y="639.5" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">làn (gần trái → gần phải → xa</text>
+<text x="175.0" y="656.6" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">phải → xa trái); nhập W = 3,75</text>
+<text x="175.0" y="673.7" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">m, L, d₀, nửa làn, tầm đo,</text>
+<text x="175.0" y="690.7" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">camera → đầu xe</text>
+<rect x="343.0" y="618.2" width="194.0" height="67.2" rx="12" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="440.0" y="639.5" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Bấm “Tự động căn chỉnh”,</text>
+<text x="440.0" y="656.6" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">nhập tốc độ xe trong video (0</text>
+<text x="440.0" y="673.7" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">nếu không biết)</text>
+<rect x="811.5" y="736.5" width="197.0" height="101.4" rx="12" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="910.0" y="757.8" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Phân tích video ở luồng nền:</text>
+<text x="910.0" y="774.9" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">điểm tụ (Hough + RANSAC),</text>
+<text x="910.0" y="792.0" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">bề rộng làn → chiều cao</text>
+<text x="910.0" y="809.1" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">camera, dịch chuyển vạch đứt</text>
+<text x="910.0" y="826.1" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">→ K = f·h</text>
+<polygon points="910.0,871.9 974.3,897.0 910.0,922.1 845.7,897.0" fill="#fff" stroke="#1f1f1f" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="910.0" y="901.8" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Thành công?</text>
+<rect x="810.5" y="956.1" width="199.0" height="67.2" rx="12" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="910.0" y="977.4" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Tự điền 4 điểm và thông số;</text>
+<text x="910.0" y="994.5" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">method = auto, note = báo cáo</text>
+<text x="910.0" y="1011.5" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">tự căn chỉnh</text>
+<polygon points="910.0,1057.3 925.0,1072.3 910.0,1087.3 895.0,1072.3" fill="#fff" stroke="#1f1f1f" stroke-width="1.4" stroke-linejoin="round"/>
+<rect x="813.0" y="1121.3" width="194.0" height="84.3" rx="12" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="910.0" y="1142.6" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Tính homography H; vẽ</text>
+<text x="910.0" y="1159.7" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Bird's-Eye View (lưới 10 m),</text>
+<text x="910.0" y="1176.8" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">chân trời, f, chiều cao, góc</text>
+<text x="910.0" y="1193.9" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">chúc camera</text>
+<polygon points="910.0,1239.6 998.6,1264.7 910.0,1289.8 821.4,1264.7" fill="#fff" stroke="#1f1f1f" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="910.0" y="1269.5" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Đủ 4 điểm hợp lệ?</text>
+<rect x="197.0" y="1323.8" width="186.0" height="67.2" rx="12" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="290.0" y="1345.1" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Kiểm tra vạch làn trên BEV</text>
+<text x="290.0" y="1362.2" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">song song, thẳng đứng; bấm</text>
+<text x="290.0" y="1379.3" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">“Áp dụng” hoặc “Hủy”</text>
+<polygon points="910.0,1425.0 960.7,1450.1 910.0,1475.2 859.3,1450.1" fill="#fff" stroke="#1f1f1f" stroke-width="1.4" stroke-linejoin="round"/>
+<text x="910.0" y="1454.9" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Áp dụng?</text>
+<rect x="1054.0" y="1425.0" width="142.0" height="50.2" rx="12" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="1125.0" y="1446.3" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Đóng hộp thoại, giữ</text>
+<text x="1125.0" y="1463.4" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">nguyên căn chỉnh cũ</text>
+<rect x="807.0" y="1509.2" width="206.0" height="84.3" rx="12" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="910.0" y="1530.5" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">update_inplace(cfg.calibration);</text>
+<text x="910.0" y="1547.6" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">lưu system_config +</text>
+<text x="910.0" y="1564.7" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">config_history “Căn chỉnh</text>
+<text x="910.0" y="1581.7" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">camera (IPM)”</text>
+<rect x="810.0" y="1627.5" width="200.0" height="67.2" rx="12" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="910.0" y="1648.8" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Phân rã H → K, R; thêm dòng</text>
+<text x="910.0" y="1665.9" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">camera_calibrations (manual /</text>
+<text x="910.0" y="1683.0" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">auto) cho nguồn</text>
+<rect x="808.0" y="1728.8" width="204.0" height="67.2" rx="12" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="910.0" y="1750.1" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Báo luồng xử lý</text>
+<text x="910.0" y="1767.1" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">calibration_changed(): dựng lại</text>
+<text x="910.0" y="1784.2" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">IPM ở khung kế tiếp</text>
+<polygon points="910.0,1830.0 925.0,1845.0 910.0,1860.0 895.0,1845.0" fill="#fff" stroke="#1f1f1f" stroke-width="1.4" stroke-linejoin="round"/>
+<rect x="809.5" y="1894.0" width="201.0" height="38.0" rx="12" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="910.0" y="1917.8" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Bỏ tạm dừng, tiếp tục giám sát</text>
+<ellipse cx="910.0" cy="1979.0" rx="13.0" ry="13.0" fill="#fff" stroke="#1f1f1f" stroke-width="1.6"/>
+<ellipse cx="910.0" cy="1979.0" rx="8.0" ry="8.0" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1.3"/>
+<polyline points="290.0,78.0 290.0,112.0" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="285.5,102.0 290.0,112.0 294.5,102.0" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="290.0,179.2 290.0,198.2 910.0,198.2 910.0,213.2" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="905.5,203.2 910.0,213.2 914.5,203.2" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="910.0,297.6 910.0,331.6" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="905.5,321.6 910.0,331.6 914.5,321.6" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="987.2,356.6 1049.0,356.6" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="1039.0,361.1 1049.0,356.6 1039.0,352.1" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<rect x="992.6" y="336.7" width="51.0" height="17.9" fill="#fff" stroke="none"/>
+<text x="1018.1" y="350.1" font-family="Times New Roman" font-size="13" text-anchor="middle" fill="#000">[Không]</text>
+<polyline points="1125.0,381.7 1125.0,436.3" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="1120.5,426.3 1125.0,436.3 1129.5,426.3" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="910.0,381.7 910.0,415.7" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="905.5,405.7 910.0,415.7 914.5,405.7" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<rect x="913.0" y="387.8" width="30.0" height="17.9" fill="#fff" stroke="none"/>
+<text x="916.0" y="401.1" font-family="Times New Roman" font-size="13" text-anchor="start" fill="#000">[Có]</text>
+<polyline points="910.0,483.0 910.0,502.0 290.0,502.0 290.0,517.0" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="285.5,507.0 290.0,517.0 294.5,507.0" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="211.2,542.0 175.0,542.0 175.0,601.1" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="170.5,591.1 175.0,601.1 179.5,591.1" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<rect x="142.2" y="523.1" width="66.0" height="17.9" fill="#fff" stroke="none"/>
+<text x="205.2" y="536.5" font-family="Times New Roman" font-size="13" text-anchor="end" fill="#000">[Thủ công]</text>
+<polyline points="368.8,542.0 440.0,542.0 440.0,618.2" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="435.5,608.2 440.0,618.2 444.5,608.2" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<rect x="371.8" y="523.1" width="60.0" height="17.9" fill="#fff" stroke="none"/>
+<text x="374.8" y="536.5" font-family="Times New Roman" font-size="13" text-anchor="start" fill="#000">[Tự động]</text>
+<polyline points="440.0,685.4 440.0,721.5 910.0,721.5 910.0,736.5" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="905.5,726.5 910.0,736.5 914.5,726.5" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="910.0,837.9 910.0,871.9" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="905.5,861.9 910.0,871.9 914.5,861.9" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="845.7,897.0 38.0,897.0 38.0,651.8 72.0,651.8" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="62.0,656.3 72.0,651.8 62.0,647.3" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<rect x="620.7" y="878.1" width="222.0" height="17.9" fill="#fff" stroke="none"/>
+<text x="839.7" y="891.4" font-family="Times New Roman" font-size="13" text-anchor="end" fill="#000">[Không] báo lỗi, đề nghị chấm thủ công</text>
+<polyline points="910.0,922.1 910.0,956.1" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="905.5,946.1 910.0,956.1 914.5,946.1" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<rect x="913.0" y="928.2" width="30.0" height="17.9" fill="#fff" stroke="none"/>
+<text x="916.0" y="941.5" font-family="Times New Roman" font-size="13" text-anchor="start" fill="#000">[Có]</text>
+<polyline points="910.0,1023.3 910.0,1057.3" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="905.5,1047.3 910.0,1057.3 914.5,1047.3" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="175.0,702.5 175.0,1072.3 895.0,1072.3" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="885.0,1076.8 895.0,1072.3 885.0,1067.8" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="910.0,1087.3 910.0,1121.3" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="905.5,1111.3 910.0,1121.3 914.5,1111.3" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="910.0,1205.6 910.0,1239.6" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="905.5,1229.6 910.0,1239.6 914.5,1229.6" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="821.4,1264.7 54.0,1264.7 54.0,651.8 72.0,651.8" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="62.0,656.3 72.0,651.8 62.0,647.3" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<rect x="666.4" y="1245.8" width="152.0" height="17.9" fill="#fff" stroke="none"/>
+<text x="815.4" y="1259.1" font-family="Times New Roman" font-size="13" text-anchor="end" fill="#000">[Không] khóa nút Áp dụng</text>
+<polyline points="910.0,1289.8 910.0,1308.8 290.0,1308.8 290.0,1323.8" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="285.5,1313.8 290.0,1323.8 294.5,1313.8" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<rect x="913.0" y="1295.9" width="30.0" height="17.9" fill="#fff" stroke="none"/>
+<text x="916.0" y="1309.2" font-family="Times New Roman" font-size="13" text-anchor="start" fill="#000">[Có]</text>
+<polyline points="290.0,1391.0 290.0,1410.0 910.0,1410.0 910.0,1425.0" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="905.5,1415.0 910.0,1425.0 914.5,1415.0" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="960.7,1450.1 1054.0,1450.1" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="1044.0,1454.6 1054.0,1450.1 1044.0,1445.6" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<rect x="988.8" y="1430.2" width="37.0" height="17.9" fill="#fff" stroke="none"/>
+<text x="1007.3" y="1443.5" font-family="Times New Roman" font-size="13" text-anchor="middle" fill="#000">[Hủy]</text>
+<polyline points="910.0,1475.2 910.0,1509.2" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="905.5,1499.2 910.0,1509.2 914.5,1499.2" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<rect x="913.0" y="1481.3" width="61.0" height="17.9" fill="#fff" stroke="none"/>
+<text x="916.0" y="1494.6" font-family="Times New Roman" font-size="13" text-anchor="start" fill="#000">[Áp dụng]</text>
+<polyline points="910.0,1593.5 910.0,1627.5" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="905.5,1617.5 910.0,1627.5 914.5,1617.5" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="910.0,1694.8 910.0,1728.8" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="905.5,1718.8 910.0,1728.8 914.5,1718.8" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="910.0,1796.0 910.0,1830.0" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="905.5,1820.0 910.0,1830.0 914.5,1820.0" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="1125.0,1475.2 1125.0,1845.0 925.0,1845.0" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="935.0,1840.5 925.0,1845.0 935.0,1849.5" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="910.0,1860.0 910.0,1894.0" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="905.5,1884.0 910.0,1894.0 914.5,1884.0" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="910.0,1932.0 910.0,1966.0" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="905.5,1956.0 910.0,1966.0 914.5,1956.0" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+</svg>

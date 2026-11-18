@@ -1,0 +1,23 @@
+@startuml 04_usecase_tong_quat
+left to right direction
+actor "Người dùng\n(tài xế / người vận hành)" as user
+actor "Camera /\nnguồn video" as cam
+actor "Dịch vụ\nClaude API\n(tùy chọn)" as ai
+
+rectangle "Hệ thống cảnh báo khoảng cách an toàn (YOLOv11 + IPM)" {
+  usecase "UC01. Quản lý nguồn\nvideo/camera" as uc01
+  usecase "UC04. Giám sát realtime\n& cảnh báo" as uc04
+  usecase "UC02. Cấu hình thông số IPM\n(căn chỉnh camera)" as uc02
+  usecase "UC03. Cấu hình ngưỡng\ncảnh báo" as uc03
+  usecase "UC05. Quản lý nhật ký\ncảnh báo" as uc05
+}
+
+user -- uc01
+user -- uc04
+user -- uc02
+user -- uc03
+user -- uc05
+uc01 -- cam
+uc04 -- cam
+uc03 -- ai
+@enduml

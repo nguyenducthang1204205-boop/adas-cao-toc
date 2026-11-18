@@ -1,0 +1,46 @@
+@startuml 15_tuan_tu_UC01_nguon_video
+autonumber
+actor "Người dùng" as U
+participant "MainWindow" as MW
+participant "SourceDialog" as SD
+participant "_Job\n(QThread)" as J
+participant "sources\n(adas.stream)" as SRC
+database "Database" as DB
+participant "Camera /\nnguồn video" as CAM
+
+U -> MW : Menu nguồn → "Quản lý nguồn…"
+MW -> SD : SourceDialog(current_uri)
+SD -> DB : list_sources()
+DB --> SD : danh sách nguồn (số căn chỉnh, số phiên)
+U -> SD : "Thêm file video" / "Thêm camera / URL"
+SD -> SRC : classify_source(uri), normalize_source(uri)
+SD -> DB : get_source(uri)
+alt Nguồn đã có
+  SD --> U : "Nguồn này đã có trong danh sách."
+else Nguồn mới
+  SD -> DB : add_source(name, kind, uri, desc)
+  SD -> SD : refresh(select_uri)
+end
+opt Dò camera USB
+  U -> SD : "Dò camera USB"
+  SD -> J : _run(find_cameras)
+  J -> CAM : mở thử chỉ số 0-4
+  J --> SD : done(cams)
+  SD -> DB : add_source("Camera USB i") cho camera chưa có
+end
+U -> SD : chọn nguồn, "Kiểm tra kết nối"
+SD -> J : _run(probe_source, uri)
+J -> CAM : mở nguồn, đọc 1 khung
+alt Kết nối được
+  J --> SD : done(frame, width, height, fps, frames)
+  SD --> U : khung xem trước + "Kết nối tốt · R×C · FPS"
+else Lỗi
+  J --> SD : failed(msg)
+  SD --> U : "Không kết nối được: msg"
+end
+U -> SD : "Mở nguồn đã chọn" (hoặc nhấp đúp)
+SD --> MW : accept(), selected_uri
+MW -> MW : _select_source(uri): stop() rồi start()
+MW -> DB : register_source(uri), latest_calibration(source_id)
+note over MW : Bắt đầu giám sát (UC04)
+@enduml

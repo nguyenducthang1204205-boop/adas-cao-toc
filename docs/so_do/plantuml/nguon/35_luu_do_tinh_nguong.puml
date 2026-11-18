@@ -1,0 +1,29 @@
+@startuml 35_luu_do_tinh_nguong
+start
+:Tốc độ xe chủ V: đo từ vạch kẻ đứt,
+nếu chưa đo được thì lấy tốc độ người dùng chọn;
+if (V ≥ 60 km/h?) then (Có)
+  :base = ngưỡng dải tốc độ của người dùng,
+  không thấp hơn bảng luật (35 / 55 / 70 / 100 m);
+else (Không)
+  :base = V × giãn cách thời gian
+  (mặc định 2 giây);
+endif
+:d_an toàn = max(base, d_min) × hệ số điều kiện đường;
+:d_nguy hiểm = max(d_min, d_an toàn × tỉ lệ nguy hiểm);
+:Lấy xe dẫn đầu: xe gần nhất trong làn xe chủ,
+khoảng cách d và TTC sau lọc Kalman;
+if (Có xe dẫn đầu?) then (Không)
+  :Mức = an toàn;
+elseif (d < d_nguy hiểm hoặc TTC < TTC nguy hiểm?) then (Có)
+  :Mức = nguy hiểm;
+elseif (d < d_an toàn hoặc TTC < TTC cảnh báo?) then (Có)
+  :Mức = cảnh báo;
+else (Không)
+  :Mức = an toàn;
+endif
+:Chống báo nhầm: chỉ nâng mức khi mức mới kéo dài
+≥ 0,1 s qua ≥ 2 khung; hạ mức sau thời gian giữ;
+:Đổi màu khung xe, banner, phát âm thanh theo mức;
+stop
+@enduml

@@ -1,0 +1,218 @@
+@startuml 20_lop_thuc_the
+!pragma layout smetana
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam backgroundColor #FFFFFF
+skinparam ArrowColor #1F1F1F
+skinparam ArrowFontSize 13
+skinparam RoundCorner 12
+skinparam ActorBorderColor #1F1F1F
+skinparam ActorBackgroundColor #FFFFFF
+skinparam UsecaseBorderColor #1F1F1F
+skinparam UsecaseBackgroundColor #F4F8FD
+skinparam RectangleBorderColor #1F1F1F
+skinparam RectangleFontStyle bold
+skinparam PackageBorderColor #5A5A5A
+skinparam PackageBackgroundColor #FAFBFC
+skinparam ClassBorderColor #1F1F1F
+skinparam ClassBackgroundColor #F4F8FD
+skinparam ClassHeaderBackgroundColor #E3ECF6
+skinparam ClassAttributeIconSize 0
+skinparam ActivityBorderColor #1F1F1F
+skinparam ActivityBackgroundColor #F4F8FD
+skinparam ActivityDiamondBorderColor #1F1F1F
+skinparam ActivityDiamondBackgroundColor #FFFFFF
+skinparam SwimlaneBorderColor #1F1F1F
+skinparam SwimlaneTitleFontStyle bold
+skinparam SwimlaneTitleBackgroundColor #EEF2F7
+skinparam ParticipantBorderColor #1F1F1F
+skinparam ParticipantBackgroundColor #F4F8FD
+skinparam SequenceLifeLineBorderColor #7A7A7A
+skinparam SequenceGroupBorderColor #5A5A5A
+skinparam SequenceGroupHeaderFontStyle bold
+skinparam NoteBorderColor #9A8A3A
+skinparam NoteBackgroundColor #FFFBE6
+skinparam StateBorderColor #1F1F1F
+skinparam StateBackgroundColor #F4F8FD
+skinparam ComponentBorderColor #1F1F1F
+skinparam ComponentBackgroundColor #F4F8FD
+skinparam DatabaseBorderColor #1F1F1F
+skinparam DatabaseBackgroundColor #FFFFFF
+skinparam NodeBorderColor #1F1F1F
+skinparam NodeBackgroundColor #FAFBFC
+skinparam ArtifactBackgroundColor #FFFFFF
+skinparam EntityBorderColor #1F1F1F
+skinparam EntityBackgroundColor #F4F8FD
+set separator none
+hide empty members
+skinparam linetype ortho
+
+package "Cấu hình - lưu bảng system_config" {
+  class AppConfig <<dataclass>> {
+    +model : ModelConfig
+    +calibration : CalibrationConfig
+    +policy : SafetyPolicy
+    +alert : AlertConfig
+    +assistant : AssistantConfig
+    +speed_kmh : float = 80
+    +auto_speed : bool = True
+    +realtime_playback : bool = True
+    +output_dir : str = "outputs"
+    --
+    +{static} load(db) : AppConfig
+    +save(reason, db)
+    +resolve_path(p) : Path
+  }
+  class ModelConfig <<dataclass>> {
+    +weights : str = "models/best.pt"
+    +fallback_weights : str = "models/yolo11n.pt"
+    +confidence : float = 0.35
+    +iou : float = 0.45
+    +imgsz : int = 640
+    +device : str = "auto"
+    +detect_every : int = 0
+    +enabled_classes : List[str]
+  }
+  class CalibrationConfig <<dataclass>> {
+    +image_points : List[List[float]]
+    +rect_width_m : float = 3.75
+    +rect_length_m : float = 30
+    +near_distance_m : float = 6
+    +lane_half_width_m : float = 1.9
+    +max_range_m : float = 150
+    +camera_vfov_deg : float = 55
+  }
+  class SafetyPolicy <<dataclass>> {
+    +time_gap_s : float = 2.0
+    +band_gaps_m : List[float] = [35, 55, 70, 100]
+    +weather_factor : float = 1.0
+    +danger_ratio : float = 0.5
+    +min_distance_m : float = 5
+    +ttc_warning_s : float = 4
+    +ttc_danger_s : float = 2
+    +use_legal_table : bool = True
+    +condition : str
+    +road_mu : float = 0.7
+    +visibility_m : float = 0
+  }
+  class AlertConfig <<dataclass>> {
+    +sound_enabled : bool = True
+    +only_ego_lane : bool = True
+    +auto_lane : bool = True
+    +escalate_seconds : float = 0.1
+    +hold_seconds : float = 0.8
+  }
+  class AssistantConfig <<dataclass>> {
+    +model : str = "claude-haiku-4-5"
+    +use_cloud : bool = False
+  }
+}
+
+package "Kết quả xử lý một khung" {
+  class Detection <<dataclass>> {
+    +bbox : ndarray [x1, y1, x2, y2]
+    +confidence : float
+    +class_name : str
+    +track_id : Optional[int]
+    --
+    +ground_point() : tuple
+    +height() : float
+    +width() : float
+  }
+  class VehicleState <<dataclass>> {
+    +det : Detection
+    +distance_m : float
+    +lateral_m : float
+    {field} +method : str  ("IPM" | "Xa")
+    +in_ego_lane : bool
+    +closing_speed_mps : Optional[float]
+    +ttc_s : Optional[float]
+    +risk : str = "safe"
+  }
+  class LaneEstimate <<dataclass>> {
+    {field} +left : ndarray (c0, c1, c2)
+    {field} +right : ndarray (c0, c1, c2)
+    +found_left : bool
+    +found_right : bool
+    --
+    +width_m() : float
+    +offset_m() : float
+    +contains(lateral_m, distance_m) : bool
+  }
+  class Thresholds <<dataclass>> {
+    +speed_kmh : float
+    +safe_m : float
+    +danger_m : float
+    +gap_m : float
+    +legal_m : Optional[float]
+    +band_m : Optional[float]
+    +over_speed_limit : bool
+    +recommended_speed_kmh : Optional[float]
+  }
+  class FrameResult <<dataclass>> {
+    +vehicles : List[VehicleState]
+    +lead : Optional[VehicleState]
+    +lane : Optional[LaneEstimate]
+    +thresholds : Optional[Thresholds]
+    +speed_kmh : float
+    +speed_measured : bool
+    +raw_level : str
+    +level : str
+    +detected : bool
+    +stride : int
+    +yolo_ms : float
+    +timings_ms : Dict[str, float]
+  }
+}
+
+package "Khác" {
+  class RoadCondition <<frozen>> {
+    +key : str
+    +name : str
+    +factor : float
+    +mu : float
+    +ttc_warning_s : float
+    +ttc_danger_s : float
+    +advice : str
+  }
+  class AssistantResult <<dataclass>> {
+    +reply : str
+    +policy : SafetyPolicy
+    +speed_kmh : Optional[float]
+    {field} +source : str  ("Claude" | "Offline")
+    +note : str
+  }
+  class AutoCalibReport <<dataclass>> {
+    {field} +vanishing_point : (float, float)
+    +camera_height_m : float
+    +depth_scale_K : float
+    +focal_px : float
+    +depth_from_motion : bool
+    +frames_used : int
+    --
+    +summary() : str
+  }
+  class _Episode <<dataclass>> {
+    +id : int
+    +track_id : Optional[int]
+    +level : str
+    +start_t : float
+    +min_distance : float
+    +min_ttc : Optional[float]
+    +snapshot_rel : Optional[str]
+  }
+}
+
+AppConfig *-- "1" ModelConfig
+AppConfig *-- "1" CalibrationConfig
+AppConfig *-- "1" SafetyPolicy
+AppConfig *-- "1" AlertConfig
+AppConfig *-- "1" AssistantConfig
+VehicleState --> "1" Detection : det
+FrameResult o-- "0..*" VehicleState : vehicles
+FrameResult --> "0..1" LaneEstimate : lane
+FrameResult --> "0..1" Thresholds : thresholds
+AssistantResult --> "1" SafetyPolicy : policy
+SafetyPolicy ..> RoadCondition : condition_policy()
+@enduml

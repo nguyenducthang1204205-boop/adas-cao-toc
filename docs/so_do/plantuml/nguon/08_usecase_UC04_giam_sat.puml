@@ -1,0 +1,34 @@
+@startuml 08_usecase_UC04_giam_sat
+left to right direction
+actor "Người dùng" as user
+actor "Camera /\nnguồn video" as cam
+
+rectangle "Hệ thống cảnh báo khoảng cách an toàn" {
+  usecase "UC04. Giám sát realtime\n& cảnh báo" as base
+  usecase "Đọc khung hình từ nguồn" as s1
+  usecase "Nhận diện & bám vết xe\n(YOLOv11 + bám vết mẫu)" as s2
+  usecase "Nhận diện làn xe chủ" as s3
+  usecase "Đo tốc độ xe chủ từ video" as s4
+  usecase "Tính khoảng cách IPM,\ntốc độ tiếp cận, TTC" as s5
+  usecase "Phân loại mức rủi ro\ntheo ngưỡng" as s6
+  usecase "Cảnh báo hình ảnh\n& âm thanh" as s7
+  usecase "Ghi nhật ký vi phạm\n+ ảnh bằng chứng" as s8
+  usecase "Tạm dừng / tiếp tục" as s9
+  usecase "Ghi video kết quả" as s10
+  usecase "Bật / tắt âm thanh" as s11
+}
+
+user -- base
+base ..> s1 : <<include>>
+base ..> s2 : <<include>>
+base ..> s3 : <<include>>
+base ..> s4 : <<include>>
+base ..> s5 : <<include>>
+base ..> s6 : <<include>>
+base ..> s7 : <<include>>
+base ..> s8 : <<include>>
+base <.. s9 : <<extend>>
+base <.. s10 : <<extend>>
+base <.. s11 : <<extend>>
+s1 -- cam
+@enduml

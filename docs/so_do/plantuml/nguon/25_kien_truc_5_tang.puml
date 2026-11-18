@@ -1,0 +1,47 @@
+@startuml 25_kien_truc_5_tang
+skinparam componentStyle rectangle
+
+package "(1) Video Stream\nadas/stream" as S {
+  [VideoFileSource\nfile video, bám nhịp\nthời gian thực] as S1
+  [CameraSource\nUSB / RTSP,\nluồng đọc riêng] as S2
+  [ImageSource\nảnh tĩnh] as S3
+}
+package "(2) YOLOv11 Detection\nadas/detection" as D {
+  [VehicleDetector\nYOLOv11 + ByteTrack\n(mỗi N khung)] as D1
+  [TemplateTracker\nbám vết mẫu NCC\n(các khung giữa)] as D2
+}
+package "(3) IPM Distance Calculation\nadas/distance" as I {
+  [EgoLaneDetector\nlàn xe chủ trên BEV] as I1
+  [EgoSpeedEstimator\ntốc độ xe chủ\ntừ vạch đứt] as I2
+  [GroundPlaneMapper\nhomography H:\npixel → mét] as I3
+  [DistanceEstimator\n+ RangeKalman:\nd, tốc độ tiếp cận, TTC] as I4
+}
+package "(4) Alert Engine\nadas/alert" as A {
+  [thresholds\nngưỡng theo dải tốc độ\n× hệ số đường] as A1
+  [AlertManager\nchống nhiễu theo\nthời gian + âm thanh] as A2
+  [ViolationRecorder\nnhật ký đợt vi phạm] as A3
+}
+package "(5) GUI\ngui/" as G {
+  [rendering\nkhung màu, banner, BEV] as G1
+  [MainWindow + widgets\nthẻ trạng thái, tốc độ,\nnhật ký, Trợ lý AI] as G2
+  [dialogs\nnguồn, căn chỉnh,\ncài đặt, lịch sử] as G3
+}
+database "SQLite data/adas.db\n(adas/storage)" as DB
+[Trợ lý AI - adas/assistant\n(offline / Claude API)] as AI
+
+S1 -down-> D1 : khung BGR, t
+D1 -down-> I1 : List[Detection]
+I1 -down-> A1 : List[VehicleState]
+A1 -down-> G1 : FrameResult
+A3 ..> DB : ghi vi phạm
+DB ..> I4 : ma trận camera, cấu hình ngưỡng
+G2 ..> AI : mô tả tình huống
+AI ..> A3 : SafetyPolicy
+
+note right of D
+  ADASPipeline (adas/pipeline.py)
+  điều phối (2) → (3) → (4) mỗi khung;
+  ProcessingWorker (gui/worker.py) chạy
+  vòng lặp trong luồng nền
+end note
+@enduml

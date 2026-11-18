@@ -1,0 +1,29 @@
+@startuml c1_kien_truc_yolov11
+rectangle "Ảnh đầu vào\n640 × 640 × 3" as anh
+rectangle "Backbone - trích xuất đặc trưng" as bb {
+  rectangle "Conv + C3k2\n(độ phân giải giảm dần)" as c3k2
+  rectangle "SPPF\ngộp đặc trưng đa tỉ lệ" as sppf
+  rectangle "C2PSA\nchú ý theo vùng" as psa
+}
+rectangle "Neck - kết hợp đặc trưng (FPN + PAN)" as neck {
+  rectangle "Đường xuống (FPN)\nUpsample + Concat + C3k2" as fpn
+  rectangle "Đường lên (PAN)\nConv + Concat + C3k2" as pan
+}
+rectangle "Head - dự đoán (anchor-free, tách nhánh)" as head {
+  rectangle "P3 - lưới 80 × 80\nxe nhỏ, ở xa" as p3
+  rectangle "P4 - lưới 40 × 40\nxe cỡ vừa" as p4
+  rectangle "P5 - lưới 20 × 20\nxe lớn, ở gần" as p5
+}
+rectangle "Khung bao + lớp + độ tin cậy\n→ NMS loại khung trùng" as out
+anh --> c3k2
+c3k2 -right-> sppf
+sppf -right-> psa
+psa --> fpn
+fpn -right-> pan
+pan --> p3
+pan --> p4
+pan --> p5
+p3 --> out
+p4 --> out
+p5 --> out
+@enduml

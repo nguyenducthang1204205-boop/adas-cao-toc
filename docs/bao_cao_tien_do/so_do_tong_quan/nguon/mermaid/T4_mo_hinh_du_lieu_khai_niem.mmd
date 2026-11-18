@@ -1,0 +1,12 @@
+flowchart LR
+    NV["Nguồn video / camera<br/>tên, loại nguồn, địa chỉ,<br/>ngày thêm, lần dùng gần nhất"]
+    CC["Thông số căn chỉnh camera<br/>4 điểm trên ảnh, kích thước thực,<br/>ma trận K, H, R, tiêu cự,<br/>chiều cao camera, góc chúc"]
+    PG["Phiên giám sát<br/>nguồn, thời gian bắt đầu / kết thúc,<br/>số khung, tốc độ xử lý"]
+    VP["Vi phạm khoảng cách<br/>thời điểm, mức, loại xe,<br/>khoảng cách, TTC, ngưỡng,<br/>tốc độ xe chủ, điều kiện, ảnh"]
+    CH["Cấu hình ngưỡng cảnh báo<br/>tốc độ xe chủ, điều kiện đường,<br/>hệ số, μ, TTC, tầm nhìn"]
+    LS["Lịch sử cấu hình<br/>thời điểm, lý do thay đổi,<br/>bản chụp cấu hình"]
+    NV -- "1 - n" --> CC
+    NV -- "1 - n" --> PG
+    PG -- "1 - n" --> VP
+    CH -- "1 - n" --> LS
+    CH -. "áp dụng khi giám sát" .-> PG

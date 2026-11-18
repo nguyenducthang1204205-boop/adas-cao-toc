@@ -1,0 +1,43 @@
+@startuml 34_luu_do_can_chinh_ba_buoc
+start
+:Mở "Căn chỉnh camera" với khung hình
+của nguồn đang chọn;
+partition "Bước 1 - Xe và số đo" {
+  if (Đã đo chiều cao camera bằng thước?) then (Có)
+    :Nhập chiều cao camera và
+    khoảng cách tới đầu xe;
+  else (Chưa)
+    :Chọn loại xe: xe con, SUV / bán tải,
+    xe khách, xe tải → điền số đo điển hình;
+  endif
+}
+partition "Bước 2 - Đường chân trời" {
+  :Tự tìm điểm tụ của vạch kẻ đường
+  (Hough + RANSAC trên khoảng 3 s video);
+  if (Tìm thấy điểm tụ?) then (Có)
+    :Vẽ đường chân trời và tâm ngắm
+    lên ảnh để người dùng kiểm tra;
+  else (Không)
+    :Báo "Không thấy rõ vạch kẻ đường";
+  endif
+  if (Đường chân trời lệch?) then (Có)
+    :Kéo đường chân trời trên ảnh
+    hoặc chỉnh góc nhìn ngang (FOV);
+  else (Không)
+  endif
+}
+partition "Bước 3 - Hoàn tất" {
+  :Tóm tắt: loại xe, chiều cao, chân trời,
+  cách lấy thang khoảng cách;
+  :Từ tư thế camera, chiếu hình chữ nhật trên mặt đường
+  lên ảnh → 4 điểm → ma trận H của IPM;
+  :Lưu căn chỉnh của nguồn (K, H, R) vào CSDL;
+}
+if (Bật tự hoàn thiện khi chạy?) then (Có)
+  :Khi giám sát: lấy trung vị điểm tụ, chỉnh chiều cao
+  theo làn 3,75 m, chỉnh tiêu cự theo tốc độ thật;
+  :Báo kết quả tự kiểm tra, theo dõi camera bị xê dịch;
+else (Không)
+endif
+stop
+@enduml

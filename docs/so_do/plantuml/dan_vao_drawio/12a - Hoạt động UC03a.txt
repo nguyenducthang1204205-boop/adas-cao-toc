@@ -1,0 +1,41 @@
+@startuml 12a_hoat_dong_UC03_cai_dat_nguong
+|Người dùng|
+start
+if (Muốn đổi gì?) then (Tốc độ xe chủ)
+  :Bật "Tự đo từ video" hoặc chọn nấc
+  60 / ≤80 / ≤100 / ≤120 km/h
+  (chọn nấc thì tắt tự đo);
+  |Hệ thống|
+  :Tính lại ngưỡng, hiển thị
+  "Cảnh báo < X m · Nguy hiểm < Y m" và căn cứ;
+else (Tham số)
+  :Bấm "Cài đặt";
+  |Hệ thống|
+  :Mở hộp Cài đặt 5 tab: Chung, Ngưỡng cảnh báo,
+  Điều kiện đường, Trợ lý AI, Nâng cao;
+  |Người dùng|
+  :Tab "Chung": loại xe theo dõi, âm thanh và nghe thử,
+  chỉ cảnh báo cùng làn, tự nhận diện làn, tự đo tốc độ;
+  :Tab "Ngưỡng cảnh báo": giãn cách dưới 60 km/h (2-6 s),
+  khoảng cách cảnh báo cho từng dải 60 / 80 / 100 / 120 km/h;
+  :Tab "Điều kiện đường": thời tiết / mặt đường (5 mẫu),
+  tầm nhìn xa;
+  |Hệ thống|
+  :Tự điền hệ số điều kiện, hệ số bám, TTC,
+  hiển thị ngưỡng đang áp dụng;
+  |Người dùng|
+  :Tab "Nâng cao" (nếu cần): mô hình, YOLO mỗi N khung,
+  tỷ lệ nguy hiểm, TTC, chống báo nhầm; bấm "Lưu";
+  |Hệ thống|
+  :Ràng buộc: mỗi dải không thấp hơn mức luật,
+  TTC nguy hiểm ≤ TTC cảnh báo - 0,5 s, bỏ hết loại xe → giữ ô tô;
+  :Cập nhật cấu hình dùng chung,
+  lưu cấu hình + lịch sử "Cài đặt hệ thống";
+  :Cập nhật thẻ tốc độ, thẻ điều kiện đường,
+  báo luồng xử lý đổi lớp xe / căn chỉnh;
+endif
+|Hệ thống|
+:Luồng xử lý dùng ngưỡng mới
+từ khung kế tiếp;
+stop
+@enduml

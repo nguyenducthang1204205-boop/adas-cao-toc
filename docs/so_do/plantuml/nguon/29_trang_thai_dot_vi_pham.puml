@@ -1,0 +1,19 @@
+@startuml 29_trang_thai_dot_vi_pham
+hide empty description
+state "Không có đợt vi phạm\n(ep = None)" as idle
+state "Đợt đang mở (ep)" as open {
+  state "Mức cảnh báo" as w
+  state "Mức nguy hiểm" as d
+  [*] --> w
+  [*] --> d
+  w --> d : nâng lên nguy hiểm /\nupdate_violation(level), chụp lại ảnh
+}
+
+[*] --> idle
+idle --> open : level là warning hoặc danger và có xe phía trước /\n_open(): insert_violation + ảnh bằng chứng
+open --> open : cùng track_id /\ncập nhật min_distance, min_ttc
+open --> open : vẫn cảnh báo nhưng tạm mất\nxe phía trước (giữ đợt)
+open --> idle : level = safe hoặc đổi xe phía trước /\n_close(): ended_at, duration_s, min_distance_m, min_ttc_s
+open --> [*] : kết thúc phiên / close(t)
+idle --> [*] : kết thúc phiên
+@enduml

@@ -1,0 +1,13 @@
+stateDiagram-v2
+    direction LR
+    state "Chưa bắt được làn (state = None)<br/>trả None → hành lang ±lane_half_width" as none
+    state "Đang xác nhận (hits #lt; 3)<br/>vẫn trả None" as acquiring
+    state "Đã xác nhận (confirmed)<br/>trả LaneEstimate" as tracking
+    [*] --> none : khởi tạo / reset() / đổi căn chỉnh
+    none --> none : thiếu 1 trong 2 vạch → hits = 0
+    none --> acquiring : thấy đủ 2 vạch hợp lệ (rộng 2,2-5,2 m,<br/>làn chứa trục xe ±0,4 m) → hits = 1
+    acquiring --> acquiring : đủ 2 vạch → hits + 1<br/>thiếu 1 bên → suy ra từ bề rộng làn
+    acquiring --> tracking : hits ≥ ACQUIRE_FRAMES (3)
+    tracking --> tracking : làm mượt EMA 0,35<br/>thiếu 1 bên → suy ra từ bề rộng đã làm mượt<br/>tâm lệch > nửa làn (chuyển làn) → nhận ngay
+    acquiring --> none : mất cả 2 vạch > LOST_FRAMES (20) khung
+    tracking --> none : mất cả 2 vạch > 20 khung → reset()

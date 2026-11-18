@@ -1,0 +1,36 @@
+flowchart TB
+    subgraph S["① Video Stream - adas/sources.py"]
+        direction LR
+        S1["File video<br/>VideoFileSource"]
+        S2["Camera USB / RTSP<br/>CameraSource"]
+        S3["Ảnh tĩnh<br/>ImageSource"]
+    end
+    subgraph D["② YOLOv11 Detection - adas/detector.py"]
+        direction LR
+        D1["YOLOv11n fine-tune (models/best.pt)<br/>phát hiện + phân loại xe"] --> D2["ByteTrack<br/>gán track_id"]
+    end
+    subgraph I["③ IPM Distance Calculation - lane.py, ipm.py, distance.py"]
+        direction LR
+        I0["Nhận diện làn xe chủ<br/>(vạch kẻ trên BEV)"] --> I1["Điểm chạm đất<br/>giữa cạnh dưới bbox"] --> I2["Homography H<br/>pixel → mét"] --> I3["EMA, tốc độ tiếp cận,<br/>TTC, cùng làn?"]
+    end
+    subgraph A["④ Alert Engine - safety.py, alert.py, violations.py"]
+        direction LR
+        A1["Ngưỡng theo tốc độ<br/>× hệ số điều kiện"] --> A2["Phân loại rủi ro<br/>safe / warning / danger"] --> A3["Chống nhiễu<br/>+ âm thanh"] --> A4["Ghi nhật ký<br/>vi phạm"]
+    end
+    subgraph G["⑤ GUI - adas/renderer.py, gui/"]
+        direction LR
+        G1["Khung màu, nhãn,<br/>vùng nguy hiểm, banner"]
+        G2["Bird's-Eye View"]
+        G3["Thẻ trạng thái, nhật ký,<br/>Trợ lý AI, cấu hình"]
+    end
+    S -- "khung BGR (ndarray), thời điểm t" --> D
+    D -- "List[Detection]: bbox, lớp, độ tin cậy, track_id" --> I
+    I -- "List[VehicleState]: khoảng cách, lệch ngang, TTC" --> A
+    A -- "FrameResult: mức cảnh báo, xe phía trước, ngưỡng" --> G
+    DB[("SQLite<br/>data/adas.db")]
+    AI["Trợ lý AI - ai_assistant.py<br/>(offline / Claude API)"]
+    A -. "ghi vi phạm" .-> DB
+    DB -. "ma trận camera" .-> I
+    DB -. "cấu hình ngưỡng" .-> A
+    AI -. "SafetyPolicy" .-> A
+    G -. "mô tả tình huống" .-> AI

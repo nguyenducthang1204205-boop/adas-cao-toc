@@ -1,0 +1,166 @@
+classDiagram
+    direction TB
+    class AppConfig {
+        <<dataclass>>
+        +ModelConfig model
+        +CalibrationConfig calibration
+        +SafetyPolicy policy
+        +AlertConfig alert
+        +AssistantConfig assistant
+        +float speed_kmh = 80
+        +bool realtime_playback = True
+        +str output_dir = "outputs"
+        +load(db) AppConfig$
+        +save(reason, db)
+        +resolve_path(p) Path
+    }
+    class ModelConfig {
+        <<dataclass>>
+        +str weights = "models/best.pt"
+        +str fallback_weights = "models/yolo11n.pt"
+        +float confidence = 0.35
+        +float iou = 0.45
+        +int imgsz = 640
+        +str device = "auto"
+        +List~str~ enabled_classes
+    }
+    class CalibrationConfig {
+        <<dataclass>>
+        +List image_points
+        +float rect_width_m = 3.75
+        +float rect_length_m = 30
+        +float near_distance_m = 6
+        +float lane_half_width_m = 1.9
+        +float max_range_m = 150
+        +float camera_vfov_deg = 55
+    }
+    class SafetyPolicy {
+        <<dataclass>>
+        +float time_gap_s = 2.0
+        +float weather_factor = 1.0
+        +float danger_ratio = 0.5
+        +float min_distance_m = 5
+        +float ttc_warning_s = 4
+        +float ttc_danger_s = 2
+        +bool use_legal_table = True
+        +str condition
+        +float road_mu = 0.7
+        +float visibility_m = 0
+    }
+    class AlertConfig {
+        <<dataclass>>
+        +bool sound_enabled = True
+        +bool only_ego_lane = True
+        +bool auto_lane = True
+        +int escalate_frames = 3
+        +float hold_seconds = 0.8
+    }
+    class AssistantConfig {
+        <<dataclass>>
+        +str model = "claude-haiku-4-5"
+        +bool use_cloud = False
+    }
+    class Detection {
+        <<dataclass>>
+        +ndarray bbox
+        +float confidence
+        +str class_name
+        +Optional~int~ track_id
+        +ground_point() tuple
+        +height() float
+        +width() float
+    }
+    class VehicleState {
+        <<dataclass>>
+        +Detection det
+        +float distance_m
+        +float lateral_m
+        +str method
+        +bool in_ego_lane
+        +Optional~float~ closing_speed_mps
+        +Optional~float~ ttc_s
+        +str risk = "safe"
+    }
+    class LaneEstimate {
+        <<dataclass>>
+        +ndarray left
+        +ndarray right
+        +bool found_left
+        +bool found_right
+        +width_m() float
+        +offset_m() float
+        +contains(lateral_m, distance_m) bool
+    }
+    class Thresholds {
+        <<dataclass>>
+        +float speed_kmh
+        +float safe_m
+        +float danger_m
+        +float gap_m
+        +Optional~float~ legal_m
+        +bool over_speed_limit
+        +Optional~float~ recommended_speed_kmh
+    }
+    class FrameResult {
+        <<dataclass>>
+        +List~VehicleState~ vehicles
+        +Optional~VehicleState~ lead
+        +Optional~LaneEstimate~ lane
+        +Optional~Thresholds~ thresholds
+        +str raw_level
+        +str level
+        +Dict~str,float~ timings_ms
+        +inference_ms() float
+    }
+    class RoadCondition {
+        <<frozen dataclass>>
+        +str key
+        +str name
+        +float factor
+        +float mu
+        +float ttc_warning_s
+        +float ttc_danger_s
+        +str advice
+    }
+    class AssistantResult {
+        <<dataclass>>
+        +str reply
+        +SafetyPolicy policy
+        +Optional~float~ speed_kmh
+        +str source
+        +str note
+    }
+    class AutoCalibReport {
+        <<dataclass>>
+        +tuple vanishing_point
+        +float horizon_ratio
+        +float camera_height_m
+        +float depth_scale_K
+        +float focal_px
+        +float hfov_deg
+        +float vfov_deg
+        +bool depth_from_motion
+        +int frames_used
+        +summary() str
+    }
+    class Episode["_Episode"] {
+        <<dataclass>>
+        +int id
+        +Optional~int~ track_id
+        +str level
+        +float start_t
+        +float min_distance
+        +Optional~float~ min_ttc
+        +Optional~str~ snapshot_rel
+    }
+    AppConfig *-- ModelConfig
+    AppConfig *-- CalibrationConfig
+    AppConfig *-- SafetyPolicy
+    AppConfig *-- AlertConfig
+    AppConfig *-- AssistantConfig
+    VehicleState --> Detection : det
+    FrameResult o-- "0..*" VehicleState : vehicles
+    FrameResult --> "0..1" LaneEstimate : lane
+    FrameResult --> "0..1" Thresholds : thresholds
+    AssistantResult --> SafetyPolicy : policy
+    SafetyPolicy ..> RoadCondition : condition_policy()

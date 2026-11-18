@@ -1,0 +1,50 @@
+sequenceDiagram
+    autonumber
+    actor U as Người dùng
+    participant MW as MainWindow
+    participant W as ProcessingWorker
+    participant FS as FrameSource
+    participant P as ADASPipeline
+    participant VD as VehicleDetector
+    participant LD as EgoLaneDetector
+    participant DE as DistanceEstimator
+    participant AM as AlertManager
+    participant VR as ViolationRecorder
+    participant DB as Database
+    U->>MW: "Bắt đầu" (F5)
+    MW->>DB: register_source(), latest_calibration()
+    MW->>W: ProcessingWorker(cfg, source, record, source_id).start()
+    W->>FS: open_source(spec, realtime)
+    W->>VD: VehicleDetector(best.pt, …), warmup()
+    W->>FS: read() → khung đầu
+    W->>P: ADASPipeline(cfg, detector, (w, h))
+    W->>DB: start_session(…, config) → session_id
+    W-->>MW: session_started(session_id)
+    loop Mỗi khung (đến khi dừng / hết video)
+        W->>P: process(frame, t)
+        P->>VD: detect(frame, track=True)
+        VD-->>P: List[Detection]
+        P->>LD: update(frame, boxes)
+        LD-->>P: LaneEstimate hoặc None
+        P->>DE: estimate(detections, t, lane)
+        DE-->>P: List[VehicleState] (d, X, TTC)
+        P->>P: compute_thresholds() + classify_risk()
+        P->>AM: update(raw_level)
+        AM-->>P: level ổn định (+ bíp)
+        P-->>W: FrameResult
+        W->>VR: update(result, t, speed, condition, save_snapshot)
+        opt Mở / cập nhật / đóng đợt vi phạm
+            VR->>DB: insert_violation() / update_violation()
+            VR-->>W: sự kiện open / update / close
+            W-->>MW: violation(event)
+        end
+        W->>W: render_overlay() + render_bev()
+        W-->>MW: frame_ready(overlay, bev, stats), progress()
+        MW-->>U: video, BEV, thẻ trạng thái, thời gian 5 tầng
+        W->>FS: read()
+    end
+    U->>MW: "Dừng" (Esc)
+    MW->>W: stop(), wait()
+    W->>VR: close(t)
+    W->>DB: end_session(session_id, frames, avg_fps)
+    W-->>MW: status("Phiên #35;id: đã ghi n vi phạm vào CSDL")

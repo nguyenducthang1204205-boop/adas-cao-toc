@@ -1,0 +1,8 @@
+ultralytics>=8.3.0        # YOLOv11
+torch>=2.0.0
+opencv-python>=4.8.0
+numpy>=1.24.0
+lap>=0.4.0                # ByteTrack
+PySide6>=6.5.0            # Giao diện
+pygame>=2.5.0             # Âm thanh cảnh báo
+anthropic>=0.70.0         # Trợ lý AI (Claude)

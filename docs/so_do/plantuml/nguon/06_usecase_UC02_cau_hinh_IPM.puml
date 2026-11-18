@@ -1,0 +1,24 @@
+@startuml 06_usecase_UC02_cau_hinh_IPM
+left to right direction
+actor "Người dùng" as user
+
+rectangle "Hệ thống cảnh báo khoảng cách an toàn" {
+  usecase "UC02. Cấu hình thông số IPM\n(căn chỉnh camera)" as base
+  usecase "Lấy khung hình tham chiếu" as s1
+  usecase "Chấm 4 điểm trên vạch làn\n& nhập kích thước thực" as s2
+  usecase "Tự động căn chỉnh từ video" as s3
+  usecase "Chấm lại / về vị trí mặc định" as s4
+  usecase "Tính H, xem trước\nBird's-Eye View" as s5
+  usecase "Lưu ma trận camera\nK, H, R theo nguồn" as s6
+  usecase "Tự nạp căn chỉnh\nkhi mở lại nguồn" as s7
+}
+
+user -- base
+base ..> s1 : <<include>>
+base <.. s2 : <<extend>>
+base <.. s3 : <<extend>>
+base <.. s4 : <<extend>>
+base ..> s5 : <<include>>
+base ..> s6 : <<include>>
+base <.. s7 : <<extend>>
+@enduml

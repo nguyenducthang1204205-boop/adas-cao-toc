@@ -1,0 +1,28 @@
+@startuml 27_trien_khai
+node "Xe ô tô" as car {
+  node "Camera hành trình\nUSB (0-4) / IP (RTSP, HTTP)" as cam
+  node "Màn hình" as scr
+  node "Loa" as spk
+}
+node "Máy tính Windows 11\n(GPU NVIDIA CUDA hoặc chỉ CPU)" as pc {
+  node "Thư mục ứng dụng dist/ADAS" as app {
+    artifact "ADAS.exe\n(PyInstaller: Python 3.11, PySide6,\nPyTorch, Ultralytics YOLOv11, OpenCV)" as exe
+    artifact "models/best.pt\nmodels/yolo11n.pt" as w
+    artifact "assets/\n(font, biểu tượng)" as ast
+    database "data/adas.db\ndata/snapshots/" as db
+    artifact "outputs/*.mp4" as out
+  }
+  artifact "Video hành trình\n(.mp4, .avi, .mov, .mkv)" as vid
+}
+cloud "Anthropic Claude API\n(tùy chọn, mặc định tắt)" as cloud
+
+cam --> exe : USB / RTSP
+vid --> exe : đọc file
+exe --> w : nạp trọng số
+exe --> ast
+exe --> db : SQLite (WAL), ảnh bằng chứng
+exe --> out : ghi video kết quả
+exe --> scr : giao diện Qt
+exe --> spk : âm thanh (pygame)
+exe ..> cloud : HTTPS (ANTHROPIC_API_KEY)
+@enduml

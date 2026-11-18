@@ -1,0 +1,27 @@
+@startuml c1_bytetrack
+start
+:Khung hình t: các phát hiện của YOLOv11
+(khung bao + độ tin cậy);
+:Bộ lọc Kalman dự đoán vị trí
+của các vết đang theo dõi ở khung t;
+:Tách phát hiện theo độ tin cậy:
+nhóm tin cậy cao và nhóm tin cậy thấp;
+:Ghép lần 1: vết ↔ phát hiện tin cậy cao
+theo IoU (thuật toán Hungary);
+:Ghép lần 2: vết còn lại ↔ phát hiện tin cậy thấp
+theo IoU;
+fork
+  :Cặp ghép được:
+  cập nhật bộ lọc Kalman,
+  giữ nguyên mã của vết;
+fork again
+  :Phát hiện tin cậy cao chưa ghép:
+  tạo vết mới, cấp mã mới;
+fork again
+  :Vết không ghép được:
+  đánh dấu tạm mất,
+  xóa nếu mất quá lâu;
+end fork
+:Danh sách xe kèm mã định danh cố định;
+stop
+@enduml

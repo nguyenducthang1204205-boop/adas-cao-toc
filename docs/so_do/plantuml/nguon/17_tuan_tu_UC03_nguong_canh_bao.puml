@@ -1,0 +1,45 @@
+@startuml 17_tuan_tu_UC03_nguong_canh_bao
+autonumber
+actor "Người dùng" as U
+participant "ConditionPanel /\nChatPanel" as CP
+participant "MainWindow" as MW
+participant "_AssistantTask\n(QThreadPool)" as T
+participant "SafetyAssistant" as SA
+participant "Claude API" as API
+participant "thresholds\n(adas.alert)" as TH
+participant "AppConfig" as CFG
+database "Database" as DB
+
+U -> CP : bấm nút điều kiện (vd "Mưa to") hoặc gõ mô tả
+CP -> MW : send_requested(text)
+MW -> T : ask_assistant(text): policy, speed_kmh, scene
+T -> SA : ask(message, policy, speed_kmh, scene)
+alt use_cloud = False (mặc định)
+  SA -> SA : offline_advice(): từ khóa tiếng Việt
+  SA -> TH : condition_policy(key, modifiers, visibility, base = policy)
+else use_cloud = True
+  SA -> API : messages.create(system, messages, output_config json_schema)
+  alt Thành công
+    API --> SA : JSON: reply, policy, speed_kmh
+  else Lỗi mạng / API key / từ chối
+    SA -> SA : offline_advice() + ghi chú lỗi
+  end
+end
+SA -> SA : clamp_policy() theo LIMITS (giữ band_gaps_m, time_gap_s)
+SA --> T : AssistantResult(reply, policy, speed_kmh, source)
+T --> MW : done(result)
+MW -> CFG : update_inplace(cfg.policy, result.policy)
+opt Tài xế có nêu tốc độ
+  MW -> MW : speed_panel.set_speed(v), tắt tự đo
+end
+MW -> TH : compute_thresholds(speed_kmh, policy)
+TH --> MW : Thresholds(safe_m, danger_m, legal_m, band_m)
+MW --> U : "Đã áp dụng … cảnh báo < X m, nguy hiểm < Y m"
+MW -> CFG : save("Trợ lý AI (nguồn): điều kiện")
+CFG -> DB : system_config + config_history
+note over MW, CFG : ProcessingWorker đọc cfg.policy ở khung kế tiếp
+opt Chỉnh trong Cài đặt
+  U -> MW : "Cài đặt" → SettingsDialog (5 tab) → "Lưu"
+  MW -> CFG : update_inplace(cfg, dlg.cfg), save("Cài đặt hệ thống")
+end
+@enduml

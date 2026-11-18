@@ -1,0 +1,33 @@
+@startuml 32_bpmn_tra_cuu_nhat_ky
+|Tài xế|
+start
+:Sau hành trình, mở "Lịch sử";
+|Giao diện ADAS|
+:Đọc danh sách phiên giám sát
+và thống kê tổng hợp;
+|Cơ sở dữ liệu|
+:Truy vấn bảng monitoring_sessions,
+violations;
+|Giao diện ADAS|
+:Hiển thị phiên và các vi phạm;
+|Tài xế|
+:Lọc theo phiên, ngày, mức cảnh báo,
+loại xe;
+:Chọn một vi phạm để xem;
+|Giao diện ADAS|
+:Hiển thị ảnh bằng chứng, khoảng cách,
+tốc độ, ngưỡng lúc vi phạm;
+|Tài xế|
+if (Thao tác tiếp?) then (Dọn dữ liệu)
+  :Chọn vi phạm / phiên cần xóa, xác nhận;
+  |Cơ sở dữ liệu|
+  :Xóa bản ghi và file ảnh bằng chứng;
+else (Xuất báo cáo)
+  |Giao diện ADAS|
+  :Xuất danh sách vi phạm ra file CSV;
+endif
+|Tài xế|
+:Rút kinh nghiệm giữ khoảng cách
+cho các hành trình sau;
+stop
+@enduml

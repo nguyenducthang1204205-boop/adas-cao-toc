@@ -1,0 +1,28 @@
+@startuml 01_bpmn_quy_trinh_tong_quat
+|Tài xế|
+start
+:Chọn nguồn video / camera
+(UC01);
+|Phần mềm ADAS|
+:Đăng ký nguồn, nạp căn chỉnh
+đã lưu của nguồn;
+if (Nguồn đã căn chỉnh?) then (Chưa)
+  |Tài xế|
+  :Căn chỉnh camera IPM
+  (UC02);
+  |Phần mềm ADAS|
+  :Lưu ma trận camera K, H, R
+  theo nguồn;
+else (Rồi)
+endif
+|Tài xế|
+:Cấu hình ngưỡng cảnh báo
+(UC03);
+|Phần mềm ADAS|
+:Giám sát realtime & cảnh báo
+(UC04);
+|Tài xế|
+:Xem lại nhật ký cảnh báo
+(UC05);
+stop
+@enduml

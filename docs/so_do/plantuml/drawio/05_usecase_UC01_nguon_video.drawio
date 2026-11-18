@@ -1,0 +1,91 @@
+<mxfile host="drawio-plantuml" type="device">
+  <diagram id="05_usecase_UC01_nguon_video" name="05_usecase_UC01_nguon_video">
+<mxGraphModel>
+  <root>
+    <mxCell id="0"></mxCell>
+    <mxCell id="1" parent="0"></mxCell>
+    <mxCell id="rect_0" value="Hệ thống cảnh báo khoảng cách an toàn" style="swimlane;collapsible=0;startSize=26;fillColor=none;strokeColor=#181818;fontColor=#000000;fontSize=13;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="162" y="30" width="734" height="699" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_1" value="Thêm file video / ảnh" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="52.5" y="46" width="178" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_2" value="Thêm camera USB /&lt;br&gt;URL RTSP-HTTP" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="39" y="126" width="205" height="52" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_3" value="Dò camera USB (chỉ số 0-4)" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="31" y="218" width="221" height="49" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_4" value="Kiểm tra kết nối&lt;br&gt;&amp;amp; xem trước" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="60" y="307" width="163" height="52" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_5" value="Sửa thông tin nguồn" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="58.5" y="399" width="166" height="38" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_6" value="Xóa nguồn" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="88.5" y="477" width="106" height="29" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_7" value="Mở nguồn để giám sát" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="52.5" y="546" width="178" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_8" value="Mở nhanh: video / ảnh /&lt;br&gt;camera / nguồn gần đây" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="20" y="626" width="243" height="53" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_9" value="UC01. Quản lý nguồn&lt;br&gt;video/camera" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="298" y="336.5" width="205" height="52" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_10" value="Xem danh sách nguồn" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="538" y="342.5" width="176" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="actor_11" value="" style="shape=umlActor;html=1;fillColor=#F1F1F1;strokeColor=#181818;fontColor=#000000;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="42" y="278" width="40" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="actorlbl_12" value="Camera /&#10;nguồn video" style="text;html=1;align=center;verticalAlign=middle;spacingBottom=1;fontColor=#000000;fontSize=14;part=1;" vertex="1" parent="actor_11">
+      <mxGeometry x="-65.5" y="62" width="171" height="17" as="geometry"/>
+    </mxCell>
+    <mxCell id="actor_13" value="" style="shape=umlActor;html=1;fillColor=#F1F1F1;strokeColor=#181818;fontColor=#000000;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="42" y="369" width="40" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="actorlbl_14" value="Người dùng" style="text;html=1;align=center;verticalAlign=middle;spacingBottom=1;fontColor=#000000;fontSize=14;part=1;" vertex="1" parent="actor_13">
+      <mxGeometry x="-21.5" y="62" width="83" height="17" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_15" value="" style="endArrow=none;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;" edge="1" source="actor_13" target="uc_9" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_16" value="«include»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_9" target="uc_10" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_17" value="«extend»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;labelPosition=right;align=left;" edge="1" source="uc_1" target="uc_9" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_18" value="«extend»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_2" target="uc_9" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_19" value="«extend»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_3" target="uc_9" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_20" value="«extend»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_4" target="uc_9" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_21" value="«extend»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_5" target="uc_9" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_22" value="«extend»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_6" target="uc_9" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_23" value="«extend»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_7" target="uc_9" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_24" value="«extend»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;labelPosition=right;align=left;" edge="1" source="uc_8" target="uc_9" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_25" value="" style="endArrow=none;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;" edge="1" source="uc_3" target="actor_11" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_26" value="" style="endArrow=none;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;" edge="1" source="uc_4" target="actor_11" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>
+  </diagram>
+</mxfile>

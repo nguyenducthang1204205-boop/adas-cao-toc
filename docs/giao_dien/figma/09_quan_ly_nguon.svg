@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1180" height="560"
+ viewBox="0 0 1180 560"
+ xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" baseProfile="tiny">
+<title>Quản lý nguồn video/camera</title>
+<desc>ADAS Cao tốc - mockup giao diện</desc>
+<defs>
+</defs>
+<g fill="none" stroke="black" stroke-width="1" fill-rule="evenodd" stroke-linecap="square" stroke-linejoin="bevel" >
+
+<g fill="#05070a" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="0" y="0" width="1180" height="560"/>
+</g>
+
+<g fill="#05070a" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="0" y="0" width="1180" height="560"/>
+</g>
+
+<g fill="#161d26" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,11,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M10,0.5 L137,0.5 C142.247,0.5 146.5,4.75329 146.5,10 L146.5,23 C146.5,28.2467 142.247,32.5 137,32.5 L10,32.5 C4.75329,32.5 0.5,28.2467 0.5,23 L0.5,10 C0.5,4.75329 4.75329,0.5 10,0.5 Z "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,11,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="10" y="32" width="127" height="1"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,11,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M10,32.5 C7.37665,32.5 5.00165,31.4367 3.28249,29.7175 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M137,32.5 C139.623,32.5 141.998,31.4367 143.718,29.7175 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,11,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="146" y="10" width="1" height="13"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,11,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M143.718,3.28249 C145.437,5.00165 146.5,7.37665 146.5,10 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M143.718,29.7175 C145.437,27.9984 146.5,25.6234 146.5,23 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,11,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="0" y="10" width="1" height="13"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,11,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M3.28249,3.28249 C1.56332,5.00165 0.5,7.37665 0.5,10 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M0.5,23 C0.5,25.6234 1.56332,27.9984 3.28249,29.7175 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,11,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="10" y="0" width="127" height="1"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,11,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M3.28249,3.28249 C5.00165,1.56332 7.37665,0.5 10,0.5 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M143.718,3.28249 C141.998,1.56332 139.623,0.5 137,0.5 "/>
+</g>
+
+<g fill="none" stroke="#eef2f6" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,11,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<image x="15" y="8" width="16" height="16" preserveAspectRatio="none" image-rendering="optimizeQuality" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABF0lEQVQ4je1UPU6EUBic7+0DBGNoLASMhYUn4ADrDaw8h5WtB/AsJnoCShtKPAKLDRuzUXaz7L6xgiCrWX+IhXG6+d7MfD/FA/7xHhJSp2lqDRKWZZn9NKsup8/VdU562/RqmyAIgh0DnGGNc7uq/B8HfhWDB+p+ISH1yWRiN9xxHHdpoKAgllJunuftHYuiqOM4rrt+6ZIsy+zDo+MLAxm3AkJTGEPEBXgPyqI1KD7Md92rSKRqSxszf3wEQ4LdAo0Zhb2hBD30V/Z9f29p1B2JsKaM1y/Tx+YtDMNaRN6svHHDU5EVgFXDy7LUYrlGAI4sMz+Ioqrv+dyC38TvBxZFsVDALcXc7HvebJCuCalJDvM5/D28ApvYZo8/ixGMAAAAAElFTkSuQmCC" />
+<text fill="#eef2f6" fill-opacity="1" stroke="none" xml:space="preserve" x="33" y="21.2813" font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+ >Thêm file video</text>
+</g>
+
+<g fill="#161d26" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,164,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M10,0.5 L166,0.5 C171.247,0.5 175.5,4.75329 175.5,10 L175.5,23 C175.5,28.2467 171.247,32.5 166,32.5 L10,32.5 C4.75329,32.5 0.5,28.2467 0.5,23 L0.5,10 C0.5,4.75329 4.75329,0.5 10,0.5 Z "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,164,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="10" y="32" width="156" height="1"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,164,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M10,32.5 C7.37665,32.5 5.00165,31.4367 3.28249,29.7175 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M166,32.5 C168.623,32.5 170.998,31.4367 172.718,29.7175 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,164,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="175" y="10" width="1" height="13"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,164,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M172.718,3.28249 C174.437,5.00165 175.5,7.37665 175.5,10 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M172.718,29.7175 C174.437,27.9984 175.5,25.6234 175.5,23 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,164,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="0" y="10" width="1" height="13"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,164,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M3.28249,3.28249 C1.56332,5.00165 0.5,7.37665 0.5,10 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M0.5,23 C0.5,25.6234 1.56332,27.9984 3.28249,29.7175 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,164,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="10" y="0" width="156" height="1"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,164,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M3.28249,3.28249 C5.00165,1.56332 7.37665,0.5 10,0.5 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M172.718,3.28249 C170.998,1.56332 168.623,0.5 166,0.5 "/>
+</g>
+
+<g fill="none" stroke="#eef2f6" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,164,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<image x="15" y="8" width="16" height="16" preserveAspectRatio="none" image-rendering="optimizeQuality" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABF0lEQVQ4je1UPU6EUBic7+0DBGNoLASMhYUn4ADrDaw8h5WtB/AsJnoCShtKPAKLDRuzUXaz7L6xgiCrWX+IhXG6+d7MfD/FA/7xHhJSp2lqDRKWZZn9NKsup8/VdU562/RqmyAIgh0DnGGNc7uq/B8HfhWDB+p+ISH1yWRiN9xxHHdpoKAgllJunuftHYuiqOM4rrt+6ZIsy+zDo+MLAxm3AkJTGEPEBXgPyqI1KD7Md92rSKRqSxszf3wEQ4LdAo0Zhb2hBD30V/Z9f29p1B2JsKaM1y/Tx+YtDMNaRN6svHHDU5EVgFXDy7LUYrlGAI4sMz+Ioqrv+dyC38TvBxZFsVDALcXc7HvebJCuCalJDvM5/D28ApvYZo8/ixGMAAAAAElFTkSuQmCC" />
+<text fill="#eef2f6" fill-opacity="1" stroke="none" xml:space="preserve" x="33" y="21.2813" font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+ >Thêm camera / URL</text>
+</g>
+
+<g fill="#161d26" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,346,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M10,0.5 L65,0.5 C70.2467,0.5 74.5,4.75329 74.5,10 L74.5,23 C74.5,28.2467 70.2467,32.5 65,32.5 L10,32.5 C4.75329,32.5 0.5,28.2467 0.5,23 L0.5,10 C0.5,4.75329 4.75329,0.5 10,0.5 Z "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,346,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="10" y="32" width="55" height="1"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,346,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M10,32.5 C7.37665,32.5 5.00165,31.4367 3.28249,29.7175 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M65,32.5 C67.6234,32.5 69.9984,31.4367 71.7175,29.7175 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,346,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="74" y="10" width="1" height="13"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,346,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M71.7175,3.28249 C73.4367,5.00165 74.5,7.37665 74.5,10 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M71.7175,29.7175 C73.4367,27.9984 74.5,25.6234 74.5,23 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,346,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="0" y="10" width="1" height="13"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,346,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M3.28249,3.28249 C1.56332,5.00165 0.5,7.37665 0.5,10 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M0.5,23 C0.5,25.6234 1.56332,27.9984 3.28249,29.7175 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,346,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="10" y="0" width="55" height="1"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,346,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M3.28249,3.28249 C5.00165,1.56332 7.37665,0.5 10,0.5 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M71.7175,3.28249 C69.9984,1.56332 67.6234,0.5 65,0.5 "/>
+</g>
+
+<g fill="none" stroke="#eef2f6" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,346,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<image x="15" y="8" width="16" height="16" preserveAspectRatio="none" image-rendering="optimizeQuality" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABu0lEQVQ4jd3SP2sUURQF8HMnkwQ3rlmUuEiwsRL9AhbbKBYWNpbaWaXx34dImYBCsBLSmUKNoChBAqKWNnZC6iyMyb53nfcy92Uz2XctMoG1cgYrvdWrfpzDecB/ecboKXbhrsnliqomf4VZq7PGyxPr5NC4IrOuuDmONtZpurxAEbcATBCoq8AzdnKjMZhl2YxxsoRRPA/CHRC2ASiB5pTouqpSbbDf19Zka3aFgAeK+DQhnIPiNgh9ha5rimUiUgCgP2HM3NFkehGEBUC/K6hLQBlHuE/paGsK2Gm327u1ajJzpxqgtE4+Wic96+QT+1CaXNZqIeM1bS4r1klp8uLrwA0v2lzW2IcD68PGj729bm3saICwWiX7bLy/ZPPiLTspjSvWvde5RsmMC6vswz77sGmd9IyTlxX2YiAyXxtj5s5xTfZh86cP16wPz9kfJWuMjQ3wxTrpVdjQ+rDRqCYADHK5V2HfjB9eNk5esZey6QDp8YOgZ4iSGFU/IB4+JqKrUfXNFJ1YOH2S6v2zcRAAVHWSgIcgmlDoa03pUbtVH/sNTFO8H8VkAACJ6v5BEt+dbc1kTbB/434BRs9ECULFyLkAAAAASUVORK5CYII=" />
+<text fill="#eef2f6" fill-opacity="1" stroke="none" xml:space="preserve" x="33" y="21.2813" font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+ >Sửa</text>
+</g>
+
+<g fill="#161d26" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,427,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M10,0.5 L66,0.5 C71.2467,0.5 75.5,4.75329 75.5,10 L75.5,23 C75.5,28.2467 71.2467,32.5 66,32.5 L10,32.5 C4.75329,32.5 0.5,28.2467 0.5,23 L0.5,10 C0.5,4.75329 4.75329,0.5 10,0.5 Z "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,427,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="10" y="32" width="56" height="1"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,427,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M10,32.5 C7.37665,32.5 5.00165,31.4367 3.28249,29.7175 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M66,32.5 C68.6234,32.5 70.9984,31.4367 72.7175,29.7175 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,427,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="75" y="10" width="1" height="13"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,427,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M72.7175,3.28249 C74.4367,5.00165 75.5,7.37665 75.5,10 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M72.7175,29.7175 C74.4367,27.9984 75.5,25.6234 75.5,23 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,427,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="0" y="10" width="1" height="13"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,427,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M3.28249,3.28249 C1.56332,5.00165 0.5,7.37665 0.5,10 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M0.5,23 C0.5,25.6234 1.56332,27.9984 3.28249,29.7175 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,427,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="10" y="0" width="56" height="1"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,427,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M3.28249,3.28249 C5.00165,1.56332 7.37665,0.5 10,0.5 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M72.7175,3.28249 C70.9984,1.56332 68.6234,0.5 66,0.5 "/>
+</g>
+
+<g fill="none" stroke="#eef2f6" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,427,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<image x="15" y="8" width="16" height="16" preserveAspectRatio="none" image-rendering="optimizeQuality" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABfUlEQVQ4je2UsUojYRSFz/lnYiaojFGwU4lrmsXdQsGF7QRLC0VEsBB8D5/B0s52X2AfIIVrsc2KCNso2okEHTMak9HJ/MdC0DiZqKyNxZ7y3v9+9x64/wU+utgtIYnnYWPKccwirPUfXjMi+XOgz9slmbwKrFQq7tfpmXWScxSMhBkQo6lW5yR3BMQQ98OLs81SqRRlAiV5l1fNbRCrb3S4y+R2vlgs1l60LCkXNhpfkpaGMzE04WB/4Q/J245UBoyXV9EWaFcA05M9mFqSfgXV06VyufwM2gGsVtXnes0TQDmIPwD8hTF6YtkxAWsEBh2Zz77vHbXXu2mg4wSGKLgCDxwUNnyfQXv+UMoP1aMRSMtxHOfS9SbbEgCgZW3NpoMTgIXU6lb0EvCf9B/4fnWszaOEceS8hYuwftYeDurNfkqTYPZdyfopbnDdrBjyu6A7KH1VZADkARzfKP424vvP9jSzTa0WfYLRrCXzXeZPaJLfxd7evW4GP67uAQt3kxsERY4WAAAAAElFTkSuQmCC" />
+<text fill="#eef2f6" fill-opacity="1" stroke="none" xml:space="preserve" x="33" y="21.2813" font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+ >Xóa</text>
+</g>
+
+<g fill="#161d26" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,509,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M10,0.5 L139,0.5 C144.247,0.5 148.5,4.75329 148.5,10 L148.5,23 C148.5,28.2467 144.247,32.5 139,32.5 L10,32.5 C4.75329,32.5 0.5,28.2467 0.5,23 L0.5,10 C0.5,4.75329 4.75329,0.5 10,0.5 Z "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,509,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="10" y="32" width="129" height="1"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,509,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M10,32.5 C7.37665,32.5 5.00165,31.4367 3.28249,29.7175 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M139,32.5 C141.623,32.5 143.998,31.4367 145.718,29.7175 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,509,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="148" y="10" width="1" height="13"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,509,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M145.718,3.28249 C147.437,5.00165 148.5,7.37665 148.5,10 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M145.718,29.7175 C147.437,27.9984 148.5,25.6234 148.5,23 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,509,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="0" y="10" width="1" height="13"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,509,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M3.28249,3.28249 C1.56332,5.00165 0.5,7.37665 0.5,10 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M0.5,23 C0.5,25.6234 1.56332,27.9984 3.28249,29.7175 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,509,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="10" y="0" width="129" height="1"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,509,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M3.28249,3.28249 C5.00165,1.56332 7.37665,0.5 10,0.5 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M145.718,3.28249 C143.998,1.56332 141.623,0.5 139,0.5 "/>
+</g>
+
+<g fill="none" stroke="#eef2f6" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,509,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<image x="15" y="8" width="16" height="16" preserveAspectRatio="none" image-rendering="optimizeQuality" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACJElEQVQ4jdVUPYsTURQ990022YRR8zHqIliI6ILgIpYRwcVSqy200NLKWsRCULH1B4ilbLXVFmJjEcEPbMTGQlhYsYjiJplJ3iQvm9mZdyxMNpM1suxWeuAV736ce+77uMC/Dplm1FpXYjhVBZmH4Gs8wAfPK9RH/navd94mcp2CrEWy6rnuGxGxUytoTa/V6b0KtBn4Yd/42mz5Ye/TRqdzCgDq9XrB75hlXxsO12ut6Y3yVZpshXQS2bwtIpdJrFryBoinoCzMSOb+2hpz+UPlJQoWU2kLke3dIikAkEkTXmo08px1FwluqKy66+Xz3wKyxtBcBOTC3BwORok9KSLHUmklpZwzw+PjhELHcRSAnFAGsbURAFjft4AYEjObykwImAa1W8AfEHYBJCmLBRk+HG52rbgTOYXlKLE/KOqBgGVC3XOI2qPhLe9Zoeu6PxkPXgjQAsVYx74sFvPrI//eW94F24TdbveoZHJXCVQgLKgEV9rt/ol9Ew4sbkLUcwFOA+IJ5Fks9o5Sak9djIMpLgAn5RMl6gCKxf0p/Bv8ICCAAQW5TKSyAKDKZQWwAEE0a236CY0JCa4T+L4tD2haa78EpZIRkZoAR+DwSTM0S9T9x4CcBfnedd3OVCVTPn0tDMPDwHhg+NpELW36vjZREJqPDa3nd/JMjK8g6J5jJlMFIEm89blWdN9eE0l+k+pKjGwVguOEbdLBO68wHmn/D34BDfATTmVoGi8AAAAASUVORK5CYII=" />
+<text fill="#eef2f6" fill-opacity="1" stroke="none" xml:space="preserve" x="33" y="21.2813" font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+ >Kiểm tra kết nối</text>
+</g>
+
+<g fill="#161d26" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,664,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M10,0.5 L139,0.5 C144.247,0.5 148.5,4.75329 148.5,10 L148.5,23 C148.5,28.2467 144.247,32.5 139,32.5 L10,32.5 C4.75329,32.5 0.5,28.2467 0.5,23 L0.5,10 C0.5,4.75329 4.75329,0.5 10,0.5 Z "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,664,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="10" y="32" width="129" height="1"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,664,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M10,32.5 C7.37665,32.5 5.00165,31.4367 3.28249,29.7175 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M139,32.5 C141.623,32.5 143.998,31.4367 145.718,29.7175 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,664,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="148" y="10" width="1" height="13"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,664,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M145.718,3.28249 C147.437,5.00165 148.5,7.37665 148.5,10 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M145.718,29.7175 C147.437,27.9984 148.5,25.6234 148.5,23 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,664,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="0" y="10" width="1" height="13"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,664,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M3.28249,3.28249 C1.56332,5.00165 0.5,7.37665 0.5,10 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M0.5,23 C0.5,25.6234 1.56332,27.9984 3.28249,29.7175 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,664,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="10" y="0" width="129" height="1"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,664,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M3.28249,3.28249 C5.00165,1.56332 7.37665,0.5 10,0.5 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M145.718,3.28249 C143.998,1.56332 141.623,0.5 139,0.5 "/>
+</g>
+
+<g fill="none" stroke="#eef2f6" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,664,11)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<image x="15" y="8" width="16" height="16" preserveAspectRatio="none" image-rendering="optimizeQuality" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB9klEQVQ4jdWSPWtUQRSG3zN3s7BJ1uwHuLDBUtlCxEZiY6UiIgnYWGuhpeRX+ANEbOxshCsRG5EUssRGSNRYKEQLwWKVuLsz2bn3TmJ277wWmpBIbjaSRp9qZs7hOe+BAf51ZK/Hdjupq3xwCvANBcDDrwwCLNfGx1f/yk4y0L2Nyzpy77R1fR05pyPntHWpsW6xG8eXwjAMDpzQ2GSGxENCcgAeULgQAPSQcwLcFsCQvF6ZGHs+NF3HuUkduWVtXdxZiy+Q3DWsbZMZbZ3WveTNahzXsjxq+5RiikQD5Fx1YuyFiHBnY7M4+kzAOYg6Hng5O1SoyIYASol6+acMAK6JpB54BTCvICeGJ4QMAMCLz2U1i8cIBCQxGC4kPxBIBXJxr8YwZIBAzoPcFPBTlnAba1nV1jW1dYOuTW6S3JXUxBuzXeucjpJ5Y0wpc4udl04vOaMgjyioK2AelCcAxAunReSKkAGAe0jlbrlc+DJUSFJMsnkSPr0jwBSByu+KEcgCIR8hmAX5Wnm5USoVPu8r3OI9mT9m10/3BZO/fPhaPVJ4myRJ5YdX95XINMmlEUmvFovF71nrH4g4jmvauqfaOmrrmlEUHT2UEACMYUlHLtTWeRO5x61Wa3Srlvnn9qNcljVjeMvn1r8BXKnX6/1Dp/x/+Qkb8wbN0ZAOIgAAAABJRU5ErkJggg==" />
+<text fill="#eef2f6" fill-opacity="1" stroke="none" xml:space="preserve" x="33" y="21.2813" font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+ >Dò camera USB</text>
+</g>
+
+<g fill="#05070a" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,11,50)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M10,0.5 L681,0.5 C686.247,0.5 690.5,4.75329 690.5,10 L690.5,450 C690.5,455.247 686.247,459.5 681,459.5 L10,459.5 C4.75329,459.5 0.5,455.247 0.5,450 L0.5,10 C0.5,4.75329 4.75329,0.5 10,0.5 Z "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,11,50)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="10" y="459" width="671" height="1"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,11,50)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M10,459.5 C7.37665,459.5 5.00165,458.437 3.28249,456.718 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M681,459.5 C683.623,459.5 685.998,458.437 687.718,456.718 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,11,50)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="690" y="10" width="1" height="440"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,11,50)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M687.718,3.28249 C689.437,5.00165 690.5,7.37665 690.5,10 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M687.718,456.718 C689.437,454.998 690.5,452.623 690.5,450 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,11,50)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="0" y="10" width="1" height="440"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,11,50)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M3.28249,3.28249 C1.56332,5.00165 0.5,7.37665 0.5,10 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M0.5,450 C0.5,452.623 1.56332,454.998 3.28249,456.718 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,11,50)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="10" y="0" width="671" height="1"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,11,50)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M3.28249,3.28249 C5.00165,1.56332 7.37665,0.5 10,0.5 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M687.718,3.28249 C685.998,1.56332 683.623,0.5 681,0.5 "/>
+</g>
+
+<g fill="#0067c0" fill-opacity="1" stroke="#0067c0" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,12,89)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M3.5,8.25 C3.5,7.69772 3.72386,7.25 4,7.25 C4.27614,7.25 4.5,7.69772 4.5,8.25 L4.5,20.75 C4.5,21.3023 4.27614,21.75 4,21.75 C3.72386,21.75 3.5,21.3023 3.5,20.75 L3.5,8.25 Z "/>
+</g>
+
+<g fill="#1a2d44" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,12,89)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="0" y="0" width="796" height="29"/>
+</g>
+
+<g fill="#1a2d44" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,12,89)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="0" y="0" width="796" height="29"/>
+</g>
+
+<g fill="none" stroke="#eef2f6" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,12,89)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<text fill="#eef2f6" fill-opacity="1" stroke="none" xml:space="preserve" x="9" y="19" font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+ >Dashcam VIETMAP cao tốc</text>
+</g>
+
+<g fill="none" stroke="#eef2f6" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,12,89)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<text fill="#eef2f6" fill-opacity="1" stroke="none" xml:space="preserve" x="9" y="49" font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+ >seoul_night_expressway_720p_10min.mp4</text>
+</g>
+
+<g fill="none" stroke="#eef2f6" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,12,89)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<text fill="#eef2f6" fill-opacity="1" stroke="none" xml:space="preserve" x="9" y="79" font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+ >YTSave.to_YouTube_Media_Gaqw43WqD6Q_ĐI-TRONG-MÀM-ĐÊM-SƯƠNG-MÙ-ĐƯỜNG-CAO-TỐC_001_1440p.mp4</text>
+</g>
+
+<g fill="none" stroke="#eef2f6" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,12,89)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<text fill="#eef2f6" fill-opacity="1" stroke="none" xml:space="preserve" x="9" y="109" font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+ >1</text>
+</g>
+
+<g fill="none" stroke="#eef2f6" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,12,89)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<text fill="#eef2f6" fill-opacity="1" stroke="none" xml:space="preserve" x="9" y="139" font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+ >0</text>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,12,89)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="0.5,29.5 688.5,29.5 " />
+<polyline fill="none" vector-effect="none" points="0.5,59.5 688.5,59.5 " />
+<polyline fill="none" vector-effect="none" points="0.5,89.5 688.5,89.5 " />
+<polyline fill="none" vector-effect="none" points="0.5,119.5 688.5,119.5 " />
+<polyline fill="none" vector-effect="none" points="0.5,149.5 688.5,149.5 " />
+<polyline fill="none" vector-effect="none" points="796.5,0.5 796.5,149.5 " />
+</g>
+
+<g fill="#05070a" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,12,51)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="0" y="0" width="689" height="38"/>
+</g>
+
+<g fill="#0f141b" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,12,51)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="0" y="0" width="797" height="38"/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,12,51)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="0" y="37" width="797" height="1"/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,12,51)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="796" y="0" width="1" height="38"/>
+</g>
+
+<g fill="none" stroke="#a3aebb" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,12,51)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="700" font-style="normal" 
+>
+<text fill="#a3aebb" fill-opacity="1" stroke="none" xml:space="preserve" x="386.344" y="23.2813" font-family="Be Vietnam Pro" font-size="10" font-weight="700" font-style="normal" 
+ >Tên</text>
+</g>
+
+<g fill="#05070a" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,12,499)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="0" y="0" width="689" height="10"/>
+</g>
+
+<g fill="#000000" fill-opacity="0" stroke="none" transform="matrix(1,0,0,1,12,499)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="2" y="2" width="685" height="6"/>
+</g>
+
+<g fill="#323d4b" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,12,499)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="2" y="2" width="456" height="6"/>
+</g>
+
+<g fill="#05070a" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,708,50)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="0" y="0" width="461" height="438"/>
+</g>
+
+<g fill="none" stroke="#a3aebb" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,708,50)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<text fill="#a3aebb" fill-opacity="1" stroke="none" xml:space="preserve" x="165.359" y="215.281" font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+ >Bấm Kiểm tra kết nối</text>
+<text fill="#a3aebb" fill-opacity="1" stroke="none" xml:space="preserve" x="188.625" y="232.281" font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+ >để xem trước</text>
+</g>
+
+<g fill="#05070a" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,708,494)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="0" y="0" width="461" height="16"/>
+</g>
+
+<g fill="#05070a" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,11,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="0" y="0" width="912" height="33"/>
+</g>
+
+<g fill="none" stroke="#a3aebb" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,11,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<text fill="#a3aebb" fill-opacity="1" stroke="none" xml:space="preserve" x="0" y="21.2813" font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+ >Nguồn được tự thêm vào danh sách mỗi khi mở. Căn chỉnh camera được lưu riêng cho từng nguồn và tự nạp lại khi mở nguồn đó.</text>
+</g>
+
+<g fill="#4c9eff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,929,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="700" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M10,0.5 L159,0.5 C164.247,0.5 168.5,4.75329 168.5,10 L168.5,23 C168.5,28.2467 164.247,32.5 159,32.5 L10,32.5 C4.75329,32.5 0.5,28.2467 0.5,23 L0.5,10 C0.5,4.75329 4.75329,0.5 10,0.5 Z "/>
+</g>
+
+<g fill="#4c9eff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,929,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="700" font-style="normal" 
+>
+<rect x="10" y="32" width="149" height="1"/>
+</g>
+
+<g fill="none" stroke="#4c9eff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,929,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="700" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M10,32.5 C7.37665,32.5 5.00165,31.4367 3.28249,29.7175 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M159,32.5 C161.623,32.5 163.998,31.4367 165.718,29.7175 "/>
+</g>
+
+<g fill="#4c9eff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,929,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="700" font-style="normal" 
+>
+<rect x="168" y="10" width="1" height="13"/>
+</g>
+
+<g fill="none" stroke="#4c9eff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,929,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="700" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M165.718,3.28249 C167.437,5.00165 168.5,7.37665 168.5,10 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M165.718,29.7175 C167.437,27.9984 168.5,25.6234 168.5,23 "/>
+</g>
+
+<g fill="#4c9eff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,929,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="700" font-style="normal" 
+>
+<rect x="0" y="10" width="1" height="13"/>
+</g>
+
+<g fill="none" stroke="#4c9eff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,929,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="700" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M3.28249,3.28249 C1.56332,5.00165 0.5,7.37665 0.5,10 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M0.5,23 C0.5,25.6234 1.56332,27.9984 3.28249,29.7175 "/>
+</g>
+
+<g fill="#4c9eff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,929,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="700" font-style="normal" 
+>
+<rect x="10" y="0" width="149" height="1"/>
+</g>
+
+<g fill="none" stroke="#4c9eff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,929,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="700" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M3.28249,3.28249 C5.00165,1.56332 7.37665,0.5 10,0.5 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M165.718,3.28249 C163.998,1.56332 161.623,0.5 159,0.5 "/>
+</g>
+
+<g fill="none" stroke="#04101f" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,929,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="700" font-style="normal" 
+>
+<image x="15" y="8" width="16" height="16" preserveAspectRatio="none" image-rendering="optimizeQuality" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA8ElEQVQ4je3RsS4EURSH8e/ce20yZNewCWHXeAYPQKPQeBWd1nYqFY1X0HkBCdHQeAgUiGSLpbB2Zv4KIhuxZjMT3X7NKc7J7xYXJv1nBu3oc46fG7Xwc8m2j/1TmF09J15eqwyS5XUTNaENr6kz10g61FvN8uBXZmZmzJuxF7w/DY2VLaBWGhyCA9i6nDsJcXLAzMJiJfAbhhixE0J0SdRqVwaHylHuK4OSuojDdJBv8vZw+3MfxocYmOnapP20d38B9H+7KwQlCehKHGXZ+zGvj89/3Y8GvXuR6JvsKkW79O5uih4vymBpmmofN6lEH9VCRTqbKDhtAAAAAElFTkSuQmCC" />
+<text fill="#04101f" fill-opacity="1" stroke="none" xml:space="preserve" x="33" y="21.2813" font-family="Be Vietnam Pro" font-size="10" font-weight="700" font-style="normal" 
+ >Mở nguồn đã chọn</text>
+</g>
+
+<g fill="#161d26" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,1104,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M10,0.5 L55,0.5 C60.2467,0.5 64.5,4.75329 64.5,10 L64.5,23 C64.5,28.2467 60.2467,32.5 55,32.5 L10,32.5 C4.75329,32.5 0.5,28.2467 0.5,23 L0.5,10 C0.5,4.75329 4.75329,0.5 10,0.5 Z "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,1104,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="10" y="32" width="45" height="1"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,1104,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M10,32.5 C7.37665,32.5 5.00165,31.4367 3.28249,29.7175 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M55,32.5 C57.6234,32.5 59.9984,31.4367 61.7175,29.7175 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,1104,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="64" y="10" width="1" height="13"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,1104,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M61.7175,3.28249 C63.4367,5.00165 64.5,7.37665 64.5,10 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M61.7175,29.7175 C63.4367,27.9984 64.5,25.6234 64.5,23 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,1104,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="0" y="10" width="1" height="13"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,1104,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M3.28249,3.28249 C1.56332,5.00165 0.5,7.37665 0.5,10 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M0.5,23 C0.5,25.6234 1.56332,27.9984 3.28249,29.7175 "/>
+</g>
+
+<g fill="#222b37" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,1104,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<rect x="10" y="0" width="45" height="1"/>
+</g>
+
+<g fill="none" stroke="#222b37" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,1104,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M3.28249,3.28249 C5.00165,1.56332 7.37665,0.5 10,0.5 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M61.7175,3.28249 C59.9984,1.56332 57.6234,0.5 55,0.5 "/>
+</g>
+
+<g fill="none" stroke="#eef2f6" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,1104,516)"
+font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+>
+<text fill="#eef2f6" fill-opacity="1" stroke="none" xml:space="preserve" x="15.25" y="21.2813" font-family="Be Vietnam Pro" font-size="10" font-weight="400" font-style="normal" 
+ >Đóng</text>
+</g>
+
+</g>
+</svg>

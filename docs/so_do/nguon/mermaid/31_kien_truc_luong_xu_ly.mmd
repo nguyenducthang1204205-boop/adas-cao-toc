@@ -1,0 +1,19 @@
+flowchart TB
+    GT["Luồng giao diện (Qt main thread)<br/>MainWindow, các hộp thoại"]
+    WT["Luồng xử lý - ProcessingWorker (QThread)<br/>① đọc khung → ② YOLOv11 → ③ IPM → ④ cảnh báo → ⑤ vẽ"]
+    CT["Luồng đọc camera - CameraSource._grab_loop<br/>luôn giữ khung mới nhất"]
+    AT["QThreadPool - _AssistantTask<br/>Trợ lý AI (offline / Claude)"]
+    JT["QThread phụ - _Job, _AutoCalibThread<br/>kiểm tra nguồn, dò camera, tự căn chỉnh"]
+    CFG[["AppConfig dùng chung theo tham chiếu<br/>chỉ sửa bằng update_inplace()"]]
+    DB[("SQLite WAL<br/>data/adas.db")]
+    GT -- "start / stop / set_paused<br/>calibration_changed, classes_changed" --> WT
+    WT -- "frame_ready(QImage, BEV, thống kê)<br/>violation, progress, status, failed" --> GT
+    CT -- "khung mới nhất" --> WT
+    GT -- "ask(text, policy, speed, scene)" --> AT
+    AT -- "AssistantResult (SafetyPolicy mới)" --> GT
+    GT -- "probe_source, find_cameras, auto_calibrate" --> JT
+    JT -- "done / failed / progress" --> GT
+    GT -- "ghi" --> CFG
+    CFG -- "đọc mỗi khung" --> WT
+    WT -- "phiên, vi phạm" --> DB
+    GT -- "cấu hình, nguồn, ma trận camera, tra cứu" --> DB

@@ -1,0 +1,22 @@
+flowchart TB
+    CAM["«thiết bị trên xe» Camera hành trình<br/>USB (chỉ số 0-4) hoặc IP (RTSP/HTTP)"]
+    VID["«tệp» Video hành trình đã ghi<br/>.mp4, .avi, .mov, .mkv"]
+    subgraph PC["«thiết bị» Máy tính Windows 11 - CPU i7-12650H, GPU RTX 3050 6 GB, RAM 16 GB"]
+        direction TB
+        subgraph RT["«môi trường» Python 3.11, PyTorch 2.5.1 + CUDA 12.1"]
+            direction LR
+            APP["«thành phần» Ứng dụng ADAS<br/>main.py, gói gui/ + adas/"]
+            YOLO["«thành phần» Ultralytics 8.4<br/>YOLOv11"]
+            APP --> YOLO
+        end
+        FILES[("«tệp» models/best.pt, data/adas.db,<br/>data/snapshots/, outputs/*.mp4")]
+    end
+    SCR["«thiết bị trên xe» Màn hình"]
+    SPK["«thiết bị trên xe» Loa"]
+    CLOUD["«dịch vụ» Anthropic Claude API<br/>(tùy chọn, mặc định tắt)"]
+    CAM -- "USB / RTSP" --> APP
+    VID -- "đọc file" --> APP
+    APP -- "SQLite, ảnh, video" --> FILES
+    APP -- "giao diện Qt" --> SCR
+    APP -- "âm thanh (pygame)" --> SPK
+    APP -. "HTTPS, ANTHROPIC_API_KEY" .-> CLOUD

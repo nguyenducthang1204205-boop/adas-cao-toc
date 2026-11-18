@@ -1,0 +1,72 @@
+flowchart TB
+    MAIN["main.py<br/>(điểm khởi chạy, --source)"]
+    subgraph GUI["Gói gui/ (PySide6)"]
+        direction LR
+        MW["main_window.py<br/>MainWindow"]
+        WK["worker.py<br/>ProcessingWorker"]
+        WG["widgets.py<br/>VideoStage, StatusCard, SpeedPanel,<br/>ConditionPanel, ChatPanel, EventLog"]
+        DL["source_dialog.py · calibration_dialog.py<br/>settings_dialog.py · history_dialog.py"]
+        ST["styles.py<br/>bảng màu C, QSS"]
+    end
+    subgraph CORE["Gói adas/ (lõi xử lý, không phụ thuộc Qt trừ renderer.py)"]
+        direction LR
+        PL["pipeline.py<br/>ADASPipeline, FrameResult"]
+        SR["sources.py"]
+        DT["detector.py"]
+        LN["lane.py"]
+        IP["ipm.py"]
+        DS["distance.py"]
+        SF["safety.py"]
+        AL["alert.py"]
+        VR["violations.py"]
+        RD["renderer.py (QPainter)"]
+        AC["autocalib.py"]
+        AI["ai_assistant.py"]
+        CF["config.py"]
+        DB["database.py"]
+    end
+    subgraph EXT["Thư viện / dịch vụ ngoài"]
+        direction LR
+        UL["Ultralytics YOLOv11<br/>+ PyTorch CUDA"]
+        CV["OpenCV, NumPy"]
+        QT["PySide6 (Qt 6)"]
+        PG["pygame (âm thanh)"]
+        SQ["sqlite3"]
+        AN["anthropic SDK<br/>→ Claude API (tùy chọn)"]
+    end
+    subgraph DATA["Dữ liệu"]
+        direction LR
+        M["models/best.pt<br/>yolo11n.pt"]
+        D[("data/adas.db")]
+        SN["data/snapshots/"]
+        OU["outputs/*.mp4"]
+    end
+    MAIN --> MW
+    MW --> WK
+    MW --> WG
+    MW --> DL
+    WK --> PL
+    WK --> RD
+    WK --> VR
+    PL --> DT
+    PL --> LN
+    PL --> DS
+    PL --> SF
+    PL --> AL
+    DS --> IP
+    LN --> IP
+    MW --> AI
+    DL --> AC
+    CORE --> CF
+    CF --> DB
+    VR --> DB
+    DT --> UL
+    CORE -.-> CV
+    GUI -.-> QT
+    AL -.-> PG
+    DB -.-> SQ
+    AI -.-> AN
+    DT -.-> M
+    DB -.-> D
+    VR -.-> SN
+    WK -.-> OU

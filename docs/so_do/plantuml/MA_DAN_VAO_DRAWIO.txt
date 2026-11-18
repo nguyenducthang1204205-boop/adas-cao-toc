@@ -1,0 +1,1724 @@
+﻿MÃ PLANTUML ĐỂ DÁN VÀO DRAW.IO
+Cách dùng: draw.io > Sắp xếp > Chèn > Nâng cao > PlantUML… > xóa mã mẫu > dán MỘT khối
+(từ dòng @startuml đến @enduml) > chọn 'Biểu đồ' (sửa được từng hình) > Chèn.
+Tất cả 31 khối đã kiểm tra bằng bộ đọc PlantUML của draw.io: không lỗi, không cảnh báo.
+
+==============================================================================
+[01] BPMN tổng quát  (01_bpmn_quy_trinh_tong_quat)
+==============================================================================
+@startuml 01_bpmn_quy_trinh_tong_quat
+|Tài xế|
+start
+:Chọn nguồn video / camera
+(UC01);
+|Phần mềm ADAS|
+:Đăng ký nguồn, nạp căn chỉnh
+đã lưu của nguồn;
+if (Nguồn đã căn chỉnh?) then (Chưa)
+  |Tài xế|
+  :Căn chỉnh camera IPM
+  (UC02);
+  |Phần mềm ADAS|
+  :Lưu ma trận camera K, H, R
+  theo nguồn;
+else (Rồi)
+endif
+|Tài xế|
+:Cấu hình ngưỡng cảnh báo
+(UC03);
+|Phần mềm ADAS|
+:Giám sát realtime & cảnh báo
+(UC04);
+|Tài xế|
+:Xem lại nhật ký cảnh báo
+(UC05);
+stop
+@enduml
+
+==============================================================================
+[02] BPMN chuẩn bị giám sát  (02_bpmn_chuan_bi_giam_sat)
+==============================================================================
+@startuml 02_bpmn_chuan_bi_giam_sat
+|Tài xế|
+start
+:Mở phần mềm, chọn nguồn
+video / camera;
+|Giao diện ADAS|
+:Đăng ký nguồn, nạp căn chỉnh
+mới nhất của nguồn;
+if (Nguồn đã căn chỉnh?) then (Chưa)
+  |Tài xế|
+  :Chấm 4 điểm trên vạch làn
+  hoặc chọn "Tự động căn chỉnh";
+  |Giao diện ADAS|
+  :Tính H, K, R, xem trước
+  ảnh nhìn từ trên xuống (BEV);
+  :Lưu ma trận camera vào CSDL;
+else (Rồi)
+endif
+|Tài xế|
+:Bật "Tự đo từ video" hoặc chọn nấc tốc độ,
+mô tả điều kiện đường;
+|Trợ lý AI|
+:Phân tích mô tả (offline / Claude),
+đề xuất chính sách ngưỡng;
+|Giao diện ADAS|
+:Tính ngưỡng theo dải tốc độ
+× hệ số điều kiện đường;
+:Lưu cấu hình và lịch sử cấu hình;
+|Tài xế|
+:Bấm "Bắt đầu" giám sát;
+stop
+@enduml
+
+==============================================================================
+[03] BPMN giám sát & cảnh báo  (03_bpmn_giam_sat_canh_bao)
+==============================================================================
+@startuml 03_bpmn_giam_sat_canh_bao
+|Tài xế|
+start
+:Bấm "Bắt đầu" (F5);
+|Giao diện ADAS|
+:Khởi động luồng xử lý nền;
+|Luồng xử lý ADAS|
+:Mở nguồn, tải YOLOv11,
+mở phiên giám sát;
+repeat
+  :Đọc khung hình;
+  :Nhận diện xe: YOLOv11 mỗi N khung,
+  bám vết mẫu ở các khung giữa;
+  :Nhận diện làn xe chủ, đo tốc độ xe chủ,
+  tính khoảng cách IPM, lọc Kalman, TTC;
+  :So với ngưỡng theo tốc độ
+  và điều kiện đường;
+  if (Có cảnh báo / nguy hiểm?) then (Có)
+    :Phát âm thanh cảnh báo;
+    :Ghi / cập nhật đợt vi phạm
+    kèm ảnh bằng chứng;
+  else (Không)
+  endif
+  |Giao diện ADAS|
+  :Hiển thị khung màu, banner,
+  BEV, thẻ trạng thái;
+  |Tài xế|
+  :Quan sát, giảm tốc /
+  giữ khoảng cách;
+  |Luồng xử lý ADAS|
+repeat while (Còn khung và chưa bấm Dừng?) is (Có) not (Không)
+:Đóng đợt vi phạm đang mở,
+kết thúc phiên;
+|Giao diện ADAS|
+:Báo số vi phạm đã ghi vào CSDL;
+|Tài xế|
+stop
+@enduml
+
+==============================================================================
+[04] UC tổng quát  (04_usecase_tong_quat)
+==============================================================================
+@startuml 04_usecase_tong_quat
+left to right direction
+actor "Người dùng\n(tài xế / người vận hành)" as user
+actor "Camera /\nnguồn video" as cam
+actor "Dịch vụ\nClaude API\n(tùy chọn)" as ai
+
+rectangle "Hệ thống cảnh báo khoảng cách an toàn (YOLOv11 + IPM)" {
+  usecase "UC01. Quản lý nguồn\nvideo/camera" as uc01
+  usecase "UC04. Giám sát realtime\n& cảnh báo" as uc04
+  usecase "UC02. Cấu hình thông số IPM\n(căn chỉnh camera)" as uc02
+  usecase "UC03. Cấu hình ngưỡng\ncảnh báo" as uc03
+  usecase "UC05. Quản lý nhật ký\ncảnh báo" as uc05
+}
+
+user -- uc01
+user -- uc04
+user -- uc02
+user -- uc03
+user -- uc05
+uc01 -- cam
+uc04 -- cam
+uc03 -- ai
+@enduml
+
+==============================================================================
+[05] UC01 phân rã  (05_usecase_UC01_nguon_video)
+==============================================================================
+@startuml 05_usecase_UC01_nguon_video
+left to right direction
+actor "Người dùng" as user
+actor "Camera /\nnguồn video" as cam
+
+rectangle "Hệ thống cảnh báo khoảng cách an toàn" {
+  usecase "UC01. Quản lý nguồn\nvideo/camera" as base
+  usecase "Xem danh sách nguồn" as s1
+  usecase "Thêm file video / ảnh" as s2
+  usecase "Thêm camera USB /\nURL RTSP-HTTP" as s3
+  usecase "Dò camera USB (chỉ số 0-4)" as s4
+  usecase "Kiểm tra kết nối\n& xem trước" as s5
+  usecase "Sửa thông tin nguồn" as s6
+  usecase "Xóa nguồn" as s7
+  usecase "Mở nguồn để giám sát" as s8
+  usecase "Mở nhanh: video / ảnh /\ncamera / nguồn gần đây" as s9
+}
+
+user -- base
+base ..> s1 : <<include>>
+base <.. s2 : <<extend>>
+base <.. s3 : <<extend>>
+base <.. s4 : <<extend>>
+base <.. s5 : <<extend>>
+base <.. s6 : <<extend>>
+base <.. s7 : <<extend>>
+base <.. s8 : <<extend>>
+base <.. s9 : <<extend>>
+s4 -- cam
+s5 -- cam
+@enduml
+
+==============================================================================
+[06] UC02 phân rã  (06_usecase_UC02_cau_hinh_IPM)
+==============================================================================
+@startuml 06_usecase_UC02_cau_hinh_IPM
+left to right direction
+actor "Người dùng" as user
+
+rectangle "Hệ thống cảnh báo khoảng cách an toàn" {
+  usecase "UC02. Cấu hình thông số IPM\n(căn chỉnh camera)" as base
+  usecase "Lấy khung hình tham chiếu" as s1
+  usecase "Chấm 4 điểm trên vạch làn\n& nhập kích thước thực" as s2
+  usecase "Tự động căn chỉnh từ video" as s3
+  usecase "Chấm lại / về vị trí mặc định" as s4
+  usecase "Tính H, xem trước\nBird's-Eye View" as s5
+  usecase "Lưu ma trận camera\nK, H, R theo nguồn" as s6
+  usecase "Tự nạp căn chỉnh\nkhi mở lại nguồn" as s7
+}
+
+user -- base
+base ..> s1 : <<include>>
+base <.. s2 : <<extend>>
+base <.. s3 : <<extend>>
+base <.. s4 : <<extend>>
+base ..> s5 : <<include>>
+base ..> s6 : <<include>>
+base <.. s7 : <<extend>>
+@enduml
+
+==============================================================================
+[07] UC03 phân rã  (07_usecase_UC03_nguong_canh_bao)
+==============================================================================
+@startuml 07_usecase_UC03_nguong_canh_bao
+left to right direction
+actor "Người dùng" as user
+actor "Dịch vụ\nClaude API" as ai
+
+rectangle "Hệ thống cảnh báo khoảng cách an toàn" {
+  usecase "UC03. Cấu hình ngưỡng\ncảnh báo" as base
+  usecase "Chọn nấc tốc độ hoặc\nbật tự đo tốc độ từ video" as s1
+  usecase "Đặt ngưỡng cảnh báo\ntheo từng dải tốc độ" as s2
+  usecase "Chọn nhanh điều kiện đường\n(8 nút)" as s3
+  usecase "Hỏi Trợ lý AI\ngợi ý ngưỡng" as s4
+  usecase "Tinh chỉnh tham số nâng cao" as s5
+  usecase "Bật / tắt và nghe thử\nâm thanh cảnh báo" as s6
+  usecase "Khôi phục ngưỡng mặc định" as s7
+  usecase "Tính lại & hiển thị ngưỡng\ncảnh báo / nguy hiểm" as s8
+  usecase "Gọi Claude API\n(tùy chọn, lỗi → offline)" as s9
+}
+
+user -- base
+base <.. s1 : <<extend>>
+base <.. s2 : <<extend>>
+base <.. s3 : <<extend>>
+base <.. s4 : <<extend>>
+base <.. s5 : <<extend>>
+base <.. s6 : <<extend>>
+base <.. s7 : <<extend>>
+base ..> s8 : <<include>>
+s3 ..> s4 : <<include>>
+s4 <.. s9 : <<extend>>
+s9 -- ai
+@enduml
+
+==============================================================================
+[08] UC04 phân rã  (08_usecase_UC04_giam_sat)
+==============================================================================
+@startuml 08_usecase_UC04_giam_sat
+left to right direction
+actor "Người dùng" as user
+actor "Camera /\nnguồn video" as cam
+
+rectangle "Hệ thống cảnh báo khoảng cách an toàn" {
+  usecase "UC04. Giám sát realtime\n& cảnh báo" as base
+  usecase "Đọc khung hình từ nguồn" as s1
+  usecase "Nhận diện & bám vết xe\n(YOLOv11 + bám vết mẫu)" as s2
+  usecase "Nhận diện làn xe chủ" as s3
+  usecase "Đo tốc độ xe chủ từ video" as s4
+  usecase "Tính khoảng cách IPM,\ntốc độ tiếp cận, TTC" as s5
+  usecase "Phân loại mức rủi ro\ntheo ngưỡng" as s6
+  usecase "Cảnh báo hình ảnh\n& âm thanh" as s7
+  usecase "Ghi nhật ký vi phạm\n+ ảnh bằng chứng" as s8
+  usecase "Tạm dừng / tiếp tục" as s9
+  usecase "Ghi video kết quả" as s10
+  usecase "Bật / tắt âm thanh" as s11
+}
+
+user -- base
+base ..> s1 : <<include>>
+base ..> s2 : <<include>>
+base ..> s3 : <<include>>
+base ..> s4 : <<include>>
+base ..> s5 : <<include>>
+base ..> s6 : <<include>>
+base ..> s7 : <<include>>
+base ..> s8 : <<include>>
+base <.. s9 : <<extend>>
+base <.. s10 : <<extend>>
+base <.. s11 : <<extend>>
+s1 -- cam
+@enduml
+
+==============================================================================
+[09] UC05 phân rã  (09_usecase_UC05_nhat_ky)
+==============================================================================
+@startuml 09_usecase_UC05_nhat_ky
+left to right direction
+actor "Người dùng" as user
+
+rectangle "Hệ thống cảnh báo khoảng cách an toàn" {
+  usecase "UC05. Quản lý nhật ký\ncảnh báo" as base
+  usecase "Xem thống kê &\ndanh sách phiên giám sát" as s1
+  usecase "Lọc vi phạm theo ngày,\nmức, loại xe" as s2
+  usecase "Xem ảnh bằng chứng" as s3
+  usecase "Xuất CSV" as s4
+  usecase "Xóa vi phạm / xóa phiên" as s5
+  usecase "Xem & khôi phục\nlịch sử cấu hình" as s6
+  usecase "Xem ma trận camera\n(K, H, R)" as s7
+  usecase "Xem vi phạm của\nphiên đang chạy" as s8
+}
+
+user -- base
+base ..> s1 : <<include>>
+base <.. s2 : <<extend>>
+base <.. s3 : <<extend>>
+base <.. s4 : <<extend>>
+base <.. s5 : <<extend>>
+base <.. s6 : <<extend>>
+base <.. s7 : <<extend>>
+base <.. s8 : <<extend>>
+@enduml
+
+==============================================================================
+[10] Hoạt động UC01  (10_hoat_dong_UC01_nguon_video)
+==============================================================================
+@startuml 10_hoat_dong_UC01_nguon_video
+|Người dùng|
+start
+:Mở menu nguồn trên thanh tiêu đề,
+chọn "Quản lý nguồn…";
+|Hệ thống|
+:Mở cửa sổ Quản lý nguồn, đọc danh sách nguồn:
+tên, loại, địa chỉ, căn chỉnh, số phiên, lần dùng gần nhất;
+repeat
+  |Người dùng|
+  :Bấm "Thêm file video" hoặc "Thêm camera / URL",
+  chọn file hoặc nhập tên, địa chỉ, ghi chú;
+  |Hệ thống|
+  :Phân loại nguồn (video / camera / luồng / ảnh),
+  chuẩn hóa địa chỉ;
+  backward :Báo lỗi: chưa nhập địa chỉ /
+  không tìm thấy file / nguồn đã có;
+repeat while (Hợp lệ và chưa có?) is (Không) not (Có)
+:Thêm nguồn vào CSDL, làm mới danh sách;
+repeat
+  |Người dùng|
+  :Chọn nguồn, bấm "Kiểm tra kết nối";
+  |Hệ thống|
+  :Mở thử nguồn ở luồng nền, đọc một khung;
+  backward :Hiển thị "Không kết nối được: <lỗi>";
+repeat while (Kết nối được?) is (Không) not (Có)
+:Hiển thị khung xem trước,
+độ phân giải, FPS, số khung;
+|Người dùng|
+:Bấm "Mở nguồn đã chọn" (hoặc nhấp đúp);
+|Hệ thống|
+:Dừng phiên đang chạy (nếu có),
+đặt nguồn mới làm nguồn hiện hành;
+:Đăng ký nguồn, nạp căn chỉnh mới nhất của nguồn,
+bắt đầu giám sát (UC04);
+stop
+@enduml
+
+==============================================================================
+[11] Hoạt động UC02  (11_hoat_dong_UC02_cau_hinh_IPM)
+==============================================================================
+@startuml 11_hoat_dong_UC02_cau_hinh_IPM
+|Người dùng|
+start
+:Bấm "Căn chỉnh camera"
+(hoặc "Căn chỉnh ngay" trên thanh nhắc);
+|Hệ thống|
+:Lấy khung hình: khung đang giám sát,
+khung đầu của nguồn, hoặc hộp chọn ảnh / video;
+if (Có khung hình?) then (Không)
+  :Báo "Không đọc được khung hình";
+  stop
+else (Có)
+endif
+:Tạm dừng giám sát, mở cửa sổ căn chỉnh
+với khung hình và 4 điểm hiện tại;
+repeat
+  |Người dùng|
+  if (Cách căn chỉnh?) then (Thủ công)
+    :Chấm / kéo 4 điểm trên 2 vạch làn,
+    nhập W = 3,75 m, L, d0, nửa làn, tầm đo;
+  else (Tự động)
+    :Bấm "Tự động căn chỉnh",
+    nhập tốc độ xe trong video;
+    |Hệ thống|
+    :Phân tích video ở luồng nền: điểm tụ (Hough + RANSAC),
+    bề rộng làn → chiều cao camera, vạch đứt → K = f·h;
+    :Tự điền 4 điểm và thông số (method = auto);
+  endif
+  |Hệ thống|
+  :Tính homography H, vẽ BEV (lưới 10 m),
+  chân trời, tiêu cự, chiều cao, góc chúc;
+repeat while (Đủ 4 điểm hợp lệ?) is (Không - khóa nút Áp dụng) not (Có)
+|Người dùng|
+:Kiểm tra vạch làn trên BEV song song,
+bấm "Áp dụng" hoặc "Hủy";
+|Hệ thống|
+if (Áp dụng?) then (Có)
+  :Cập nhật cấu hình căn chỉnh,
+  lưu cấu hình + lịch sử "Căn chỉnh camera (IPM)";
+  :Phân rã H → K, R, lưu ma trận camera
+  (thủ công / tự động) cho nguồn;
+  :Báo luồng xử lý dựng lại IPM ở khung kế tiếp;
+else (Hủy)
+  :Giữ nguyên căn chỉnh cũ;
+endif
+:Bỏ tạm dừng, tiếp tục giám sát;
+stop
+@enduml
+
+==============================================================================
+[12a] Hoạt động UC03a  (12a_hoat_dong_UC03_cai_dat_nguong)
+==============================================================================
+@startuml 12a_hoat_dong_UC03_cai_dat_nguong
+|Người dùng|
+start
+if (Muốn đổi gì?) then (Tốc độ xe chủ)
+  :Bật "Tự đo từ video" hoặc chọn nấc
+  60 / ≤80 / ≤100 / ≤120 km/h
+  (chọn nấc thì tắt tự đo);
+  |Hệ thống|
+  :Tính lại ngưỡng, hiển thị
+  "Cảnh báo < X m · Nguy hiểm < Y m" và căn cứ;
+else (Tham số)
+  :Bấm "Cài đặt";
+  |Hệ thống|
+  :Mở hộp Cài đặt 5 tab: Chung, Ngưỡng cảnh báo,
+  Điều kiện đường, Trợ lý AI, Nâng cao;
+  |Người dùng|
+  :Tab "Chung": loại xe theo dõi, âm thanh và nghe thử,
+  chỉ cảnh báo cùng làn, tự nhận diện làn, tự đo tốc độ;
+  :Tab "Ngưỡng cảnh báo": giãn cách dưới 60 km/h (2-6 s),
+  khoảng cách cảnh báo cho từng dải 60 / 80 / 100 / 120 km/h;
+  :Tab "Điều kiện đường": thời tiết / mặt đường (5 mẫu),
+  tầm nhìn xa;
+  |Hệ thống|
+  :Tự điền hệ số điều kiện, hệ số bám, TTC,
+  hiển thị ngưỡng đang áp dụng;
+  |Người dùng|
+  :Tab "Nâng cao" (nếu cần): mô hình, YOLO mỗi N khung,
+  tỷ lệ nguy hiểm, TTC, chống báo nhầm; bấm "Lưu";
+  |Hệ thống|
+  :Ràng buộc: mỗi dải không thấp hơn mức luật,
+  TTC nguy hiểm ≤ TTC cảnh báo - 0,5 s, bỏ hết loại xe → giữ ô tô;
+  :Cập nhật cấu hình dùng chung,
+  lưu cấu hình + lịch sử "Cài đặt hệ thống";
+  :Cập nhật thẻ tốc độ, thẻ điều kiện đường,
+  báo luồng xử lý đổi lớp xe / căn chỉnh;
+endif
+|Hệ thống|
+:Luồng xử lý dùng ngưỡng mới
+từ khung kế tiếp;
+stop
+@enduml
+
+==============================================================================
+[12b] Hoạt động UC03b  (12b_hoat_dong_UC03_tro_ly_AI)
+==============================================================================
+@startuml 12b_hoat_dong_UC03_tro_ly_AI
+|Người dùng|
+start
+:Bấm 1 trong 8 nút điều kiện đường
+hoặc gõ mô tả tình huống vào khung chat;
+|Giao diện|
+:Hiện câu hỏi, khóa nút Gửi;
+:Chạy tác vụ nền kèm chính sách, tốc độ hiện tại
+và mô tả cảnh quan (xe phía trước, TTC, mức cảnh báo);
+|Trợ lý AI|
+if (Dùng Claude (use_cloud)?) then (Có)
+  :Gọi Claude API, đầu ra JSON theo lược đồ;
+  if (Thành công?) then (Có)
+    :Đọc JSON: trả lời, chính sách, tốc độ;
+  else (Lỗi / không có mạng)
+    :Tư vấn offline + ghi chú lỗi;
+  endif
+else (Không - mặc định)
+  :Tư vấn offline: nhận diện từ khóa tiếng Việt
+  (có / không dấu), tốc độ, tầm nhìn;
+endif
+:Giới hạn tham số theo phạm vi cho phép,
+giữ ngưỡng theo dải tốc độ của người dùng;
+|Giao diện|
+:Hiển thị trả lời, áp dụng chính sách mới,
+đổi tốc độ nếu tài xế có nêu (tắt tự đo);
+:Báo "Đã áp dụng: … cảnh báo < X m,
+nguy hiểm < Y m";
+:Lưu cấu hình + lịch sử "Trợ lý AI (…)";
+|Người dùng|
+:Xem ngưỡng mới trên thẻ tốc độ
+và thẻ điều kiện đường;
+stop
+@enduml
+
+==============================================================================
+[13] Hoạt động UC04  (13_hoat_dong_UC04_giam_sat)
+==============================================================================
+@startuml 13_hoat_dong_UC04_giam_sat
+|Người dùng|
+start
+:Bấm "Bắt đầu" (F5),
+có thể bật "Ghi video" trước;
+|Giao diện|
+if (Đã chọn nguồn?) then (Chưa)
+  :Mở hộp chọn file video (UC01);
+  stop
+else (Rồi)
+endif
+:Đăng ký nguồn, nạp căn chỉnh của nguồn;
+:Tạo và khởi động luồng xử lý nền;
+|Luồng xử lý|
+:Mở nguồn, tải YOLOv11 (GPU nếu có,
+dự phòng yolo11n.pt), chạy khởi động;
+if (Mở được?) then (Không)
+  |Giao diện|
+  :Hộp thoại "Lỗi xử lý: …";
+  stop
+else (Có)
+endif
+|Luồng xử lý|
+:Đọc khung đầu, tạo pipeline,
+mở phiên giám sát, tạo bộ ghi vi phạm;
+repeat
+  :(1) Đọc khung hình (bám nhịp thời gian thực);
+  :(2) YOLOv11 mỗi N khung, bám vết mẫu
+  ở các khung giữa → khung bao, lớp, mã;
+  :(3) Làn xe chủ, tốc độ xe chủ từ vạch đứt,
+  IPM → khoảng cách, lọc Kalman → tốc độ tiếp cận, TTC;
+  :(4) Ngưỡng theo tốc độ & điều kiện, phân loại rủi ro,
+  chống nhiễu theo thời gian, phát bíp;
+  :Mở / cập nhật / đóng đợt vi phạm + ảnh bằng chứng;
+  :(5) Vẽ lớp phủ + BEV, ghi video nếu bật;
+  |Giao diện|
+  :Hiển thị video, BEV, thẻ trạng thái,
+  thời gian 5 tầng, danh sách vi phạm;
+  |Luồng xử lý|
+repeat while (Còn khung và chưa bấm Dừng (Esc)?) is (Có) not (Không)
+:Đóng đợt vi phạm đang mở,
+kết thúc phiên (số khung, FPS trung bình);
+|Giao diện|
+:Báo "Phiên #id: đã ghi n vi phạm vào CSDL";
+stop
+@enduml
+
+==============================================================================
+[14] Hoạt động UC05  (14_hoat_dong_UC05_nhat_ky)
+==============================================================================
+@startuml 14_hoat_dong_UC05_nhat_ky
+|Người dùng|
+start
+:Bấm "Lịch sử" (thanh tiêu đề
+hoặc tab "Vi phạm");
+|Hệ thống|
+:Mở cửa sổ Lịch sử: thống kê và danh sách phiên,
+dòng đầu "Tất cả phiên";
+|Người dùng|
+:Chọn phiên, lọc theo ngày, mức, loại xe;
+|Hệ thống|
+:Hiển thị các vi phạm khớp bộ lọc;
+|Người dùng|
+:Chọn một vi phạm;
+|Hệ thống|
+:Hiển thị ảnh bằng chứng và tóm tắt;
+|Người dùng|
+switch (Thao tác tiếp?)
+case (Xuất CSV)
+  |Hệ thống|
+  :Chọn nơi lưu, ghi CSV UTF-8 BOM
+  (không có vi phạm → báo);
+case (Xóa)
+  |Người dùng|
+  :Chọn "Xóa vi phạm đã chọn" /
+  "Xóa phiên đã chọn", xác nhận;
+  |Hệ thống|
+  :Xóa bản ghi (phiên → xóa cả vi phạm)
+  và file ảnh, làm mới danh sách;
+case (Lịch sử cấu hình)
+  |Hệ thống|
+  :Hiển thị bản chụp cấu hình;
+  :"Khôi phục cấu hình này" → xác nhận →
+  áp dụng, lưu "Khôi phục từ lịch sử cấu hình";
+case (Ma trận camera)
+  |Hệ thống|
+  :Hiển thị K, H, R, tiêu cự,
+  chiều cao, góc chúc, chân trời;
+case (Đóng)
+endswitch
+|Người dùng|
+stop
+@enduml
+
+==============================================================================
+[15] Tuần tự UC01  (15_tuan_tu_UC01_nguon_video)
+==============================================================================
+@startuml 15_tuan_tu_UC01_nguon_video
+autonumber
+actor "Người dùng" as U
+participant "MainWindow" as MW
+participant "SourceDialog" as SD
+participant "_Job\n(QThread)" as J
+participant "sources\n(adas.stream)" as SRC
+database "Database" as DB
+participant "Camera /\nnguồn video" as CAM
+
+U -> MW : Menu nguồn → "Quản lý nguồn…"
+MW -> SD : SourceDialog(current_uri)
+SD -> DB : list_sources()
+DB --> SD : danh sách nguồn (số căn chỉnh, số phiên)
+U -> SD : "Thêm file video" / "Thêm camera / URL"
+SD -> SRC : classify_source(uri), normalize_source(uri)
+SD -> DB : get_source(uri)
+alt Nguồn đã có
+  SD --> U : "Nguồn này đã có trong danh sách."
+else Nguồn mới
+  SD -> DB : add_source(name, kind, uri, desc)
+  SD -> SD : refresh(select_uri)
+end
+opt Dò camera USB
+  U -> SD : "Dò camera USB"
+  SD -> J : _run(find_cameras)
+  J -> CAM : mở thử chỉ số 0-4
+  J --> SD : done(cams)
+  SD -> DB : add_source("Camera USB i") cho camera chưa có
+end
+U -> SD : chọn nguồn, "Kiểm tra kết nối"
+SD -> J : _run(probe_source, uri)
+J -> CAM : mở nguồn, đọc 1 khung
+alt Kết nối được
+  J --> SD : done(frame, width, height, fps, frames)
+  SD --> U : khung xem trước + "Kết nối tốt · R×C · FPS"
+else Lỗi
+  J --> SD : failed(msg)
+  SD --> U : "Không kết nối được: msg"
+end
+U -> SD : "Mở nguồn đã chọn" (hoặc nhấp đúp)
+SD --> MW : accept(), selected_uri
+MW -> MW : _select_source(uri): stop() rồi start()
+MW -> DB : register_source(uri), latest_calibration(source_id)
+note over MW : Bắt đầu giám sát (UC04)
+@enduml
+
+==============================================================================
+[16] Tuần tự UC02  (16_tuan_tu_UC02_cau_hinh_IPM)
+==============================================================================
+@startuml 16_tuan_tu_UC02_cau_hinh_IPM
+autonumber
+actor "Người dùng" as U
+participant "MainWindow" as MW
+participant "ProcessingWorker" as W
+participant "CalibrationDialog" as CD
+participant "_AutoCalibThread" as AT
+participant "autocalib\n(adas.distance)" as AC
+participant "GroundPlaneMapper" as M
+participant "AppConfig" as CFG
+database "Database" as DB
+
+U -> MW : "Căn chỉnh camera"
+alt Đang giám sát
+  MW -> W : last_frame
+else Chưa chạy
+  MW -> MW : read_first_frame(source) hoặc hộp chọn file
+end
+MW -> W : set_paused(True)
+MW -> CD : CalibrationDialog(frame, cfg.calibration, video_path, speed)
+alt Thủ công
+  U -> CD : chấm / kéo 4 điểm, nhập W, L, d0, nửa làn, tầm đo
+else Tự động (nguồn là file video)
+  U -> CD : "Tự động căn chỉnh", nhập tốc độ xe trong video
+  CD -> AT : start()
+  AT -> AC : auto_calibrate(video, speed, base, lane_w, offset)
+  AC -> AC : điểm tụ (Hough + RANSAC), chiều cao camera, K = f·h
+  AC --> AT : CalibrationConfig, AutoCalibReport
+  AT --> CD : done → _apply_auto(): 4 điểm, method = auto
+end
+loop Mỗi lần đổi điểm / thông số
+  CD -> M : GroundPlaneMapper(calib, frame_size)
+  M --> CD : H, horizon_y, model (K, R, f, chiều cao, góc chúc)
+  CD --> U : xem trước Bird's-Eye View (lưới 10 m)
+end
+U -> CD : "Áp dụng"
+CD --> MW : result_calib, method, note
+MW -> CFG : update_inplace(cfg.calibration, result_calib)
+MW -> CFG : save("Căn chỉnh camera (IPM)")
+CFG -> DB : save_config() → system_config + config_history
+MW -> DB : register_source(video_path)
+MW -> DB : save_calibration(source_id, params, frame_size, method, note)
+DB -> M : model: phân rã H → K, R
+DB --> MW : id ma trận camera
+MW -> W : calibration_changed()
+MW -> W : set_paused(False)
+W -> W : khung kế tiếp: pipeline.update_calibration()
+MW --> U : "Đã lưu ma trận camera #id cho nguồn …"
+@enduml
+
+==============================================================================
+[17] Tuần tự UC03  (17_tuan_tu_UC03_nguong_canh_bao)
+==============================================================================
+@startuml 17_tuan_tu_UC03_nguong_canh_bao
+autonumber
+actor "Người dùng" as U
+participant "ConditionPanel /\nChatPanel" as CP
+participant "MainWindow" as MW
+participant "_AssistantTask\n(QThreadPool)" as T
+participant "SafetyAssistant" as SA
+participant "Claude API" as API
+participant "thresholds\n(adas.alert)" as TH
+participant "AppConfig" as CFG
+database "Database" as DB
+
+U -> CP : bấm nút điều kiện (vd "Mưa to") hoặc gõ mô tả
+CP -> MW : send_requested(text)
+MW -> T : ask_assistant(text): policy, speed_kmh, scene
+T -> SA : ask(message, policy, speed_kmh, scene)
+alt use_cloud = False (mặc định)
+  SA -> SA : offline_advice(): từ khóa tiếng Việt
+  SA -> TH : condition_policy(key, modifiers, visibility, base = policy)
+else use_cloud = True
+  SA -> API : messages.create(system, messages, output_config json_schema)
+  alt Thành công
+    API --> SA : JSON: reply, policy, speed_kmh
+  else Lỗi mạng / API key / từ chối
+    SA -> SA : offline_advice() + ghi chú lỗi
+  end
+end
+SA -> SA : clamp_policy() theo LIMITS (giữ band_gaps_m, time_gap_s)
+SA --> T : AssistantResult(reply, policy, speed_kmh, source)
+T --> MW : done(result)
+MW -> CFG : update_inplace(cfg.policy, result.policy)
+opt Tài xế có nêu tốc độ
+  MW -> MW : speed_panel.set_speed(v), tắt tự đo
+end
+MW -> TH : compute_thresholds(speed_kmh, policy)
+TH --> MW : Thresholds(safe_m, danger_m, legal_m, band_m)
+MW --> U : "Đã áp dụng … cảnh báo < X m, nguy hiểm < Y m"
+MW -> CFG : save("Trợ lý AI (nguồn): điều kiện")
+CFG -> DB : system_config + config_history
+note over MW, CFG : ProcessingWorker đọc cfg.policy ở khung kế tiếp
+opt Chỉnh trong Cài đặt
+  U -> MW : "Cài đặt" → SettingsDialog (5 tab) → "Lưu"
+  MW -> CFG : update_inplace(cfg, dlg.cfg), save("Cài đặt hệ thống")
+end
+@enduml
+
+==============================================================================
+[18] Tuần tự UC04  (18_tuan_tu_UC04_giam_sat)
+==============================================================================
+@startuml 18_tuan_tu_UC04_giam_sat
+autonumber
+actor "Người dùng" as U
+participant "MainWindow" as MW
+participant "ProcessingWorker" as W
+participant "FrameSource" as FS
+participant "ADASPipeline" as P
+participant "VehicleDetector /\nTemplateTracker" as VD
+participant "EgoLaneDetector /\nEgoSpeedEstimator" as LD
+participant "DistanceEstimator\n(+ RangeKalman)" as DE
+participant "AlertManager" as AM
+participant "ViolationRecorder" as VR
+database "Database" as DB
+
+U -> MW : "Bắt đầu" (F5)
+MW -> DB : register_source(), latest_calibration()
+MW -> W : ProcessingWorker(cfg, source, record, source_id).start()
+W -> FS : open_source(spec, realtime)
+W -> VD : VehicleDetector(best.pt, …), warmup()
+W -> FS : read() → khung đầu
+W -> P : ADASPipeline(cfg, detector, (w, h))
+W -> DB : start_session(…, config) → session_id
+W --> MW : session_started(session_id)
+loop Mỗi khung (đến khi dừng / hết video)
+  W -> P : process(frame, t)
+  alt Khung chạy YOLO (mỗi N khung)
+    P -> VD : detect(frame) [+ tracker.refresh() nếu N > 1]
+  else Khung giữa
+    P -> VD : tracker.track(gray, t) - so khớp mẫu NCC
+  end
+  VD --> P : List[Detection]
+  P -> LD : lane_detector.update(frame, boxes)
+  P -> LD : speed_estimator.update(frame, lane, t)
+  LD --> P : LaneEstimate | None, tốc độ đo được | None
+  P -> DE : estimate(detections, t, lane)
+  DE --> P : List[VehicleState] (d, X, tốc độ tiếp cận, TTC)
+  P -> P : compute_thresholds(speed) + classify_risk()
+  P -> AM : update(raw_level)
+  AM --> P : level ổn định (+ bíp)
+  P --> W : FrameResult
+  W -> VR : update(result, t, speed, condition, save_snapshot)
+  opt Mở / cập nhật / đóng đợt vi phạm
+    VR -> DB : insert_violation() / update_violation()
+    VR --> W : sự kiện open / update / close
+    W --> MW : violation(event)
+  end
+  W -> W : render_overlay() + render_bev()
+  W --> MW : frame_ready(overlay, bev, stats), progress()
+  MW --> U : video, BEV, thẻ trạng thái, thời gian 5 tầng
+  W -> FS : read()
+end
+U -> MW : "Dừng" (Esc)
+MW -> W : stop(), wait()
+W -> VR : close(t)
+W -> DB : end_session(session_id, frames, avg_fps)
+W --> MW : status("Phiên #id: đã ghi n vi phạm vào CSDL")
+@enduml
+
+==============================================================================
+[19] Tuần tự UC05  (19_tuan_tu_UC05_nhat_ky)
+==============================================================================
+@startuml 19_tuan_tu_UC05_nhat_ky
+autonumber
+actor "Người dùng" as U
+participant "MainWindow" as MW
+participant "HistoryDialog" as HD
+database "Database" as DB
+participant "File hệ thống" as FS
+
+U -> MW : "Lịch sử"
+MW -> HD : HistoryDialog() + kết nối restore_config
+HD -> DB : stats(), list_sessions() (v_session_summary)
+HD -> DB : config_history(), list_calibrations()
+DB --> HD : thống kê, phiên, lịch sử cấu hình, ma trận camera
+U -> HD : chọn phiên, đặt bộ lọc ngày / mức / loại xe
+HD -> DB : list_violations(session_id, level, vehicle_class, date_from, date_to)
+DB --> HD : danh sách vi phạm
+U -> HD : chọn một vi phạm
+HD -> FS : đọc ảnh snapshot_path
+HD --> U : ảnh bằng chứng + tóm tắt
+alt Xuất CSV
+  U -> HD : "Xuất CSV", chọn nơi lưu
+  HD -> FS : ghi CSV (UTF-8 BOM)
+else Xóa vi phạm / phiên
+  U -> HD : "Xóa …" → xác nhận Yes
+  HD -> DB : delete_violations(ids) / delete_session(id) (CASCADE)
+  DB --> HD : đường dẫn ảnh cần xóa
+  HD -> FS : xóa file ảnh
+  HD -> HD : refresh()
+else Khôi phục cấu hình
+  U -> HD : tab "Lịch sử cấu hình" → "Khôi phục cấu hình này" → Yes
+  HD --> MW : restore_config(config_json)
+  MW -> MW : update_inplace(cfg, …), save("Khôi phục từ lịch sử cấu hình")
+else Xem ma trận camera
+  U -> HD : tab "Ma trận camera", chọn dòng
+  HD --> U : K, H, R, f, chiều cao, góc chúc, chân trời
+end
+@enduml
+
+==============================================================================
+[20] Lớp thực thể  (20_lop_thuc_the)
+==============================================================================
+@startuml 20_lop_thuc_the
+set separator none
+hide empty members
+skinparam linetype ortho
+
+package "Cấu hình - lưu bảng system_config" {
+  class AppConfig <<dataclass>> {
+    +model : ModelConfig
+    +calibration : CalibrationConfig
+    +policy : SafetyPolicy
+    +alert : AlertConfig
+    +assistant : AssistantConfig
+    +speed_kmh : float = 80
+    +auto_speed : bool = True
+    +realtime_playback : bool = True
+    +output_dir : str = "outputs"
+    --
+    +{static} load(db) : AppConfig
+    +save(reason, db)
+    +resolve_path(p) : Path
+  }
+  class ModelConfig <<dataclass>> {
+    +weights : str = "models/best.pt"
+    +fallback_weights : str = "models/yolo11n.pt"
+    +confidence : float = 0.35
+    +iou : float = 0.45
+    +imgsz : int = 640
+    +device : str = "auto"
+    +detect_every : int = 0
+    +enabled_classes : List[str]
+  }
+  class CalibrationConfig <<dataclass>> {
+    +image_points : List[List[float]]
+    +rect_width_m : float = 3.75
+    +rect_length_m : float = 30
+    +near_distance_m : float = 6
+    +lane_half_width_m : float = 1.9
+    +max_range_m : float = 150
+    +camera_vfov_deg : float = 55
+  }
+  class SafetyPolicy <<dataclass>> {
+    +time_gap_s : float = 2.0
+    +band_gaps_m : List[float] = [35, 55, 70, 100]
+    +weather_factor : float = 1.0
+    +danger_ratio : float = 0.5
+    +min_distance_m : float = 5
+    +ttc_warning_s : float = 4
+    +ttc_danger_s : float = 2
+    +use_legal_table : bool = True
+    +condition : str
+    +road_mu : float = 0.7
+    +visibility_m : float = 0
+  }
+  class AlertConfig <<dataclass>> {
+    +sound_enabled : bool = True
+    +only_ego_lane : bool = True
+    +auto_lane : bool = True
+    +escalate_seconds : float = 0.1
+    +hold_seconds : float = 0.8
+  }
+  class AssistantConfig <<dataclass>> {
+    +model : str = "claude-haiku-4-5"
+    +use_cloud : bool = False
+  }
+}
+
+package "Kết quả xử lý một khung" {
+  class Detection <<dataclass>> {
+    +bbox : ndarray [x1, y1, x2, y2]
+    +confidence : float
+    +class_name : str
+    +track_id : Optional[int]
+    --
+    +ground_point() : tuple
+    +height() : float
+    +width() : float
+  }
+  class VehicleState <<dataclass>> {
+    +det : Detection
+    +distance_m : float
+    +lateral_m : float
+    {field} +method : str  ("IPM" | "Xa")
+    +in_ego_lane : bool
+    +closing_speed_mps : Optional[float]
+    +ttc_s : Optional[float]
+    +risk : str = "safe"
+  }
+  class LaneEstimate <<dataclass>> {
+    {field} +left : ndarray (c0, c1, c2)
+    {field} +right : ndarray (c0, c1, c2)
+    +found_left : bool
+    +found_right : bool
+    --
+    +width_m() : float
+    +offset_m() : float
+    +contains(lateral_m, distance_m) : bool
+  }
+  class Thresholds <<dataclass>> {
+    +speed_kmh : float
+    +safe_m : float
+    +danger_m : float
+    +gap_m : float
+    +legal_m : Optional[float]
+    +band_m : Optional[float]
+    +over_speed_limit : bool
+    +recommended_speed_kmh : Optional[float]
+  }
+  class FrameResult <<dataclass>> {
+    +vehicles : List[VehicleState]
+    +lead : Optional[VehicleState]
+    +lane : Optional[LaneEstimate]
+    +thresholds : Optional[Thresholds]
+    +speed_kmh : float
+    +speed_measured : bool
+    +raw_level : str
+    +level : str
+    +detected : bool
+    +stride : int
+    +yolo_ms : float
+    +timings_ms : Dict[str, float]
+  }
+}
+
+package "Khác" {
+  class RoadCondition <<frozen>> {
+    +key : str
+    +name : str
+    +factor : float
+    +mu : float
+    +ttc_warning_s : float
+    +ttc_danger_s : float
+    +advice : str
+  }
+  class AssistantResult <<dataclass>> {
+    +reply : str
+    +policy : SafetyPolicy
+    +speed_kmh : Optional[float]
+    {field} +source : str  ("Claude" | "Offline")
+    +note : str
+  }
+  class AutoCalibReport <<dataclass>> {
+    {field} +vanishing_point : (float, float)
+    +camera_height_m : float
+    +depth_scale_K : float
+    +focal_px : float
+    +depth_from_motion : bool
+    +frames_used : int
+    --
+    +summary() : str
+  }
+  class _Episode <<dataclass>> {
+    +id : int
+    +track_id : Optional[int]
+    +level : str
+    +start_t : float
+    +min_distance : float
+    +min_ttc : Optional[float]
+    +snapshot_rel : Optional[str]
+  }
+}
+
+AppConfig *-- "1" ModelConfig
+AppConfig *-- "1" CalibrationConfig
+AppConfig *-- "1" SafetyPolicy
+AppConfig *-- "1" AlertConfig
+AppConfig *-- "1" AssistantConfig
+VehicleState --> "1" Detection : det
+FrameResult o-- "0..*" VehicleState : vehicles
+FrameResult --> "0..1" LaneEstimate : lane
+FrameResult --> "0..1" Thresholds : thresholds
+AssistantResult --> "1" SafetyPolicy : policy
+SafetyPolicy ..> RoadCondition : condition_policy()
+@enduml
+
+==============================================================================
+[21] ERD CSDL  (21_erd_co_so_du_lieu)
+==============================================================================
+@startuml 21_erd_co_so_du_lieu
+hide circle
+skinparam linetype ortho
+
+entity "video_sources" as vs {
+  * id : INTEGER <<PK>>
+  --
+  * name : TEXT
+  * source_type : TEXT {video | camera | stream | image}
+  * uri : TEXT <<UNIQUE>>
+  description : TEXT
+  * created_at : TEXT
+  last_used_at : TEXT
+}
+
+entity "camera_calibrations" as cc {
+  * id : INTEGER <<PK>>
+  --
+  source_id : INTEGER <<FK>>
+  * created_at : TEXT
+  * method : TEXT {manual | auto | imported}
+  * frame_width : INTEGER
+  * frame_height : INTEGER
+  intrinsic_matrix : TEXT (JSON, K 3x3)
+  * homography_matrix : TEXT (JSON, H 3x3)
+  rotation_matrix : TEXT (JSON, R 3x3)
+  focal_px : REAL
+  horizon_y : REAL
+  camera_height_m : REAL
+  camera_offset_m : REAL
+  pitch_deg : REAL
+  * params_json : TEXT (JSON)
+  note : TEXT
+}
+
+entity "system_config" as sc {
+  * section : TEXT <<PK>>
+  * key : TEXT <<PK>>
+  --
+  * value : TEXT (JSON)
+  * updated_at : TEXT
+}
+
+entity "config_history" as ch {
+  * id : INTEGER <<PK>>
+  --
+  * changed_at : TEXT
+  * reason : TEXT
+  * config_json : TEXT (JSON)
+}
+
+entity "monitoring_sessions" as ms {
+  * id : INTEGER <<PK>>
+  --
+  * started_at : TEXT
+  ended_at : TEXT
+  source_id : INTEGER <<FK>>
+  * source : TEXT
+  * source_type : TEXT
+  model_weights : TEXT
+  device : TEXT {GPU | CPU}
+  frame_width : INTEGER
+  frame_height : INTEGER
+  * frames_processed : INTEGER = 0
+  avg_fps : REAL
+  * config_json : TEXT (JSON)
+}
+
+entity "violations" as v {
+  * id : INTEGER <<PK>>
+  --
+  * session_id : INTEGER <<FK>>
+  * started_at : TEXT
+  ended_at : TEXT
+  video_time_s : REAL
+  duration_s : REAL
+  * level : TEXT {warning | danger}
+  track_id : INTEGER
+  vehicle_class : TEXT
+  * distance_m : REAL
+  * min_distance_m : REAL
+  min_ttc_s : REAL
+  closing_speed_kmh : REAL
+  * ego_speed_kmh : REAL
+  * safe_threshold_m : REAL
+  * danger_threshold_m : REAL
+  legal_min_gap_m : REAL
+  road_condition : TEXT
+  weather_factor : REAL
+  snapshot_path : TEXT
+}
+
+vs ||--o{ cc : "có ma trận camera\n(ON DELETE CASCADE)"
+vs |o--o{ ms : "được giám sát\n(ON DELETE SET NULL)"
+ms ||--o{ v : "ghi nhận\n(ON DELETE CASCADE)"
+sc ||..o{ ch : "bản chụp khi thay đổi"
+@enduml
+
+==============================================================================
+[22] Lớp tổng quát  (22_lop_tong_quat)
+==============================================================================
+@startuml 22_lop_tong_quat
+set separator none
+hide members
+hide circle
+left to right direction
+
+package "gui" {
+  class MainWindow
+  class ProcessingWorker
+  package "gui.dialogs" {
+    class SourceDialog
+    class CalibrationDialog
+    class SettingsDialog
+    class HistoryDialog
+  }
+  package "gui.widgets" {
+    class VideoStage
+    class StatusCard
+    class SpeedPanel
+    class ConditionPanel
+    class ChatPanel
+    class EventLog
+  }
+  package "gui.rendering" {
+    class "render_overlay()\nrender_bev()" as Render
+  }
+}
+
+package "adas" {
+  class AppConfig
+  class ADASPipeline
+  class FrameResult
+  package "adas.stream" {
+    class FrameSource
+  }
+  package "adas.detection" {
+    class VehicleDetector
+    class TemplateTracker
+  }
+  package "adas.distance" {
+    class GroundPlaneMapper
+    class EgoLaneDetector
+    class EgoSpeedEstimator
+    class DistanceEstimator
+    class RangeKalman
+  }
+  package "adas.alert" {
+    class AlertManager
+    class ViolationRecorder
+    class "thresholds" as Thr
+  }
+  package "adas.assistant" {
+    class SafetyAssistant
+  }
+  package "adas.storage" {
+    class Database
+  }
+}
+
+MainWindow "1" --> "0..1" ProcessingWorker : điều khiển
+MainWindow *-- VideoStage
+MainWindow *-- StatusCard
+MainWindow *-- SpeedPanel
+MainWindow *-- ConditionPanel
+MainWindow *-- ChatPanel
+MainWindow *-- EventLog
+MainWindow ..> SourceDialog : mở
+MainWindow ..> CalibrationDialog : mở
+MainWindow ..> SettingsDialog : mở
+MainWindow ..> HistoryDialog : mở
+MainWindow --> SafetyAssistant
+MainWindow --> AppConfig : dùng chung
+ProcessingWorker --> ADASPipeline
+ProcessingWorker --> FrameSource
+ProcessingWorker --> ViolationRecorder
+ProcessingWorker ..> Render
+ADASPipeline --> VehicleDetector
+ADASPipeline *-- TemplateTracker
+ADASPipeline *-- GroundPlaneMapper
+ADASPipeline *-- EgoLaneDetector
+ADASPipeline *-- EgoSpeedEstimator
+ADASPipeline *-- DistanceEstimator
+ADASPipeline *-- AlertManager
+ADASPipeline ..> Thr
+ADASPipeline ..> FrameResult : tạo
+ADASPipeline --> AppConfig : đọc mỗi khung
+DistanceEstimator *-- "0..*" RangeKalman
+DistanceEstimator --> GroundPlaneMapper
+EgoLaneDetector --> GroundPlaneMapper
+EgoSpeedEstimator --> GroundPlaneMapper
+ViolationRecorder --> Database
+SourceDialog --> Database
+HistoryDialog --> Database
+AppConfig ..> Database : load / save
+@enduml
+
+==============================================================================
+[23] Lớp xử lý  (23_lop_xu_ly)
+==============================================================================
+@startuml 23_lop_xu_ly
+set separator none
+hide empty members
+
+class ADASPipeline {
+  +cfg : AppConfig
+  +detector : VehicleDetector
+  +tracker : TemplateTracker
+  +mapper : GroundPlaneMapper
+  +lane_detector : EgoLaneDetector
+  +speed_estimator : EgoSpeedEstimator
+  +estimator : DistanceEstimator
+  +alert : AlertManager
+  +frame_size : (int, int)
+  --
+  +process(frame, t, track) : FrameResult
+  +stride() : int
+  +update_calibration()
+}
+
+package "adas.detection" {
+  class VehicleDetector {
+    +model : YOLO
+    +device : str
+    +confidence : float
+    +iou : float
+    +imgsz : int
+    +weights_used : str
+    --
+    +detect(frame, track) : List[Detection]
+    +set_enabled_classes(enabled)
+    +warmup()
+  }
+  class TemplateTracker {
+    +tracks : Dict[int, _Track]
+    --
+    +refresh(dets, gray, t, k) : List[Detection]
+    +track(gray, t) : List[Detection]
+    +reset()
+  }
+}
+
+package "adas.distance" {
+  class GroundPlaneMapper {
+    +calib : CalibrationConfig
+    +H, H_inv : ndarray 3x3
+    +horizon_y : Optional[float]
+    {field} +model : dict (K, R, f, chiều cao, góc chúc)
+    +focal_px : Optional[float]
+    --
+    +image_to_ground(pts) : ndarray
+    +ground_to_image(pts_m) : ndarray
+    +bev_matrix(...) : ndarray
+    +warp_to_bev(frame, ...) : ndarray
+    -_decompose() : dict
+  }
+  class EgoLaneDetector {
+    +ACQUIRE_FRAMES = 3
+    +LOST_FRAMES = 20
+    +state : Optional[LaneEstimate]
+    +confirmed : bool
+    --
+    +update(frame, boxes) : Optional[LaneEstimate]
+    +reset()
+  }
+  class EgoSpeedEstimator {
+    +Y_MIN, Y_MAX = 5, 26 m
+    +SMOOTH_TAU_S = 1.0
+    --
+    +update(frame, lane, t) : Optional[float]
+    +reset()
+  }
+  class DistanceEstimator {
+    +mapper : GroundPlaneMapper
+    +calib : CalibrationConfig
+    +tracks : Dict[int, _Track]
+    --
+    +estimate(detections, t, lane) : List[VehicleState]
+    +reset()
+  }
+  class RangeKalman {
+    +x : [d, d', d'']
+    +P : 3x3
+    --
+    +predict(t)
+    +update(z, sigma) : bool
+    +distance() : float
+    +closing_speed() : float
+    +rate_std() : float
+  }
+}
+
+package "adas.alert" {
+  class AlertManager {
+    +INTERVALS = {danger: 0,28 s, warning: 0,9 s}
+    +cfg : AlertConfig
+    +level : str
+    --
+    +update(raw_level, now) : str
+    +preview(level) : bool
+    +reset()
+  }
+  class ViolationRecorder {
+    +db : Database
+    +session_id : int
+    +ep : Optional[_Episode]
+    +count : int
+    --
+    +update(result, t, speed, condition, save_snapshot) : List[dict]
+    +close(t) : Optional[dict]
+  }
+  class thresholds <<module>> {
+    +compute_thresholds(speed_kmh, policy) : Thresholds
+    +classify_risk(d, ttc, thr, policy) : str
+    +band_gap_m(speed_kmh, policy)
+    +condition_policy(key, modifiers, ...) : SafetyPolicy
+    +threshold_basis(thr, policy) : str
+  }
+}
+
+package "adas.assistant" {
+  class SafetyAssistant {
+    +cfg : AssistantConfig
+    +history : list
+    --
+    +ask(message, policy, speed_kmh, scene) : AssistantResult
+    +set_api_key(key)
+    +clear_history()
+  }
+  class offline <<module>> {
+    +offline_advice(message, policy, speed_kmh) : AssistantResult
+  }
+}
+
+package "adas.stream" {
+  abstract class FrameSource {
+    +is_live, is_image : bool
+    +fps : float
+    +total_frames : int
+    +last_decode_ms : float
+    --
+    +read() : (bool, frame, t)
+    +release()
+  }
+  class VideoFileSource {
+    +realtime : bool
+    +frame_idx : int
+    --
+    +restart_clock()
+  }
+  class CameraSource {
+    -_grab_loop()
+  }
+  class ImageSource
+}
+
+package "adas.storage" {
+  class Database {
+    +path : Path
+    --
+    +init_schema()
+    +register_source() / add_source() / delete_source() / list_sources()
+    +save_calibration() / latest_calibration() / list_calibrations()
+    +load_config() / save_config() / config_history()
+    +start_session() / end_session() / list_sessions() / delete_session()
+    +insert_violation() / update_violation() / list_violations() / delete_violations()
+    +stats() : dict
+  }
+}
+
+ADASPipeline --> VehicleDetector
+ADASPipeline *-- TemplateTracker
+ADASPipeline *-- GroundPlaneMapper
+ADASPipeline *-- EgoLaneDetector
+ADASPipeline *-- EgoSpeedEstimator
+ADASPipeline *-- DistanceEstimator
+ADASPipeline *-- AlertManager
+ADASPipeline ..> thresholds
+EgoLaneDetector --> GroundPlaneMapper
+EgoSpeedEstimator --> GroundPlaneMapper
+DistanceEstimator --> GroundPlaneMapper
+DistanceEstimator *-- "0..*" RangeKalman
+ViolationRecorder --> Database
+SafetyAssistant ..> offline
+FrameSource <|-- VideoFileSource
+FrameSource <|-- CameraSource
+FrameSource <|-- ImageSource
+@enduml
+
+==============================================================================
+[24] Lớp giao diện  (24_lop_giao_dien)
+==============================================================================
+@startuml 24_lop_giao_dien
+set separator none
+hide empty members
+left to right direction
+
+class MainWindow <<QMainWindow>> {
+  +cfg : AppConfig
+  +worker : Optional[ProcessingWorker]
+  +assistant : SafetyAssistant
+  +source_spec : str
+  +source_id : int
+  --
+  +open_video() / open_image() / open_camera() / open_sources()
+  +start() / toggle_pause() / stop()
+  +calibrate() / open_settings() / open_history()
+  +ask_assistant(text) / reset_policy() / toggle_sound()
+  -_activate_source(spec) : int
+  -_on_frame(overlay, bev, stats)
+  -_policy_changed()
+}
+class ProcessingWorker <<QThread>> {
+  +frame_ready : Signal(QImage, QImage, dict)
+  +violation : Signal(dict)
+  +session_started : Signal(int)
+  +status / failed / progress : Signal
+  +pipeline : ADASPipeline
+  +last_frame : ndarray
+  --
+  +run() / stop() / set_paused(p)
+  +calibration_changed() / classes_changed()
+}
+
+package "gui.dialogs" {
+  class SourceDialog <<QDialog>> {
+    +selected_uri : str
+    --
+    +refresh() / _add_file() / _add_other()
+    +_edit() / _delete() / _test() / _scan() / _open()
+  }
+  class SourceEditDialog <<QDialog>>
+  class CalibrationDialog <<QDialog>> {
+    +result_calib : CalibrationConfig
+    +method : str
+    +note : str
+    --
+    -_update_preview() / _auto_calibrate() / _accept()
+  }
+  class CalibrationView
+  class SettingsDialog <<QDialog>> {
+    5 tab: Chung, Ngưỡng cảnh báo,
+    Điều kiện đường, Trợ lý AI, Nâng cao
+    --
+    -_apply_preset() / _reset_bands() / _accept()
+  }
+  class HistoryDialog <<QDialog>> {
+    +restore_config : Signal(dict)
+    --
+    +refresh() / _export_csv()
+    +_delete_violations() / _delete_session() / _restore()
+  }
+}
+
+package "gui.widgets" {
+  class ImageView <<QWidget>> {
+    +set_image(img) / image_rect()
+  }
+  class VideoStage {
+    +show_welcome(on) / set_frames(overlay, bev)
+  }
+  class WelcomePanel
+  class PlayBar
+  class StatusCard {
+    +set_level(level) / update_stats(s) / reset()
+  }
+  class SpeedPanel {
+    +speed_changed : Signal(float)
+    +auto_changed : Signal(bool)
+    --
+    +set_speed(v) / set_auto(on) / set_measured(v)
+  }
+  class ConditionPanel {
+    +preset_requested : Signal(str)
+    +reset_requested : Signal()
+  }
+  class ChatPanel {
+    +send_requested : Signal(str)
+    --
+    +submit(text) / add_message() / set_busy()
+  }
+  class EventLog {
+    +history_requested : Signal()
+    --
+    +start_session(id) / on_violation(e) / export_csv()
+  }
+}
+
+MainWindow "1" --> "0..1" ProcessingWorker
+MainWindow *-- VideoStage
+MainWindow *-- PlayBar
+MainWindow *-- StatusCard
+MainWindow *-- SpeedPanel
+MainWindow *-- ConditionPanel
+MainWindow *-- ChatPanel
+MainWindow *-- EventLog
+VideoStage *-- WelcomePanel
+VideoStage *-- "2" ImageView : video, BEV
+ImageView <|-- CalibrationView
+CalibrationDialog *-- CalibrationView
+SourceDialog ..> SourceEditDialog
+MainWindow ..> SourceDialog
+MainWindow ..> CalibrationDialog
+MainWindow ..> SettingsDialog
+MainWindow ..> HistoryDialog
+@enduml
+
+==============================================================================
+[25] Kiến trúc 5 tầng  (25_kien_truc_5_tang)
+==============================================================================
+@startuml 25_kien_truc_5_tang
+skinparam componentStyle rectangle
+
+package "(1) Video Stream\nadas/stream" as S {
+  [VideoFileSource\nfile video, bám nhịp\nthời gian thực] as S1
+  [CameraSource\nUSB / RTSP,\nluồng đọc riêng] as S2
+  [ImageSource\nảnh tĩnh] as S3
+}
+package "(2) YOLOv11 Detection\nadas/detection" as D {
+  [VehicleDetector\nYOLOv11 + ByteTrack\n(mỗi N khung)] as D1
+  [TemplateTracker\nbám vết mẫu NCC\n(các khung giữa)] as D2
+}
+package "(3) IPM Distance Calculation\nadas/distance" as I {
+  [EgoLaneDetector\nlàn xe chủ trên BEV] as I1
+  [EgoSpeedEstimator\ntốc độ xe chủ\ntừ vạch đứt] as I2
+  [GroundPlaneMapper\nhomography H:\npixel → mét] as I3
+  [DistanceEstimator\n+ RangeKalman:\nd, tốc độ tiếp cận, TTC] as I4
+}
+package "(4) Alert Engine\nadas/alert" as A {
+  [thresholds\nngưỡng theo dải tốc độ\n× hệ số đường] as A1
+  [AlertManager\nchống nhiễu theo\nthời gian + âm thanh] as A2
+  [ViolationRecorder\nnhật ký đợt vi phạm] as A3
+}
+package "(5) GUI\ngui/" as G {
+  [rendering\nkhung màu, banner, BEV] as G1
+  [MainWindow + widgets\nthẻ trạng thái, tốc độ,\nnhật ký, Trợ lý AI] as G2
+  [dialogs\nnguồn, căn chỉnh,\ncài đặt, lịch sử] as G3
+}
+database "SQLite data/adas.db\n(adas/storage)" as DB
+[Trợ lý AI - adas/assistant\n(offline / Claude API)] as AI
+
+S1 -down-> D1 : khung BGR, t
+D1 -down-> I1 : List[Detection]
+I1 -down-> A1 : List[VehicleState]
+A1 -down-> G1 : FrameResult
+A3 .right.> DB : ghi vi phạm
+DB .up.> I4 : ma trận camera, cấu hình ngưỡng
+G2 .right.> AI : mô tả tình huống
+AI .up.> A3 : SafetyPolicy
+
+note right of D
+  ADASPipeline (adas/pipeline.py)
+  điều phối (2) → (3) → (4) mỗi khung;
+  ProcessingWorker (gui/worker.py) chạy
+  vòng lặp trong luồng nền
+end note
+@enduml
+
+==============================================================================
+[26] Hoạt động xử lý 1 khung  (26_hoat_dong_xu_ly_mot_khung)
+==============================================================================
+@startuml 26_hoat_dong_xu_ly_mot_khung
+|② Nhận diện (adas/detection)|
+start
+:Nhận khung BGR và thời điểm t;
+:Tính N = YOLO mỗi N khung
+(cấu hình, hoặc tự động ≤ nửa thời gian một khung);
+if (Khung chạy YOLO?) then (Có)
+  :VehicleDetector.detect: YOLOv11 + ByteTrack
+  → khung bao, lớp, độ tin cậy, mã bám vết;
+  :N > 1: neo mẫu cho các khung bám vết sau;
+else (Không - khung giữa)
+  :TemplateTracker.track: so khớp mẫu NCC
+  (NCC < 0,6 → chỉ dự đoán);
+endif
+|③ Khoảng cách (adas/distance)|
+if (auto_lane hoặc auto_speed?) then (Có)
+  :EgoLaneDetector.update: BEV mét, top-hat, che hộp xe,
+  cửa sổ trượt, X = c0 + c1·Y + c2·Y² (3 khung để xác nhận);
+else (Không)
+endif
+if (auto_speed?) then (Có)
+  :EgoSpeedEstimator.update: tương quan vạch đứt
+  giữa hai khung → v, trung vị 1 s, làm mượt;
+else (Không)
+endif
+:Tốc độ = tốc độ đo được, hoặc tốc độ chọn tay;
+:Với mỗi xe: điểm chạm đất = giữa cạnh dưới khung bao;
+if (Dưới chân trời và ≤ tầm đo tối đa?) then (Có)
+  :IPM: image_to_ground → Y (khoảng cách), X (lệch ngang);
+else (Không)
+  :Pinhole với tiêu cự từ H, method = "Xa";
+endif
+:RangeKalman theo mã bám vết [d, d', d'']
+→ khoảng cách, tốc độ tiếp cận, TTC;
+:in_ego_lane = làn chứa (X, Y) hoặc |X| ≤ nửa làn;
+|④ Cảnh báo (adas/alert)|
+:compute_thresholds(tốc độ, chính sách)
+→ ngưỡng cảnh báo, ngưỡng nguy hiểm;
+if (Ngoài làn hoặc "Xa"?) then (Có)
+  :risk = info (không cảnh báo);
+else (Không)
+  :classify_risk: nguy hiểm nếu d < ngưỡng nguy hiểm hoặc TTC < TTC nguy hiểm,
+  cảnh báo nếu d < ngưỡng cảnh báo hoặc TTC < TTC cảnh báo, còn lại an toàn;
+endif
+:raw_level = mức cao nhất, xe phía trước = xe cùng làn gần nhất;
+:AlertManager.update: nâng mức khi kéo dài ≥ 0,1 s (≥ 2 khung),
+hạ mức sau 0,8 s, phát bíp theo mức;
+:Trả FrameResult;
+stop
+@enduml
+
+==============================================================================
+[27] Triển khai  (27_trien_khai)
+==============================================================================
+@startuml 27_trien_khai
+node "Xe ô tô" as car {
+  node "Camera hành trình\nUSB (0-4) / IP (RTSP, HTTP)" as cam
+  node "Màn hình" as scr
+  node "Loa" as spk
+}
+node "Máy tính Windows 11\n(GPU NVIDIA CUDA hoặc chỉ CPU)" as pc {
+  node "Thư mục ứng dụng dist/ADAS" as app {
+    artifact "ADAS.exe\n(PyInstaller: Python 3.11, PySide6,\nPyTorch, Ultralytics YOLOv11, OpenCV)" as exe
+    artifact "models/best.pt\nmodels/yolo11n.pt" as w
+    artifact "assets/\n(font, biểu tượng)" as ast
+    database "data/adas.db\ndata/snapshots/" as db
+    artifact "outputs/*.mp4" as out
+  }
+  artifact "Video hành trình\n(.mp4, .avi, .mov, .mkv)" as vid
+}
+cloud "Anthropic Claude API\n(tùy chọn, mặc định tắt)" as cloud
+
+cam --> exe : USB / RTSP
+vid --> exe : đọc file
+exe --> w : nạp trọng số
+exe --> ast
+exe --> db : SQLite (WAL), ảnh bằng chứng
+exe --> out : ghi video kết quả
+exe --> scr : giao diện Qt
+exe --> spk : âm thanh (pygame)
+exe ..> cloud : HTTPS (ANTHROPIC_API_KEY)
+@enduml
+
+==============================================================================
+[28] Trạng thái mức cảnh báo  (28_trang_thai_muc_canh_bao)
+==============================================================================
+@startuml 28_trang_thai_muc_canh_bao
+hide empty description
+state "An toàn (safe)" as safe : không phát âm
+state "Cảnh báo (warning)" as warning : bíp 820 Hz mỗi 0,9 s
+state "Nguy hiểm (danger)" as danger : bíp 1250 Hz mỗi 0,28 s
+
+[*] --> safe : khởi tạo / reset()
+safe --> warning : raw = warning kéo dài\n≥ escalate_seconds (0,1 s, ≥ 2 khung)
+safe --> danger : raw = danger kéo dài ≥ 0,1 s
+warning --> danger : raw = danger kéo dài ≥ 0,1 s
+danger --> warning : raw = warning và đã giữ\n≥ hold_seconds (0,8 s)
+danger --> safe : raw = safe và đã giữ ≥ 0,8 s
+warning --> safe : raw = safe và đã giữ ≥ 0,8 s
+warning --> warning : raw = warning\n(làm mới thời điểm giữ)
+danger --> danger : raw = danger\n(làm mới thời điểm giữ)
+@enduml
+
+==============================================================================
+[29] Trạng thái đợt vi phạm  (29_trang_thai_dot_vi_pham)
+==============================================================================
+@startuml 29_trang_thai_dot_vi_pham
+hide empty description
+state "Không có đợt vi phạm\n(ep = None)" as idle
+state "Đợt đang mở (ep)" as open {
+  state "Mức cảnh báo" as w
+  state "Mức nguy hiểm" as d
+  [*] --> w
+  [*] --> d
+  w --> d : nâng lên nguy hiểm /\nupdate_violation(level), chụp lại ảnh
+}
+
+[*] --> idle
+idle --> open : level ∈ {warning, danger} và có xe phía trước /\n_open(): insert_violation + ảnh bằng chứng
+open --> open : cùng track_id /\ncập nhật min_distance, min_ttc
+open --> open : vẫn cảnh báo nhưng tạm mất\nxe phía trước (giữ đợt)
+open --> idle : level = safe hoặc đổi xe phía trước /\n_close(): ended_at, duration_s, min_distance_m, min_ttc_s
+open --> [*] : kết thúc phiên / close(t)
+idle --> [*] : kết thúc phiên
+@enduml
+
+==============================================================================
+[30] Trạng thái phiên giám sát  (30_trang_thai_phien_giam_sat)
+==============================================================================
+@startuml 30_trang_thai_phien_giam_sat
+hide empty description
+state "Chờ" as idle : màn hình chào / khung cuối
+state "Khởi động" as starting : mở nguồn, tải YOLOv11, warmup
+state "Đang giám sát" as running : xử lý ① → ⑤ mỗi khung
+state "Tạm dừng" as paused : giữ khung cuối
+state "Kết thúc phiên" as finishing : đóng đợt vi phạm, end_session
+
+[*] --> idle
+idle --> starting : Bắt đầu (F5) / chọn nguồn mới
+starting --> running : mở được nguồn, start_session()
+starting --> idle : lỗi → hộp thoại "Lỗi xử lý"
+running --> paused : Tạm dừng (Space) /\nmở Căn chỉnh camera
+paused --> running : Tiếp tục\n(restart_clock với file video)
+running --> running : calibration_changed /\nclasses_changed (khung kế tiếp)
+running --> finishing : Dừng (Esc) / hết video /\nảnh tĩnh xử lý xong
+paused --> finishing : Dừng (Esc)
+finishing --> idle : "Phiên #id: đã ghi n vi phạm"
+@enduml

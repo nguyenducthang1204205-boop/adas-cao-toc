@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Camera USB chuẩn UVC: thiết bị tổng hợp (lớp 239, lớp con 2 - kiểu thường gặp) hoặc khai báo lớp Video (14) ở giao diện -->
+<resources>
+    <usb-device class="239" subclass="2" />
+    <usb-device class="14" />
+</resources>

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1433" height="380" viewBox="0 0 1433 380">
+<rect width="100%" height="100%" fill="#fff"/>
+<rect x="10.0" y="10.0" width="1413.0" height="360.0" rx="0" fill="#fff" stroke="#1f1f1f" stroke-width="1.4"/>
+<rect x="10.0" y="10.0" width="34.0" height="360.0" rx="0" fill="#eef2f7" stroke="#1f1f1f" stroke-width="1.4"/>
+<text x="27.0" y="195.1" font-family="Times New Roman" font-size="15" text-anchor="middle" fill="#000" font-weight="bold" transform="rotate(-90 27.0 190.0)">Hệ thống cảnh báo khoảng cách an toàn</text>
+<rect x="44.0" y="10.0" width="1379.0" height="170.0" rx="0" fill="#fff" stroke="#1f1f1f" stroke-width="1.2"/>
+<rect x="44.0" y="10.0" width="34.0" height="170.0" rx="0" fill="#eef2f7" stroke="#1f1f1f" stroke-width="1.2"/>
+<text x="61.0" y="99.8" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000" font-weight="bold" transform="rotate(-90 61.0 95.0)">Tài xế</text>
+<rect x="44.0" y="180.0" width="1379.0" height="190.0" rx="0" fill="#fff" stroke="#1f1f1f" stroke-width="1.2"/>
+<rect x="44.0" y="180.0" width="34.0" height="190.0" rx="0" fill="#eef2f7" stroke="#1f1f1f" stroke-width="1.2"/>
+<text x="61.0" y="279.8" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000" font-weight="bold" transform="rotate(-90 61.0 275.0)">Phần mềm ADAS</text>
+<ellipse cx="118.0" cy="95.0" rx="18.0" ry="18.0" fill="#fff" stroke="#1f1f1f" stroke-width="1.6"/>
+<text x="118.0" y="51.6" font-family="Times New Roman" font-size="13" text-anchor="middle" fill="#000">Bắt đầu hành</text>
+<text x="118.0" y="67.5" font-family="Times New Roman" font-size="13" text-anchor="middle" fill="#000">trình</text>
+<rect x="180.0" y="64.0" width="140.0" height="62.0" rx="9" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="250.0" y="86.2" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Chọn nguồn video /</text>
+<text x="250.0" y="103.3" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">camera (UC01)</text>
+<rect x="243.0" y="110.0" width="14.0" height="14.0" rx="0" fill="#fff" stroke="#1f1f1f" stroke-width="1"/>
+<line x1="246.0" y1="117.0" x2="254.0" y2="117.0" stroke="#1f1f1f" stroke-width="1"/>
+<line x1="250.0" y1="113.0" x2="250.0" y2="121.0" stroke="#1f1f1f" stroke-width="1"/>
+<polygon points="452.0,252.0 475.0,275.0 452.0,298.0 429.0,275.0" fill="#fff" stroke="#1f1f1f" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="443.0" y1="266.0" x2="461.0" y2="284.0" stroke="#1f1f1f" stroke-width="3"/>
+<line x1="443.0" y1="284.0" x2="461.0" y2="266.0" stroke="#1f1f1f" stroke-width="3"/>
+<text x="440.0" y="308.4" font-family="Times New Roman" font-size="13" text-anchor="end" fill="#000">Nguồn đã căn</text>
+<text x="440.0" y="324.2" font-family="Times New Roman" font-size="13" text-anchor="end" fill="#000">chỉnh?</text>
+<rect x="519.0" y="64.0" width="140.0" height="62.0" rx="9" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="589.0" y="86.2" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Căn chỉnh camera</text>
+<text x="589.0" y="103.3" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">IPM (UC02)</text>
+<rect x="582.0" y="110.0" width="14.0" height="14.0" rx="0" fill="#fff" stroke="#1f1f1f" stroke-width="1"/>
+<line x1="585.0" y1="117.0" x2="593.0" y2="117.0" stroke="#1f1f1f" stroke-width="1"/>
+<line x1="589.0" y1="113.0" x2="589.0" y2="121.0" stroke="#1f1f1f" stroke-width="1"/>
+<polygon points="726.0,252.0 749.0,275.0 726.0,298.0 703.0,275.0" fill="#fff" stroke="#1f1f1f" stroke-width="1.4" stroke-linejoin="round"/>
+<line x1="717.0" y1="266.0" x2="735.0" y2="284.0" stroke="#1f1f1f" stroke-width="3"/>
+<line x1="717.0" y1="284.0" x2="735.0" y2="266.0" stroke="#1f1f1f" stroke-width="3"/>
+<rect x="793.0" y="64.0" width="140.0" height="62.0" rx="9" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="863.0" y="86.2" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Cấu hình ngưỡng</text>
+<text x="863.0" y="103.3" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">cảnh báo (UC03)</text>
+<rect x="856.0" y="110.0" width="14.0" height="14.0" rx="0" fill="#fff" stroke="#1f1f1f" stroke-width="1"/>
+<line x1="859.0" y1="117.0" x2="867.0" y2="117.0" stroke="#1f1f1f" stroke-width="1"/>
+<line x1="863.0" y1="113.0" x2="863.0" y2="121.0" stroke="#1f1f1f" stroke-width="1"/>
+<rect x="977.0" y="244.0" width="140.0" height="62.0" rx="9" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="1047.0" y="266.2" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Giám sát realtime &amp;</text>
+<text x="1047.0" y="283.3" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">cảnh báo (UC04)</text>
+<rect x="1040.0" y="290.0" width="14.0" height="14.0" rx="0" fill="#fff" stroke="#1f1f1f" stroke-width="1"/>
+<line x1="1043.0" y1="297.0" x2="1051.0" y2="297.0" stroke="#1f1f1f" stroke-width="1"/>
+<line x1="1047.0" y1="293.0" x2="1047.0" y2="301.0" stroke="#1f1f1f" stroke-width="1"/>
+<rect x="1161.0" y="64.0" width="140.0" height="62.0" rx="9" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="1231.0" y="86.2" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Xem lại nhật ký</text>
+<text x="1231.0" y="103.3" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">cảnh báo (UC05)</text>
+<rect x="1224.0" y="110.0" width="14.0" height="14.0" rx="0" fill="#fff" stroke="#1f1f1f" stroke-width="1"/>
+<line x1="1227.0" y1="117.0" x2="1235.0" y2="117.0" stroke="#1f1f1f" stroke-width="1"/>
+<line x1="1231.0" y1="113.0" x2="1231.0" y2="121.0" stroke="#1f1f1f" stroke-width="1"/>
+<ellipse cx="1363.0" cy="95.0" rx="18.0" ry="18.0" fill="#fff" stroke="#1f1f1f" stroke-width="4"/>
+<text x="1363.0" y="67.5" font-family="Times New Roman" font-size="13" text-anchor="middle" fill="#000">Kết thúc</text>
+<path d="M832.0,219.0 L832.0,255.0 A31.0,8 0 0 0 894.0,255.0 L894.0,219.0" fill="#fff" stroke="#1f1f1f" stroke-width="1.3"/>
+<ellipse cx="863.0" cy="219.0" rx="31.0" ry="8.0" fill="#fff" stroke="#1f1f1f" stroke-width="1.3"/>
+<path d="M832.0,226.0 A31.0,8 0 0 0 894.0,226.0" fill="none" stroke="#1f1f1f" stroke-width="1"/>
+<text x="900.0" y="245.4" font-family="Times New Roman" font-size="13" text-anchor="start" fill="#000">CSDL data/adas.db</text>
+<polyline points="136.0,95.0 180.0,95.0" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="170.0,99.5 180.0,95.0 170.0,90.5" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="320.0,95.0 414.0,95.0 414.0,275.0 429.0,275.0" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="419.0,279.5 429.0,275.0 419.0,270.5" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="452.0,252.0 452.0,95.0 519.0,95.0" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="509.0,99.5 519.0,95.0 509.0,90.5" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<rect x="455.0" y="228.1" width="35.0" height="17.9" fill="#fff" stroke="none"/>
+<text x="458.0" y="241.4" font-family="Times New Roman" font-size="13" text-anchor="start" fill="#000">Chưa</text>
+<polyline points="452.0,298.0 452.0,328.0 726.0,328.0 726.0,298.0" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="730.5,308.0 726.0,298.0 721.5,308.0" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<rect x="455.0" y="304.1" width="26.0" height="17.9" fill="#fff" stroke="none"/>
+<text x="458.0" y="317.4" font-family="Times New Roman" font-size="13" text-anchor="start" fill="#000">Rồi</text>
+<polyline points="659.0,95.0 688.0,95.0 688.0,275.0 703.0,275.0" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="693.0,279.5 703.0,275.0 693.0,270.5" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="726.0,252.0 726.0,95.0 793.0,95.0" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="783.0,99.5 793.0,95.0 783.0,90.5" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="933.0,95.0 962.0,95.0 962.0,275.0 977.0,275.0" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="967.0,279.5 977.0,275.0 967.0,270.5" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="1117.0,275.0 1146.0,275.0 1146.0,95.0 1161.0,95.0" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="1151.0,99.5 1161.0,95.0 1151.0,90.5" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<polyline points="1301.0,95.0 1345.0,95.0" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<polygon points="1335.0,99.5 1345.0,95.0 1335.0,90.5" fill="#1f1f1f" stroke="#1f1f1f" stroke-width="1" stroke-linejoin="round"/>
+<line x1="977.0" y1="260.5" x2="894.0" y2="243.4" stroke="#1f1f1f" stroke-width="1.3" stroke-dasharray="3,4"/>
+<polyline points="904.7,241.0 894.0,243.4 902.9,249.8" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,26 @@
+@startuml 09_usecase_UC05_nhat_ky
+left to right direction
+actor "Người dùng" as user
+
+rectangle "Hệ thống cảnh báo khoảng cách an toàn" {
+  usecase "UC05. Quản lý nhật ký\ncảnh báo" as base
+  usecase "Xem thống kê &\ndanh sách phiên giám sát" as s1
+  usecase "Lọc vi phạm theo ngày,\nmức, loại xe" as s2
+  usecase "Xem ảnh bằng chứng" as s3
+  usecase "Xuất CSV" as s4
+  usecase "Xóa vi phạm / xóa phiên" as s5
+  usecase "Xem & khôi phục\nlịch sử cấu hình" as s6
+  usecase "Xem ma trận camera\n(K, H, R)" as s7
+  usecase "Xem vi phạm của\nphiên đang chạy" as s8
+}
+
+user -- base
+base ..> s1 : <<include>>
+base <.. s2 : <<extend>>
+base <.. s3 : <<extend>>
+base <.. s4 : <<extend>>
+base <.. s5 : <<extend>>
+base <.. s6 : <<extend>>
+base <.. s7 : <<extend>>
+base <.. s8 : <<extend>>
+@enduml

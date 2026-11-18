@@ -1,0 +1,48 @@
+@startuml 11_hoat_dong_UC02_cau_hinh_IPM
+|Người dùng|
+start
+:Bấm "Căn chỉnh camera"
+(hoặc "Căn chỉnh ngay" trên thanh nhắc);
+|Hệ thống|
+:Lấy khung hình: khung đang giám sát,
+khung đầu của nguồn, hoặc hộp chọn ảnh / video;
+if (Có khung hình?) then (Không)
+  :Báo "Không đọc được khung hình";
+  stop
+else (Có)
+endif
+:Tạm dừng giám sát, mở cửa sổ căn chỉnh
+với khung hình và 4 điểm hiện tại;
+repeat
+  |Người dùng|
+  if (Cách căn chỉnh?) then (Thủ công)
+    :Chấm / kéo 4 điểm trên 2 vạch làn,
+    nhập W = 3,75 m, L, d0, nửa làn, tầm đo;
+  else (Tự động)
+    :Bấm "Tự động căn chỉnh",
+    nhập tốc độ xe trong video;
+    |Hệ thống|
+    :Phân tích video ở luồng nền: điểm tụ (Hough + RANSAC),
+    bề rộng làn → chiều cao camera, vạch đứt → K = f·h;
+    :Tự điền 4 điểm và thông số (method = auto);
+  endif
+  |Hệ thống|
+  :Tính homography H, vẽ BEV (lưới 10 m),
+  chân trời, tiêu cự, chiều cao, góc chúc;
+repeat while (Đủ 4 điểm hợp lệ?) is (Không - khóa nút Áp dụng) not (Có)
+|Người dùng|
+:Kiểm tra vạch làn trên BEV song song,
+bấm "Áp dụng" hoặc "Hủy";
+|Hệ thống|
+if (Áp dụng?) then (Có)
+  :Cập nhật cấu hình căn chỉnh,
+  lưu cấu hình + lịch sử "Căn chỉnh camera (IPM)";
+  :Phân rã H → K, R, lưu ma trận camera
+  (thủ công / tự động) cho nguồn;
+  :Báo luồng xử lý dựng lại IPM ở khung kế tiếp;
+else (Hủy)
+  :Giữ nguyên căn chỉnh cũ;
+endif
+:Bỏ tạm dừng, tiếp tục giám sát;
+stop
+@enduml

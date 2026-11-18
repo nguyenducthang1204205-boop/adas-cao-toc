@@ -1,0 +1,17 @@
+stateDiagram-v2
+    direction TB
+    state "Chờ (chưa chạy)<br/>WelcomePanel / khung cuối" as idle
+    state "Khởi động<br/>mở nguồn, tải YOLOv11, warmup" as starting
+    state "Đang giám sát<br/>xử lý ① → ⑤ mỗi khung" as running
+    state "Tạm dừng<br/>giữ khung cuối" as paused
+    state "Kết thúc phiên<br/>close đợt vi phạm, end_session" as finishing
+    [*] --> idle
+    idle --> starting : Bắt đầu (F5) / chọn nguồn mới
+    starting --> running : mở được nguồn, start_session()
+    starting --> idle : lỗi (failed) → hộp thoại "Lỗi xử lý"
+    running --> paused : Tạm dừng (Space) / mở Căn chỉnh camera
+    paused --> running : Tiếp tục (restart_clock với file video)
+    running --> running : calibration_changed / classes_changed<br/>(áp dụng ở khung kế tiếp)
+    running --> finishing : Dừng (Esc) / hết video / ảnh tĩnh xử lý xong
+    paused --> finishing : Dừng (Esc)
+    finishing --> idle : status "Phiên #35;id: đã ghi n vi phạm"

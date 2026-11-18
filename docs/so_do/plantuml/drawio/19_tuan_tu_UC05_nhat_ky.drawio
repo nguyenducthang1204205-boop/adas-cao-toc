@@ -1,0 +1,292 @@
+<mxfile host="drawio-plantuml" type="device">
+  <diagram id="19_tuan_tu_UC05_nhat_ky" name="19_tuan_tu_UC05_nhat_ky">
+<mxGraphModel>
+  <root>
+    <mxCell id="0"></mxCell>
+    <mxCell id="1" parent="0"></mxCell>
+    <mxCell id="pl_0" value="" style="shape=umlLifeline;perimeter=lifelinePerimeter;participant=headless;size=75.49;lifelineMirror=1;dashPattern=5 5;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=none;strokeColor=#181818;strokeWidth=0.5;" vertex="1" parent="1">
+      <mxGeometry x="20" y="5" width="77.47840000000001" height="947.3" as="geometry"/>
+    </mxCell>
+    <mxCell id="p_1" value="MainWindow" style="shape=umlLifeline;perimeter=lifelinePerimeter;size=30.49;lifelineMirror=1;dashPattern=5 5;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};rounded=1;absoluteArcSize=1;arcSize=5;fillColor=#E2E2F0;strokeColor=#181818;strokeWidth=0.5;fontColor=#000000;fontSize=14;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="107.47840000000002" y="50" width="99.43559999999998" height="857.3" as="geometry"/>
+    </mxCell>
+    <mxCell id="p_2" value="HistoryDialog" style="shape=umlLifeline;perimeter=lifelinePerimeter;size=30.49;lifelineMirror=1;dashPattern=5 5;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};rounded=1;absoluteArcSize=1;arcSize=5;fillColor=#E2E2F0;strokeColor=#181818;strokeWidth=0.5;fontColor=#000000;fontSize=14;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="560.7041642857142" y="50" width="105.99109999999999" height="857.3" as="geometry"/>
+    </mxCell>
+    <mxCell id="pl_3" value="" style="shape=umlLifeline;perimeter=lifelinePerimeter;participant=headless;size=61.49;lifelineMirror=1;dashPattern=5 5;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=none;strokeColor=#181818;strokeWidth=0.5;" vertex="1" parent="1">
+      <mxGeometry x="1033.1869571428574" y="18.999999999999993" width="62.6648" height="919.3" as="geometry"/>
+    </mxCell>
+    <mxCell id="p_4" value="File hệ thống" style="shape=umlLifeline;perimeter=lifelinePerimeter;size=30.49;lifelineMirror=1;dashPattern=5 5;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;sequenceEdgeStyle&quot;,&quot;libavoidRouting&quot;:0,&quot;curved&quot;:0,&quot;rounded&quot;:0};rounded=1;absoluteArcSize=1;arcSize=5;fillColor=#E2E2F0;strokeColor=#181818;strokeWidth=0.5;fontColor=#000000;fontSize=14;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="1105.8517571428574" y="50" width="102.0902" height="857.3" as="geometry"/>
+    </mxCell>
+    <mxCell id="grpframe_5" value="" style="rounded=0;fillColor=none;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+      <mxGeometry x="10" y="420.9" width="1207.9419571428575" height="439.91" as="geometry"/>
+    </mxCell>
+    <mxCell id="grptab_6" value="alt" style="rounded=0;fillColor=#EEEEEE;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontSize=13;fontStyle=1;align=left;spacingLeft=13;verticalAlign=middle;html=1;part=1;" vertex="1" parent="grpframe_5">
+      <mxGeometry x="0" y="0" width="62.138642857142855" height="17.31" as="geometry"/>
+    </mxCell>
+    <mxCell id="grpcond_7" value="[Xuất CSV]" style="text;html=1;fontColor=#000000;fontSize=11;fontStyle=1;align=left;verticalAlign=middle;part=1;" vertex="1" parent="grpframe_5">
+      <mxGeometry x="75.1386" y="1" width="67.20443571428572" height="15" as="geometry"/>
+    </mxCell>
+    <mxCell id="grpelse_8" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;dashPattern=2 2;" edge="1" parent="grpframe_5">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="0" y="76.93" as="sourcePoint"/>
+        <mxPoint x="1207.9419571428575" y="76.93" as="targetPoint"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="grpelselbl_9" value="[Xóa vi phạm / phiên]" style="text;html=1;fontColor=#000000;fontSize=11;fontStyle=1;align=left;verticalAlign=middle;part=1;" vertex="1" parent="grpframe_5">
+      <mxGeometry x="3" y="75.93" width="131.07562142857142" height="15" as="geometry"/>
+    </mxCell>
+    <mxCell id="grpelse_10" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;dashPattern=2 2;" edge="1" parent="grpframe_5">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="0" y="251.44000000000005" as="sourcePoint"/>
+        <mxPoint x="1207.9419571428575" y="251.44000000000005" as="targetPoint"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="grpelselbl_11" value="[Khôi phục cấu hình]" style="text;html=1;fontColor=#000000;fontSize=11;fontStyle=1;align=left;verticalAlign=middle;part=1;" vertex="1" parent="grpframe_5">
+      <mxGeometry x="3" y="250.44" width="127.15875714285714" height="15" as="geometry"/>
+    </mxCell>
+    <mxCell id="grpelse_12" value="" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1;dashed=1;dashPattern=2 2;" edge="1" parent="grpframe_5">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="0" y="367.33000000000004" as="sourcePoint"/>
+        <mxPoint x="1207.9419571428575" y="367.33000000000004" as="targetPoint"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="grpelselbl_13" value="[Xem ma trận camera]" style="text;html=1;fontColor=#000000;fontSize=11;fontStyle=1;align=left;verticalAlign=middle;part=1;" vertex="1" parent="grpframe_5">
+      <mxGeometry x="3" y="366.33" width="132.79657142857144" height="15" as="geometry"/>
+    </mxCell>
+    <mxCell id="msg_14" value="&lt;b&gt;1&lt;/b&gt; &amp;quot;Lịch sử&amp;quot;" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" source="pl_0" target="p_1" parent="1">
+      <mxGeometry x="-0.156" relative="1" as="geometry">
+        <mxPoint x="58.739200000000004" y="112.8" as="sourcePoint"/>
+        <mxPoint x="157.1962" y="112.8" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="102" y="112.8"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_15" value="&lt;b&gt;2&lt;/b&gt; HistoryDialog() + kết nối restore_config" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" source="p_1" target="p_2" parent="1">
+      <mxGeometry x="-0.395" relative="1" as="geometry">
+        <mxPoint x="157.1962" y="142.11" as="sourcePoint"/>
+        <mxPoint x="613.6997142857142" y="142.11" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="385" y="142.11"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_16" value="&lt;b&gt;3&lt;/b&gt; stats(), list_sessions() (v_session_summary)" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" source="p_2" target="pl_3" parent="1">
+      <mxGeometry x="-0.339" relative="1" as="geometry">
+        <mxPoint x="613.6997142857142" y="171.42" as="sourcePoint"/>
+        <mxPoint x="1064.5193571428574" y="171.42" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="839" y="171.42"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_17" value="&lt;b&gt;4&lt;/b&gt; config_history(), list_calibrations()" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" source="p_2" target="pl_3" parent="1">
+      <mxGeometry x="-0.469" relative="1" as="geometry">
+        <mxPoint x="613.6997142857142" y="200.73" as="sourcePoint"/>
+        <mxPoint x="1064.5193571428574" y="200.73" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="839" y="200.73"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_18" value="&lt;b&gt;5&lt;/b&gt; thống kê, phiên, lịch sử cấu hình, ma trận camera" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;" edge="1" source="pl_3" target="p_2" parent="1">
+      <mxGeometry x="0.187" relative="1" as="geometry">
+        <mxPoint x="1064.5193571428574" y="230.04" as="sourcePoint"/>
+        <mxPoint x="613.6997142857142" y="230.04" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="839" y="230.04"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_19" value="&lt;b&gt;6&lt;/b&gt; chọn phiên, đặt bộ lọc ngày / mức / loại xe" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" source="pl_0" target="p_2" parent="1">
+      <mxGeometry x="-0.463" relative="1" as="geometry">
+        <mxPoint x="58.739200000000004" y="259.35" as="sourcePoint"/>
+        <mxPoint x="613.6997142857142" y="259.35" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="336" y="259.35"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_20" value="&lt;b&gt;7&lt;/b&gt; list_violations(session_id, level, vehicle_class, date_from, date_to)" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" source="p_2" target="pl_3" parent="1">
+      <mxGeometry x="-0.024" relative="1" as="geometry">
+        <mxPoint x="613.6997142857142" y="288.66" as="sourcePoint"/>
+        <mxPoint x="1064.5193571428574" y="288.66" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="839" y="288.66"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_21" value="&lt;b&gt;8&lt;/b&gt; danh sách vi phạm" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;" edge="1" source="pl_3" target="p_2" parent="1">
+      <mxGeometry x="0.634" relative="1" as="geometry">
+        <mxPoint x="1064.5193571428574" y="317.97" as="sourcePoint"/>
+        <mxPoint x="613.6997142857142" y="317.97" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="839" y="317.97"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_22" value="&lt;b&gt;9&lt;/b&gt; chọn một vi phạm" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" source="pl_0" target="p_2" parent="1">
+      <mxGeometry x="-0.749" relative="1" as="geometry">
+        <mxPoint x="58.739200000000004" y="347.28" as="sourcePoint"/>
+        <mxPoint x="613.6997142857142" y="347.28" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="336" y="347.28"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_23" value="&lt;b&gt;10&lt;/b&gt; đọc ảnh snapshot_path" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" source="p_2" target="p_4" parent="1">
+      <mxGeometry x="-0.669" relative="1" as="geometry">
+        <mxPoint x="613.6997142857142" y="376.59" as="sourcePoint"/>
+        <mxPoint x="1156.8968571428575" y="376.59" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="885" y="376.59"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_24" value="&lt;b&gt;11&lt;/b&gt; ảnh bằng chứng + tóm tắt" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;" edge="1" source="p_2" target="pl_0" parent="1">
+      <mxGeometry x="0.603" relative="1" as="geometry">
+        <mxPoint x="613.6997142857142" y="405.9" as="sourcePoint"/>
+        <mxPoint x="58.739200000000004" y="405.9" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="336" y="405.9"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_25" value="&lt;b&gt;12&lt;/b&gt; &amp;quot;Xuất CSV&amp;quot;, chọn nơi lưu" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" source="pl_0" target="p_2" parent="1">
+      <mxGeometry x="-0.665" relative="1" as="geometry">
+        <mxPoint x="58.739200000000004" y="459.52" as="sourcePoint"/>
+        <mxPoint x="613.6997142857142" y="459.52" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="336" y="459.52"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_26" value="&lt;b&gt;13&lt;/b&gt; ghi CSV (UTF-8 BOM)" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" source="p_2" target="p_4" parent="1">
+      <mxGeometry x="-0.69" relative="1" as="geometry">
+        <mxPoint x="613.6997142857142" y="488.83" as="sourcePoint"/>
+        <mxPoint x="1156.8968571428575" y="488.83" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="885" y="488.83"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_27" value="&lt;b&gt;14&lt;/b&gt; &amp;quot;Xóa …&amp;quot; → xác nhận Yes" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" source="pl_0" target="p_2" parent="1">
+      <mxGeometry x="-0.68" relative="1" as="geometry">
+        <mxPoint x="58.739200000000004" y="533.1" as="sourcePoint"/>
+        <mxPoint x="613.6997142857142" y="533.1" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="336" y="533.1"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_28" value="&lt;b&gt;15&lt;/b&gt; delete_violations(ids) / delete_session(id) (CASCADE)" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" source="p_2" target="pl_3" parent="1">
+      <mxGeometry x="-0.186" relative="1" as="geometry">
+        <mxPoint x="613.6997142857142" y="562.41" as="sourcePoint"/>
+        <mxPoint x="1064.5193571428574" y="562.41" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="839" y="562.41"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_29" value="&lt;b&gt;16&lt;/b&gt; đường dẫn ảnh cần xóa" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;" edge="1" source="pl_3" target="p_2" parent="1">
+      <mxGeometry x="0.555" relative="1" as="geometry">
+        <mxPoint x="1064.5193571428574" y="591.72" as="sourcePoint"/>
+        <mxPoint x="613.6997142857142" y="591.72" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="839" y="591.72"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_30" value="&lt;b&gt;17&lt;/b&gt; xóa file ảnh" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" source="p_2" target="p_4" parent="1">
+      <mxGeometry x="-0.801" relative="1" as="geometry">
+        <mxPoint x="613.6997142857142" y="621.03" as="sourcePoint"/>
+        <mxPoint x="1156.8968571428575" y="621.03" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="885" y="621.03"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_31" value="" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;" edge="1" source="p_2" target="p_2" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="613.6997142857142" y="650.34" as="sourcePoint"/>
+        <mxPoint x="613.6997142857142" y="663.34" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="651.6997142857142" y="650.34"/>
+          <mxPoint x="651.6997142857142" y="663.34"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msglbl_32" value="&lt;b&gt;18&lt;/b&gt; refresh()" style="text;html=1;fontColor=#000000;fontSize=13;align=left;verticalAlign=middle;" vertex="1" parent="msg_31">
+      <mxGeometry x="-1" y="0" width="79.60730000000001" height="18.310000000000002" relative="1" as="geometry">
+        <mxPoint x="7.751" y="-20.308999999999997" as="offset"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_33" value="&lt;b&gt;19&lt;/b&gt; tab &amp;quot;Lịch sử cấu hình&amp;quot; → &amp;quot;Khôi phục cấu hình này&amp;quot; → Yes" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" source="pl_0" target="p_2" parent="1">
+      <mxGeometry x="-0.296" relative="1" as="geometry">
+        <mxPoint x="58.739200000000004" y="707.61" as="sourcePoint"/>
+        <mxPoint x="613.6997142857142" y="707.61" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="336" y="707.61"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_34" value="&lt;b&gt;20&lt;/b&gt; restore_config(config_json)" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;" edge="1" source="p_2" target="p_1" parent="1">
+      <mxGeometry x="0.505" relative="1" as="geometry">
+        <mxPoint x="613.6997142857142" y="736.92" as="sourcePoint"/>
+        <mxPoint x="157.1962" y="736.92" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="385" y="736.92"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_35" value="" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;" edge="1" source="p_1" target="p_1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="157.1962" y="766.23" as="sourcePoint"/>
+        <mxPoint x="157.1962" y="779.23" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="195.1962" y="766.23"/>
+          <mxPoint x="195.1962" y="779.23"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msglbl_36" value="&lt;b&gt;21&lt;/b&gt; update_inplace(cfg, …), save(&amp;quot;Khôi phục từ lịch sử cấu hình&amp;quot;)" style="text;html=1;fontColor=#000000;fontSize=13;align=left;verticalAlign=middle;" vertex="1" parent="msg_35">
+      <mxGeometry x="-1" y="0" width="407.5035142857142" height="18.310000000000002" relative="1" as="geometry">
+        <mxPoint x="7.751" y="-20.308999999999997" as="offset"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_37" value="&lt;b&gt;22&lt;/b&gt; tab &amp;quot;Ma trận camera&amp;quot;, chọn dòng" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;" edge="1" source="pl_0" target="p_2" parent="1">
+      <mxGeometry x="-0.566" relative="1" as="geometry">
+        <mxPoint x="58.739200000000004" y="823.5" as="sourcePoint"/>
+        <mxPoint x="613.6997142857142" y="823.5" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="336" y="823.5"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="msg_38" value="&lt;b&gt;23&lt;/b&gt; K, H, R, f, chiều cao, góc chúc, chân trời" style="endArrow=classic;endFill=1;endSize=9;html=1;edgeStyle=sequenceEdgeStyle;libavoidRouting=0;curved=0;rounded=0;strokeColor=#181818;strokeWidth=1;fontColor=#000000;fontSize=13;verticalAlign=bottom;labelBackgroundColor=none;dashed=1;dashPattern=2 2;" edge="1" source="p_2" target="pl_0" parent="1">
+      <mxGeometry x="0.45" relative="1" as="geometry">
+        <mxPoint x="613.6997142857142" y="852.81" as="sourcePoint"/>
+        <mxPoint x="58.739200000000004" y="852.81" as="targetPoint"/>
+        <Array as="points">
+          <mxPoint x="336" y="852.81"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="p_39" value="Người dùng" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;spacingTop=-5;fillColor=#E2E2F0;strokeColor=#181818;fontColor=#000000;fontSize=14;html=1;part=1;" vertex="1" parent="pl_0">
+      <mxGeometry x="25.739200000000004" y="0.5" width="26" height="58" as="geometry"/>
+    </mxCell>
+    <mxCell id="pf_40" value="Người dùng" style="shape=umlActor;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=-2.5;fillColor=#E2E2F0;strokeColor=#181818;fontColor=#000000;fontSize=14;html=1;part=1;" vertex="1" parent="pl_0">
+      <mxGeometry x="25.739200000000004" y="888.8" width="26" height="58" as="geometry"/>
+    </mxCell>
+    <mxCell id="p_41" value="Database" style="shape=cylinder3;size=10;verticalLabelPosition=bottom;verticalAlign=top;spacingTop=-6.5;fillColor=#E2E2F0;strokeColor=#181818;fontColor=#000000;fontSize=14;html=1;part=1;" vertex="1" parent="pl_3">
+      <mxGeometry x="13.332400000000007" y="0" width="36" height="46" as="geometry"/>
+    </mxCell>
+    <mxCell id="pf_42" value="Database" style="shape=cylinder3;size=10;verticalLabelPosition=top;verticalAlign=bottom;spacingBottom=-3;fillColor=#E2E2F0;strokeColor=#181818;fontColor=#000000;fontSize=14;html=1;part=1;" vertex="1" parent="pl_3">
+      <mxGeometry x="13.332400000000007" y="874.3" width="36" height="46" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>
+  </diagram>
+</mxfile>

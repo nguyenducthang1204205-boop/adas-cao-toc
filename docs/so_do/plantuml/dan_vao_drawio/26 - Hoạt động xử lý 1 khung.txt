@@ -1,0 +1,50 @@
+@startuml 26_hoat_dong_xu_ly_mot_khung
+|(2) Nhận diện (adas/detection)|
+start
+:Nhận khung BGR và thời điểm t;
+:Tính N = YOLO mỗi N khung
+(cấu hình, hoặc tự động ≤ nửa thời gian một khung);
+if (Khung chạy YOLO?) then (Có)
+  :VehicleDetector.detect: YOLOv11 + ByteTrack
+  → khung bao, lớp, độ tin cậy, mã bám vết;
+  :N > 1: neo mẫu cho các khung bám vết sau;
+else (Không - khung giữa)
+  :TemplateTracker.track: so khớp mẫu NCC
+  (NCC < 0,6 → chỉ dự đoán);
+endif
+|(3) Khoảng cách (adas/distance)|
+if (auto_lane hoặc auto_speed?) then (Có)
+  :EgoLaneDetector.update: BEV mét, top-hat, che hộp xe,
+  cửa sổ trượt, X = c0 + c1·Y + c2·Y² (3 khung để xác nhận);
+else (Không)
+endif
+if (auto_speed?) then (Có)
+  :EgoSpeedEstimator.update: tương quan vạch đứt
+  giữa hai khung → v, trung vị 1 s, làm mượt;
+else (Không)
+endif
+:Tốc độ = tốc độ đo được, hoặc tốc độ chọn tay;
+:Với mỗi xe: điểm chạm đất = giữa cạnh dưới khung bao;
+if (Dưới chân trời và ≤ tầm đo tối đa?) then (Có)
+  :IPM: image_to_ground → Y (khoảng cách), X (lệch ngang);
+else (Không)
+  :Pinhole với tiêu cự từ H, method = "Xa";
+endif
+:RangeKalman theo mã bám vết [d, d', d'']
+→ khoảng cách, tốc độ tiếp cận, TTC;
+:in_ego_lane = làn chứa (X, Y) hoặc |X| ≤ nửa làn;
+|(4) Cảnh báo (adas/alert)|
+:compute_thresholds(tốc độ, chính sách)
+→ ngưỡng cảnh báo, ngưỡng nguy hiểm;
+if (Ngoài làn hoặc "Xa"?) then (Có)
+  :risk = info (không cảnh báo);
+else (Không)
+  :classify_risk: nguy hiểm nếu d < ngưỡng nguy hiểm hoặc TTC < TTC nguy hiểm,
+  cảnh báo nếu d < ngưỡng cảnh báo hoặc TTC < TTC cảnh báo, còn lại an toàn;
+endif
+:raw_level = mức cao nhất, xe phía trước = xe cùng làn gần nhất;
+:AlertManager.update: nâng mức khi kéo dài ≥ 0,1 s (≥ 2 khung),
+hạ mức sau 0,8 s, phát bíp theo mức;
+:Trả FrameResult;
+stop
+@enduml

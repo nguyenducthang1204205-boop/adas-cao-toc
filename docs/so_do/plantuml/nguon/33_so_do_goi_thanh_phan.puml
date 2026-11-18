@@ -1,0 +1,44 @@
+@startuml 33_so_do_goi_thanh_phan
+package "Ứng dụng desktop ADAS" {
+  component "main.py\n(đọc tham số dòng lệnh)" as MAIN
+  package "gui (PySide6)" {
+    component "app.py\nkhởi tạo QApplication" as APP
+    component "main_window.py\ncửa sổ chính" as MW
+    component "worker.py\nProcessingWorker (QThread)" as WK
+    component "dialogs\nnguồn, căn chỉnh, cài đặt, lịch sử" as DLG
+    component "widgets + rendering\nthẻ, khung video, vẽ lớp phủ, BEV" as WID
+  }
+  package "adas (lõi xử lý, không phụ thuộc Qt)" {
+    component "pipeline.py\nADASPipeline" as PIPE
+    component "stream\nnguồn video, camera, ảnh" as STR
+    component "detection\nYOLOv11, bám vết mẫu" as DET
+    component "distance\nIPM, làn, tốc độ, Kalman" as DIS
+    component "alert\nngưỡng, cảnh báo, vi phạm" as ALR
+    component "assistant\nTrợ lý AI (offline / Claude)" as AST
+    component "storage\nDatabase (SQLite)" as STO
+    component "config.py, paths.py\ncấu hình dùng chung" as CFG
+  }
+}
+database "data/adas.db\n+ ảnh bằng chứng" as DB
+component "models/best.pt\n(YOLOv11)" as MODEL
+cloud "Claude API\n(tùy chọn)" as CLAUDE
+
+MAIN --> APP
+APP --> MW
+MW --> WK
+MW --> DLG
+MW --> WID
+MW --> AST
+WK --> STR
+WK --> PIPE
+PIPE --> DET
+PIPE --> DIS
+PIPE --> ALR
+ALR --> STO
+DLG --> STO
+MW ..> CFG
+PIPE ..> CFG
+STO --> DB
+DET --> MODEL
+AST ..> CLAUDE
+@enduml

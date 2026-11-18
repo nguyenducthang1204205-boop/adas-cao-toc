@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Bản build exe (~4,6 GB)
+dist/
+build/
+
+# Dữ liệu chạy trên máy (DB, ảnh vi phạm, kết quả test)
+data/adas.db
+data/adas.db-*
+data/snapshots/
+outputs/
+config/settings*.json
+
+# Video thử nghiệm
+*.mp4
+*.avi
+*.mkv
+
+# Android
+mobile/android/.gradle/
+mobile/android/**/build/
+mobile/android/local.properties
+mobile/android/dist/
+*.apk
+mobile/flutter_legacy/**/build/
+mobile/flutter_legacy/**/.dart_tool/
+
+# Linh tinh
+.claude/settings.local.json
+Thumbs.db
+desktop.ini
+~$*

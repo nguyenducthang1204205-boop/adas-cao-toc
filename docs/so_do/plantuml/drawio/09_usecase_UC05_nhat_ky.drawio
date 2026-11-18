@@ -1,0 +1,73 @@
+<mxfile host="drawio-plantuml" type="device">
+  <diagram id="09_usecase_UC05_nhat_ky" name="09_usecase_UC05_nhat_ky">
+<mxGraphModel>
+  <root>
+    <mxCell id="0"></mxCell>
+    <mxCell id="1" parent="0"></mxCell>
+    <mxCell id="rect_0" value="Hệ thống cảnh báo khoảng cách an toàn" style="swimlane;collapsible=0;startSize=26;fillColor=none;strokeColor=#181818;fontColor=#000000;fontSize=13;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="162" y="30" width="809" height="626" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_1" value="Lọc vi phạm theo ngày,&lt;br&gt;mức, loại xe" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="20" y="46" width="236" height="52" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_2" value="Xem ảnh bằng chứng" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="52.5" y="138" width="171" height="39" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_3" value="Xuất CSV" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="89.5" y="217" width="97" height="29" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_4" value="Xóa vi phạm / xóa phiên" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="41" y="286" width="194" height="44" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_5" value="Xem &amp;amp; khôi phục&lt;br&gt;lịch sử cấu hình" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="54" y="370" width="168" height="52" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_6" value="Xem ma trận camera&lt;br&gt;(K, H, R)" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="33" y="462" width="210" height="52" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_7" value="Xem vi phạm của&lt;br&gt;phiên đang chạy" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="50.5" y="554" width="175" height="52" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_8" value="UC05. Quản lý nhật ký&lt;br&gt;cảnh báo" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="291" y="300" width="220" height="52" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_9" value="Xem thống kê &amp;amp;&lt;br&gt;danh sách phiên giám sát" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="546" y="299.5" width="243" height="53" as="geometry"/>
+    </mxCell>
+    <mxCell id="actor_10" value="" style="shape=umlActor;html=1;fillColor=#F1F1F1;strokeColor=#181818;fontColor=#000000;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="42" y="317" width="40" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="actorlbl_11" value="Người dùng" style="text;html=1;align=center;verticalAlign=middle;spacingBottom=1;fontColor=#000000;fontSize=14;part=1;" vertex="1" parent="actor_10">
+      <mxGeometry x="-21.5" y="62" width="83" height="17" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_12" value="" style="endArrow=none;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;" edge="1" source="actor_10" target="uc_8" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_13" value="«include»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_8" target="uc_9" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_14" value="«extend»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_1" target="uc_8" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_15" value="«extend»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_2" target="uc_8" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_16" value="«extend»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_3" target="uc_8" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_17" value="«extend»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_4" target="uc_8" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_18" value="«extend»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_5" target="uc_8" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_19" value="«extend»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_6" target="uc_8" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_20" value="«extend»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_7" target="uc_8" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>
+  </diagram>
+</mxfile>

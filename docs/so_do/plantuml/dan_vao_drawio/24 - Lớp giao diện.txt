@@ -1,0 +1,114 @@
+@startuml 24_lop_giao_dien
+set separator none
+hide empty members
+left to right direction
+
+class MainWindow <<QMainWindow>> {
+  +cfg : AppConfig
+  +worker : Optional[ProcessingWorker]
+  +assistant : SafetyAssistant
+  +source_spec : str
+  +source_id : int
+  --
+  +open_video() / open_image() / open_camera() / open_sources()
+  +start() / toggle_pause() / stop()
+  +calibrate() / open_settings() / open_history()
+  +ask_assistant(text) / reset_policy() / toggle_sound()
+  -_activate_source(spec) : int
+  -_on_frame(overlay, bev, stats)
+  -_policy_changed()
+}
+class ProcessingWorker <<QThread>> {
+  +frame_ready : Signal(QImage, QImage, dict)
+  +violation : Signal(dict)
+  +session_started : Signal(int)
+  +status / failed / progress : Signal
+  +pipeline : ADASPipeline
+  +last_frame : ndarray
+  --
+  +run() / stop() / set_paused(p)
+  +calibration_changed() / classes_changed()
+}
+
+package "gui.dialogs" {
+  class SourceDialog <<QDialog>> {
+    +selected_uri : str
+    --
+    +refresh() / _add_file() / _add_other()
+    +_edit() / _delete() / _test() / _scan() / _open()
+  }
+  class SourceEditDialog <<QDialog>>
+  class CalibrationDialog <<QDialog>> {
+    +result_calib : CalibrationConfig
+    +method : str
+    +note : str
+    --
+    -_update_preview() / _auto_calibrate() / _accept()
+  }
+  class CalibrationView
+  class SettingsDialog <<QDialog>> {
+    5 tab: Chung, Ngưỡng cảnh báo,
+    Điều kiện đường, Trợ lý AI, Nâng cao
+    --
+    -_apply_preset() / _reset_bands() / _accept()
+  }
+  class HistoryDialog <<QDialog>> {
+    +restore_config : Signal(dict)
+    --
+    +refresh() / _export_csv()
+    +_delete_violations() / _delete_session() / _restore()
+  }
+}
+
+package "gui.widgets" {
+  class ImageView <<QWidget>> {
+    +set_image(img) / image_rect()
+  }
+  class VideoStage {
+    +show_welcome(on) / set_frames(overlay, bev)
+  }
+  class WelcomePanel
+  class PlayBar
+  class StatusCard {
+    +set_level(level) / update_stats(s) / reset()
+  }
+  class SpeedPanel {
+    +speed_changed : Signal(float)
+    +auto_changed : Signal(bool)
+    --
+    +set_speed(v) / set_auto(on) / set_measured(v)
+  }
+  class ConditionPanel {
+    +preset_requested : Signal(str)
+    +reset_requested : Signal()
+  }
+  class ChatPanel {
+    +send_requested : Signal(str)
+    --
+    +submit(text) / add_message() / set_busy()
+  }
+  class EventLog {
+    +history_requested : Signal()
+    --
+    +start_session(id) / on_violation(e) / export_csv()
+  }
+}
+
+MainWindow "1" --> "0..1" ProcessingWorker
+MainWindow *-- VideoStage
+MainWindow *-- PlayBar
+MainWindow *-- StatusCard
+MainWindow *-- SpeedPanel
+MainWindow *-- ConditionPanel
+MainWindow *-- ChatPanel
+MainWindow *-- EventLog
+VideoStage *-- WelcomePanel
+VideoStage *-- "2" ImageView : video, BEV
+ImageView <|-- CalibrationView
+CalibrationDialog *-- CalibrationView
+SourceDialog ..> SourceEditDialog
+MainWindow ..> SourceDialog
+MainWindow ..> CalibrationDialog
+MainWindow ..> SettingsDialog
+MainWindow ..> HistoryDialog
+@enduml

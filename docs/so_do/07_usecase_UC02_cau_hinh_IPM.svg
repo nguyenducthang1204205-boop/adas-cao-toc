@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="643" viewBox="0 0 1120 643">
+<rect width="100%" height="100%" fill="#fff"/>
+<rect x="175.0" y="20.0" width="770.0" height="608.0" rx="0" fill="#fff" stroke="#1f1f1f" stroke-width="1.4"/>
+<text x="560.0" y="43.1" font-family="Times New Roman" font-size="15" text-anchor="middle" fill="#000" font-weight="bold">Hệ thống cảnh báo khoảng cách an toàn (YOLOv11 + IPM)</text>
+<line x1="110.0" y1="317.0" x2="215.5" y2="317.0" stroke="#1f1f1f" stroke-width="1.3"/>
+<line x1="371.7" y1="287.1" x2="597.7" y2="125.3" stroke="#1f1f1f" stroke-width="1.3" stroke-dasharray="7,5"/>
+<polyline points="591.1,136.7 597.7,125.3 584.8,127.9" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<rect x="454.2" y="197.3" width="61.0" height="17.9" fill="#fff" stroke="none"/>
+<text x="484.7" y="210.6" font-family="Times New Roman" font-size="13" text-anchor="middle" fill="#000">«include»</text>
+<line x1="652.5" y1="195.7" x2="398.4" y2="291.3" stroke="#1f1f1f" stroke-width="1.3" stroke-dasharray="7,5"/>
+<polyline points="407.7,282.0 398.4,291.3 411.5,292.1" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<rect x="496.9" y="234.5" width="57.0" height="17.9" fill="#fff" stroke="none"/>
+<text x="525.4" y="247.9" font-family="Times New Roman" font-size="13" text-anchor="middle" fill="#000">«extend»</text>
+<line x1="685.1" y1="257.7" x2="428.4" y2="300.6" stroke="#1f1f1f" stroke-width="1.3" stroke-dasharray="7,5"/>
+<polyline points="439.3,293.3 428.4,300.6 441.1,303.9" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<rect x="528.3" y="270.2" width="57.0" height="17.9" fill="#fff" stroke="none"/>
+<text x="556.8" y="283.6" font-family="Times New Roman" font-size="13" text-anchor="middle" fill="#000">«extend»</text>
+<line x1="680.0" y1="317.0" x2="444.5" y2="317.0" stroke="#1f1f1f" stroke-width="1.3" stroke-dasharray="7,5"/>
+<polyline points="456.5,311.6 444.5,317.0 456.5,322.4" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<rect x="533.8" y="308.1" width="57.0" height="17.9" fill="#fff" stroke="none"/>
+<text x="562.2" y="321.4" font-family="Times New Roman" font-size="13" text-anchor="middle" fill="#000">«extend»</text>
+<line x1="428.4" y1="333.4" x2="673.3" y2="374.3" stroke="#1f1f1f" stroke-width="1.3" stroke-dasharray="7,5"/>
+<polyline points="660.6,377.7 673.3,374.3 662.4,367.0" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<rect x="520.3" y="344.9" width="61.0" height="17.9" fill="#fff" stroke="none"/>
+<text x="550.8" y="358.3" font-family="Times New Roman" font-size="13" text-anchor="middle" fill="#000">«include»</text>
+<line x1="398.4" y1="342.7" x2="653.1" y2="438.6" stroke="#1f1f1f" stroke-width="1.3" stroke-dasharray="7,5"/>
+<polyline points="639.9,439.4 653.1,438.6 643.7,429.3" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<rect x="495.2" y="381.7" width="61.0" height="17.9" fill="#fff" stroke="none"/>
+<text x="525.7" y="395.1" font-family="Times New Roman" font-size="13" text-anchor="middle" fill="#000">«include»</text>
+<line x1="605.1" y1="514.0" x2="371.7" y2="346.9" stroke="#1f1f1f" stroke-width="1.3" stroke-dasharray="7,5"/>
+<polyline points="384.6,349.5 371.7,346.9 378.3,358.3" fill="none" stroke="#1f1f1f" stroke-width="1.3" stroke-linejoin="round"/>
+<rect x="459.9" y="421.5" width="57.0" height="17.9" fill="#fff" stroke="none"/>
+<text x="488.4" y="434.9" font-family="Times New Roman" font-size="13" text-anchor="middle" fill="#000">«extend»</text>
+<ellipse cx="330.0" cy="317.0" rx="114.5" ry="32.1" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="330.0" y="313.2" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">UC02. Cấu hình thông số IPM</text>
+<text x="330.0" y="330.3" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">(căn chỉnh camera)</text>
+<ellipse cx="640.0" cy="95.0" rx="128.0" ry="32.1" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="640.0" y="91.2" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Lấy khung hình tham chiếu (khung</text>
+<text x="640.0" y="108.3" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">đang chạy / khung đầu / chọn file)</text>
+<ellipse cx="723.3" cy="169.0" rx="127.5" ry="32.1" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="723.3" y="165.2" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Chấm 4 điểm trên vạch làn &amp; nhập</text>
+<text x="723.3" y="182.3" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">kích thước thực</text>
+<ellipse cx="773.3" cy="243.0" rx="107.0" ry="26.0" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="773.3" y="247.8" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Tự động căn chỉnh từ video</text>
+<ellipse cx="790.0" cy="317.0" rx="110.0" ry="26.0" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="790.0" y="321.8" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Chấm lại / về vị trí mặc định</text>
+<ellipse cx="773.3" cy="391.0" rx="130.5" ry="26.0" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="773.3" y="395.8" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Tính H, xem trước Bird's-Eye View</text>
+<ellipse cx="723.3" cy="465.0" rx="124.0" ry="32.1" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="723.3" y="461.2" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Lưu ma trận camera K, H, R theo</text>
+<text x="723.3" y="478.3" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">nguồn</text>
+<ellipse cx="640.0" cy="539.0" rx="128.0" ry="26.0" fill="#f4f8fd" stroke="#1f1f1f" stroke-width="1.3"/>
+<text x="640.0" y="543.8" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000">Tự nạp căn chỉnh khi mở lại nguồn</text>
+<circle cx="80" cy="287.0" r="10" fill="#fff" stroke="#1f1f1f" stroke-width="1.5"/>
+<line x1="80.0" y1="297.0" x2="80.0" y2="325.0" stroke="#1f1f1f" stroke-width="1.5"/>
+<line x1="63.0" y1="306.0" x2="97.0" y2="306.0" stroke="#1f1f1f" stroke-width="1.5"/>
+<line x1="80.0" y1="325.0" x2="67.0" y2="347.0" stroke="#1f1f1f" stroke-width="1.5"/>
+<line x1="80.0" y1="325.0" x2="93.0" y2="347.0" stroke="#1f1f1f" stroke-width="1.5"/>
+<rect x="16.0" y="349.4" width="128.0" height="36.2" fill="#fff" stroke="none"/>
+<text x="80.0" y="363.7" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000" font-weight="bold">Người dùng (tài xế /</text>
+<text x="80.0" y="380.8" font-family="Times New Roman" font-size="14" text-anchor="middle" fill="#000" font-weight="bold">người vận hành)</text>
+</svg>

@@ -1,0 +1,19 @@
+@startuml 30_trang_thai_phien_giam_sat
+hide empty description
+state "Chờ" as idle : màn hình chào / khung cuối
+state "Khởi động" as starting : mở nguồn, tải YOLOv11, warmup
+state "Đang giám sát" as running : xử lý (1) → (5) mỗi khung
+state "Tạm dừng" as paused : giữ khung cuối
+state "Kết thúc phiên" as finishing : đóng đợt vi phạm, end_session
+
+[*] --> idle
+idle --> starting : Bắt đầu (F5) / chọn nguồn mới
+starting --> running : mở được nguồn, start_session()
+starting --> idle : lỗi → hộp thoại "Lỗi xử lý"
+running --> paused : Tạm dừng (Space) /\nmở Căn chỉnh camera
+paused --> running : Tiếp tục\n(restart_clock với file video)
+running --> running : calibration_changed /\nclasses_changed (khung kế tiếp)
+running --> finishing : Dừng (Esc) / hết video /\nảnh tĩnh xử lý xong
+paused --> finishing : Dừng (Esc)
+finishing --> idle : "Phiên #id: đã ghi n vi phạm"
+@enduml

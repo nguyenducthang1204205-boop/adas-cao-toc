@@ -1,0 +1,16 @@
+stateDiagram-v2
+    direction TB
+    state "Không có đợt vi phạm<br/>(ep = None)" as idle
+    state "Đợt đang mở (ep)" as open {
+        direction LR
+        state "Mức cảnh báo" as w
+        state "Mức nguy hiểm" as d
+        w --> d : nâng lên danger<br/>update_violation(level), chụp lại ảnh
+    }
+    [*] --> idle
+    idle --> open : level ∈ {warning, danger} và có xe phía trước<br/>_open(): insert_violation + ảnh bằng chứng
+    open --> open : cùng track_id<br/>cập nhật min_distance, min_ttc
+    open --> open : vẫn cảnh báo nhưng tạm mất xe phía trước<br/>(giữ đợt)
+    open --> idle : level = safe hoặc đổi xe phía trước (track_id khác)<br/>_close(): ended_at, duration_s, min_distance_m, min_ttc_s
+    open --> [*] : kết thúc phiên<br/>close(t)
+    idle --> [*] : kết thúc phiên

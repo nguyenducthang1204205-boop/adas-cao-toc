@@ -1,0 +1,57 @@
+@startuml 18_tuan_tu_UC04_giam_sat
+autonumber
+actor "Người dùng" as U
+participant "MainWindow" as MW
+participant "ProcessingWorker" as W
+participant "FrameSource" as FS
+participant "ADASPipeline" as P
+participant "VehicleDetector /\nTemplateTracker" as VD
+participant "EgoLaneDetector /\nEgoSpeedEstimator" as LD
+participant "DistanceEstimator\n(+ RangeKalman)" as DE
+participant "AlertManager" as AM
+participant "ViolationRecorder" as VR
+database "Database" as DB
+
+U -> MW : "Bắt đầu" (F5)
+MW -> DB : register_source(), latest_calibration()
+MW -> W : ProcessingWorker(cfg, source, record, source_id).start()
+W -> FS : open_source(spec, realtime)
+W -> VD : VehicleDetector(best.pt, …), warmup()
+W -> FS : read() → khung đầu
+W -> P : ADASPipeline(cfg, detector, (w, h))
+W -> DB : start_session(…, config) → session_id
+W --> MW : session_started(session_id)
+loop Mỗi khung (đến khi dừng / hết video)
+  W -> P : process(frame, t)
+  alt Khung chạy YOLO (mỗi N khung)
+    P -> VD : detect(frame) [+ tracker.refresh() nếu N > 1]
+  else Khung giữa
+    P -> VD : tracker.track(gray, t) - so khớp mẫu NCC
+  end
+  VD --> P : List[Detection]
+  P -> LD : lane_detector.update(frame, boxes)
+  P -> LD : speed_estimator.update(frame, lane, t)
+  LD --> P : LaneEstimate | None, tốc độ đo được | None
+  P -> DE : estimate(detections, t, lane)
+  DE --> P : List[VehicleState] (d, X, tốc độ tiếp cận, TTC)
+  P -> P : compute_thresholds(speed) + classify_risk()
+  P -> AM : update(raw_level)
+  AM --> P : level ổn định (+ bíp)
+  P --> W : FrameResult
+  W -> VR : update(result, t, speed, condition, save_snapshot)
+  opt Mở / cập nhật / đóng đợt vi phạm
+    VR -> DB : insert_violation() / update_violation()
+    VR --> W : sự kiện open / update / close
+    W --> MW : violation(event)
+  end
+  W -> W : render_overlay() + render_bev()
+  W --> MW : frame_ready(overlay, bev, stats), progress()
+  MW --> U : video, BEV, thẻ trạng thái, thời gian 5 tầng
+  W -> FS : read()
+end
+U -> MW : "Dừng" (Esc)
+MW -> W : stop(), wait()
+W -> VR : close(t)
+W -> DB : end_session(session_id, frames, avg_fps)
+W --> MW : status("Phiên #id: đã ghi n vi phạm vào CSDL")
+@enduml

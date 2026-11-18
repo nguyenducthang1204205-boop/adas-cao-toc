@@ -1,0 +1,70 @@
+<mxfile host="drawio-plantuml" type="device">
+  <diagram id="29_trang_thai_dot_vi_pham" name="29_trang_thai_dot_vi_pham">
+<mxGraphModel>
+  <root>
+    <mxCell id="0"></mxCell>
+    <mxCell id="1" parent="0"></mxCell>
+    <mxCell id="s_0" value="Không có đợt vi phạm&#10;(ep = None)" style="swimlane;collapsible=0;startSize=26;whiteSpace=wrap;align=center;html=1;fontSize=14;fontStyle=0;rounded=1;absoluteArcSize=1;arcSize=25;fillColor=#F1F1F1;swimlaneFillColor=#F1F1F1;strokeColor=#181818;strokeWidth=0.5;" vertex="1" parent="1">
+      <mxGeometry x="30" y="110" width="167" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="s_1" value="Đợt đang mở (ep)" style="swimlane;collapsible=0;startSize=26;fillColor=#F1F1F1;swimlaneFillColor=#FFFFFF;strokeColor=#181818;strokeWidth=0.5;rounded=1;absoluteArcSize=1;arcSize=25;whiteSpace=wrap;align=center;html=1;fontSize=14;fontStyle=0;" vertex="1" parent="1">
+      <mxGeometry x="31.6" y="220" width="164" height="276" as="geometry"/>
+    </mxCell>
+    <mxCell id="sc_2" value="Mức cảnh báo" style="swimlane;collapsible=0;startSize=26;whiteSpace=wrap;align=center;html=1;fontSize=14;fontStyle=0;rounded=1;absoluteArcSize=1;arcSize=25;fillColor=#F1F1F1;swimlaneFillColor=#F1F1F1;strokeColor=#181818;strokeWidth=0.5;" vertex="1" parent="s_1">
+      <mxGeometry x="25" y="46" width="114" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="sc_3" value="Mức nguy hiểm" style="swimlane;collapsible=0;startSize=26;whiteSpace=wrap;align=center;html=1;fontSize=14;fontStyle=0;rounded=1;absoluteArcSize=1;arcSize=25;fillColor=#F1F1F1;swimlaneFillColor=#F1F1F1;strokeColor=#181818;strokeWidth=0.5;" vertex="1" parent="s_1">
+      <mxGeometry x="20" y="141" width="124" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="sc_4" value="" style="ellipse;fillColor=#222222;strokeColor=#222222;" vertex="1" parent="s_1">
+      <mxGeometry x="72" y="236" width="20" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="s_5" value="" style="ellipse;fillColor=#222222;strokeColor=#222222;" vertex="1" parent="1">
+      <mxGeometry x="103.7" y="30" width="20" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="s_6" value="" style="shape=endState;fillColor=#222222;strokeColor=#222222;" vertex="1" parent="1">
+      <mxGeometry x="101.8" y="556" width="24" height="24" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_7" value="" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;" edge="1" source="sc_4" target="sc_2" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_8" value="" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;" edge="1" source="sc_4" target="sc_3" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_9" value="nâng lên nguy hiểm /&#10;update_violation(level), chụp lại ảnh" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;labelPosition=right;align=left;" edge="1" source="sc_2" target="sc_3" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_10" value="" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;" edge="1" source="s_5" target="s_0" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_11" value="level là warning hoặc danger và có xe phía trước /&#10;_open(): insert_violation + ảnh bằng chứng" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;exitX=0.18;exitY=1;exitDx=0;exitDy=0;entryX=0.18;entryY=0;entryDx=0;entryDy=0;" edge="1" source="s_0" target="s_1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="-165" y="0" as="offset"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="t_12" value="cùng track_id /&#10;cập nhật min_distance, min_ttc" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;segment=17.5;curved=1;labelPosition=right;align=left;spacingLeft=4;" edge="1" source="s_1" target="s_1" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_13" value="vẫn cảnh báo nhưng tạm mất&#10;xe phía trước (giữ đợt)" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;segment=121.92;curved=1;labelPosition=right;align=left;spacingLeft=4;" edge="1" source="s_1" target="s_1" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_14" value="level = safe hoặc đổi xe phía trước /&#10;_close(): ended_at, duration_s, min_distance_m, min_ttc_s" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;exitX=0.82;exitY=0;exitDx=0;exitDy=0;entryX=0.82;entryY=1;entryDx=0;entryDy=0;" edge="1" source="s_1" target="s_0" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="189" y="0" as="offset"/>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="t_15" value="kết thúc phiên / close(t)" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;labelPosition=right;align=left;" edge="1" source="s_1" target="s_6" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="t_16" value="kết thúc phiên" style="endArrow=block;endFill=1;strokeColor=#181818;fontColor=#000000;fontSize=13;html=1;rounded=0;labelPosition=right;align=left;curved=1;" edge="1" source="s_0" target="s_6" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="210" y="210"/>
+          <mxPoint x="210" y="506"/>
+        </Array>
+      </mxGeometry>
+    </mxCell>
+  </root>
+</mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,14 @@
+stateDiagram-v2
+    direction LR
+    state "An toàn (safe)<br/>không phát âm" as safe
+    state "Cảnh báo (warning)<br/>bíp 820 Hz mỗi 0,9 s" as warning
+    state "Nguy hiểm (danger)<br/>bíp 1250 Hz mỗi 0,28 s" as danger
+    [*] --> safe : khởi tạo / reset()
+    safe --> warning : raw = warning<br/>liên tiếp ≥ escalate_frames (3) khung
+    safe --> danger : raw = danger<br/>liên tiếp ≥ 3 khung
+    warning --> danger : raw = danger<br/>liên tiếp ≥ 3 khung
+    danger --> warning : raw = warning<br/>và đã giữ ≥ hold_seconds (0,8 s)
+    danger --> safe : raw = safe<br/>và đã giữ ≥ 0,8 s
+    warning --> safe : raw = safe<br/>và đã giữ ≥ 0,8 s
+    warning --> warning : raw = warning<br/>(làm mới thời điểm giữ)
+    danger --> danger : raw = danger<br/>(làm mới thời điểm giữ)

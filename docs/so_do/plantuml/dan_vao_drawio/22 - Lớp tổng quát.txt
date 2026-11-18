@@ -1,0 +1,95 @@
+@startuml 22_lop_tong_quat
+set separator none
+hide members
+hide circle
+left to right direction
+
+package "gui" {
+  class MainWindow
+  class ProcessingWorker
+  package "gui.dialogs" {
+    class SourceDialog
+    class CalibrationDialog
+    class SettingsDialog
+    class HistoryDialog
+  }
+  package "gui.widgets" {
+    class VideoStage
+    class StatusCard
+    class SpeedPanel
+    class ConditionPanel
+    class ChatPanel
+    class EventLog
+  }
+  package "gui.rendering" {
+    class "render_overlay()\nrender_bev()" as Render
+  }
+}
+
+package "adas" {
+  class AppConfig
+  class ADASPipeline
+  class FrameResult
+  package "adas.stream" {
+    class FrameSource
+  }
+  package "adas.detection" {
+    class VehicleDetector
+    class TemplateTracker
+  }
+  package "adas.distance" {
+    class GroundPlaneMapper
+    class EgoLaneDetector
+    class EgoSpeedEstimator
+    class DistanceEstimator
+    class RangeKalman
+  }
+  package "adas.alert" {
+    class AlertManager
+    class ViolationRecorder
+    class "thresholds" as Thr
+  }
+  package "adas.assistant" {
+    class SafetyAssistant
+  }
+  package "adas.storage" {
+    class Database
+  }
+}
+
+MainWindow "1" --> "0..1" ProcessingWorker : điều khiển
+MainWindow *-- VideoStage
+MainWindow *-- StatusCard
+MainWindow *-- SpeedPanel
+MainWindow *-- ConditionPanel
+MainWindow *-- ChatPanel
+MainWindow *-- EventLog
+MainWindow ..> SourceDialog : mở
+MainWindow ..> CalibrationDialog : mở
+MainWindow ..> SettingsDialog : mở
+MainWindow ..> HistoryDialog : mở
+MainWindow --> SafetyAssistant
+MainWindow --> AppConfig : dùng chung
+ProcessingWorker --> ADASPipeline
+ProcessingWorker --> FrameSource
+ProcessingWorker --> ViolationRecorder
+ProcessingWorker ..> Render
+ADASPipeline --> VehicleDetector
+ADASPipeline *-- TemplateTracker
+ADASPipeline *-- GroundPlaneMapper
+ADASPipeline *-- EgoLaneDetector
+ADASPipeline *-- EgoSpeedEstimator
+ADASPipeline *-- DistanceEstimator
+ADASPipeline *-- AlertManager
+ADASPipeline ..> Thr
+ADASPipeline ..> FrameResult : tạo
+ADASPipeline --> AppConfig : đọc mỗi khung
+DistanceEstimator *-- "0..*" RangeKalman
+DistanceEstimator --> GroundPlaneMapper
+EgoLaneDetector --> GroundPlaneMapper
+EgoSpeedEstimator --> GroundPlaneMapper
+ViolationRecorder --> Database
+SourceDialog --> Database
+HistoryDialog --> Database
+AppConfig ..> Database : load / save
+@enduml

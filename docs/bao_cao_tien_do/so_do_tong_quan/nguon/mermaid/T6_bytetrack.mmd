@@ -1,0 +1,14 @@
+flowchart TB
+    A["Khung hình t: các phát hiện của YOLOv11<br/>(khung bao + độ tin cậy)"] --> B{"Tách theo độ tin cậy"}
+    B -- "cao" --> D1["Nhóm phát hiện tin cậy cao"]
+    B -- "thấp" --> D2["Nhóm phát hiện tin cậy thấp"]
+    K["Các vết đang theo dõi<br/>→ bộ lọc Kalman dự đoán vị trí ở khung t"] --> M1
+    D1 --> M1["Ghép lần 1 theo IoU<br/>(thuật toán Hungary)"]
+    M1 -- "vết còn lại chưa ghép" --> M2["Ghép lần 2 theo IoU"]
+    D2 --> M2
+    M1 -- "cặp ghép được" --> U["Cập nhật bộ lọc Kalman,<br/>giữ nguyên mã của vết"]
+    M2 -- "cặp ghép được" --> U
+    M1 -- "phát hiện tin cậy cao chưa ghép" --> N["Tạo vết mới, cấp mã mới"]
+    M2 -- "vết không ghép được" --> L["Đánh dấu tạm mất;<br/>xóa nếu mất quá lâu"]
+    U --> O["Danh sách xe kèm mã cố định"]
+    N --> O

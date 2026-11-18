@@ -1,0 +1,18 @@
+flowchart LR
+    IN["Ảnh đầu vào<br/>640 × 640 × 3"]
+    subgraph BB["Backbone - trích đặc trưng"]
+        direction TB
+        B1["Conv + C3k2<br/>(độ phân giải giảm dần)"] --> B2["SPPF<br/>gộp đặc trưng đa tỷ lệ"] --> B3["C2PSA<br/>chú ý theo vùng"]
+    end
+    subgraph NK["Neck - kết hợp đặc trưng (FPN + PAN)"]
+        direction TB
+        N1["Đường xuống: Upsample + Concat + C3k2"] --> N2["Đường lên: Conv + Concat + C3k2"]
+    end
+    subgraph HD["Head - dự đoán (anchor-free, tách nhánh)"]
+        direction TB
+        H1["P3 - 80×80<br/>đối tượng nhỏ (xe ở xa)"]
+        H2["P4 - 40×40<br/>đối tượng vừa"]
+        H3["P5 - 20×20<br/>đối tượng lớn (xe ở gần)"]
+    end
+    OUT["Khung bao + lớp + độ tin cậy<br/>→ NMS loại khung trùng"]
+    IN --> BB --> NK --> HD --> OUT

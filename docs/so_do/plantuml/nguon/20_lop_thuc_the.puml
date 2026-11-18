@@ -1,0 +1,98 @@
+@startuml 20_lop_thuc_the
+set separator none
+hide empty members
+skinparam linetype ortho
+
+package "Cấu hình hệ thống - lưu bảng system_config" {
+  class AppConfig {
+    +model : ModelConfig
+    +calibration : CalibrationConfig
+    +policy : SafetyPolicy
+    +alert : AlertConfig
+    +assistant : AssistantConfig
+    +speed_kmh : float
+    +auto_speed : bool
+    --
+    +load(db) : AppConfig
+    +save(reason, db)
+  }
+  class ModelConfig {
+    +weights : str
+    +confidence : float
+    +imgsz : int
+    +detect_every : int
+  }
+  class CalibrationConfig {
+    +image_points : List
+    +rect_width_m : float
+    +max_range_m : float
+    +pose : CameraPose
+  }
+  class SafetyPolicy {
+    +band_gaps_m : List[float]
+    +time_gap_s : float
+    +weather_factor : float
+    +danger_ratio : float
+    +ttc_warning_s : float
+    +ttc_danger_s : float
+  }
+  class AlertConfig {
+    +sound_enabled : bool
+    +only_ego_lane : bool
+    +auto_lane : bool
+    +escalate_seconds : float
+  }
+  class AssistantConfig {
+    +model : str
+    +use_cloud : bool
+  }
+}
+
+package "Kết quả xử lý một khung hình" {
+  class FrameResult {
+    +vehicles : List[VehicleState]
+    +lead : VehicleState
+    +lane : LaneEstimate
+    +thresholds : Thresholds
+    +speed_kmh : float
+    +level : str
+  }
+  class VehicleState {
+    +det : Detection
+    +distance_m : float
+    +lateral_m : float
+    +in_ego_lane : bool
+    +ttc_s : float
+    +risk : str
+  }
+  class Detection {
+    +bbox : [x1, y1, x2, y2]
+    +confidence : float
+    +class_name : str
+    +track_id : int
+  }
+  class LaneEstimate {
+    +left : (c0, c1, c2)
+    +right : (c0, c1, c2)
+    --
+    +width_m() : float
+  }
+  class Thresholds {
+    +speed_kmh : float
+    +safe_m : float
+    +danger_m : float
+    +legal_m : float
+  }
+}
+
+AppConfig *-- ModelConfig
+AppConfig *-- CalibrationConfig
+AppConfig *-- SafetyPolicy
+AppConfig *-- AlertConfig
+AppConfig *-- AssistantConfig
+FrameResult o-- "0..*" VehicleState
+VehicleState --> "1" Detection
+FrameResult --> "0..1" LaneEstimate
+FrameResult --> "0..1" Thresholds
+Thresholds ..> SafetyPolicy : tính từ
+@enduml

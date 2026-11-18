@@ -1,0 +1,36 @@
+flowchart TB
+    subgraph S["① Thu nhận dữ liệu"]
+        direction LR
+        S1["File video hành trình"]
+        S2["Camera USB / IP (RTSP)"]
+        S3["Ảnh tĩnh"]
+    end
+    subgraph D["② Nhận diện phương tiện"]
+        direction LR
+        D1["YOLOv11<br/>phát hiện + phân loại xe"] --> D2["ByteTrack<br/>bám vết, gán mã từng xe"]
+    end
+    subgraph I["③ Ước lượng khoảng cách (IPM)"]
+        direction LR
+        I1["Xác định làn<br/>xe chủ"] --> I2["Điểm chạm đất<br/>của xe"] --> I3["Homography<br/>pixel → mét"] --> I4["Làm mượt,<br/>tốc độ tiếp cận, TTC"]
+    end
+    subgraph A["④ Đánh giá và cảnh báo"]
+        direction LR
+        A1["Ngưỡng theo tốc độ<br/>× điều kiện đường"] --> A2["Phân loại: an toàn /<br/>cảnh báo / nguy hiểm"] --> A3["Chống báo nhầm,<br/>âm thanh"] --> A4["Ghi nhật ký<br/>vi phạm"]
+    end
+    subgraph G["⑤ Giao diện người dùng"]
+        direction LR
+        G1["Video kèm khung màu,<br/>khoảng cách, vùng nguy hiểm"]
+        G2["Ảnh nhìn từ trên xuống<br/>(Bird's-Eye View)"]
+        G3["Cấu hình, căn chỉnh camera,<br/>tra cứu nhật ký"]
+    end
+    S -- "khung hình" --> D
+    D -- "danh sách xe: khung bao, loại xe, mã" --> I
+    I -- "khoảng cách (m), cùng làn?, TTC" --> A
+    A -- "mức cảnh báo, xe phía trước" --> G
+    DB[("Cơ sở dữ liệu<br/>cấu hình · thông số camera · nhật ký")]
+    AI["Trợ lý AI<br/>gợi ý ngưỡng"]
+    A4 -.-> DB
+    DB -. "thông số camera" .-> I
+    DB -. "cấu hình ngưỡng" .-> A
+    G -. "mô tả tình huống" .-> AI
+    AI -. "ngưỡng mới" .-> A

@@ -1,0 +1,12 @@
+stateDiagram-v2
+    direction LR
+    state "An toàn<br/>không phát âm" as safe
+    state "Cảnh báo<br/>âm báo chậm" as warning
+    state "Nguy hiểm<br/>âm báo dồn dập" as danger
+    [*] --> safe : bắt đầu phiên
+    safe --> warning : dưới ngưỡng cảnh báo<br/>liên tiếp N khung
+    safe --> danger : dưới ngưỡng nguy hiểm<br/>liên tiếp N khung
+    warning --> danger : dưới ngưỡng nguy hiểm<br/>liên tiếp N khung
+    danger --> warning : trở lại mức cảnh báo<br/>và đã giữ đủ thời gian tối thiểu
+    danger --> safe : an toàn trở lại<br/>và đã giữ đủ thời gian tối thiểu
+    warning --> safe : an toàn trở lại<br/>và đã giữ đủ thời gian tối thiểu

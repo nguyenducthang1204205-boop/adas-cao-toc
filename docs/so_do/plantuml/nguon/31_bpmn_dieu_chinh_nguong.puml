@@ -1,0 +1,34 @@
+@startuml 31_bpmn_dieu_chinh_nguong
+|Tài xế|
+start
+:Gặp tình huống mới: trời mưa, sương mù,
+đường trơn, ban đêm, đổi tốc độ…;
+if (Cách điều chỉnh?) then (Nhanh trên màn hình chính)
+  :Bấm nút điều kiện đường
+  hoặc gõ mô tả vào khung Trợ lý AI;
+  |Trợ lý AI|
+  :Nhận diện điều kiện, tốc độ, tầm nhìn
+  (offline mặc định, Claude nếu bật);
+  :Đề xuất chính sách mới: hệ số điều kiện,
+  ngưỡng TTC, tốc độ (nếu tài xế nêu);
+  :Kẹp tham số trong giới hạn cho phép,
+  giữ ngưỡng theo dải tốc độ của tài xế;
+else (Chi tiết trong Cài đặt)
+  |Tài xế|
+  :Mở Cài đặt, chỉnh tab "Ngưỡng cảnh báo"
+  và tab "Điều kiện đường";
+  |Giao diện ADAS|
+  :Kiểm tra: mỗi dải không thấp hơn mức luật,
+  TTC nguy hiểm nhỏ hơn TTC cảnh báo;
+endif
+|Giao diện ADAS|
+:Áp dụng vào cấu hình dùng chung;
+:Lưu cấu hình và một dòng lịch sử cấu hình;
+:Hiển thị ngưỡng mới và căn cứ
+trên thẻ tốc độ, thẻ điều kiện đường;
+|Luồng xử lý ADAS|
+:Dùng ngưỡng mới từ khung hình kế tiếp;
+|Tài xế|
+:Giữ khoảng cách theo ngưỡng mới;
+stop
+@enduml

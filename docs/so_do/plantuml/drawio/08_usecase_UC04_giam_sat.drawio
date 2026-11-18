@@ -1,0 +1,100 @@
+<mxfile host="drawio-plantuml" type="device">
+  <diagram id="08_usecase_UC04_giam_sat" name="08_usecase_UC04_giam_sat">
+<mxGraphModel>
+  <root>
+    <mxCell id="0"></mxCell>
+    <mxCell id="1" parent="0"></mxCell>
+    <mxCell id="rect_0" value="Hệ thống cảnh báo khoảng cách an toàn" style="swimlane;collapsible=0;startSize=26;fillColor=none;strokeColor=#181818;fontColor=#000000;fontSize=13;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="162" y="30" width="767" height="737" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_1" value="Tạm dừng / tiếp tục" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="20" y="286.5" width="167" height="38" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_2" value="Ghi video kết quả" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="27.5" y="364.5" width="152" height="35" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_3" value="Bật / tắt âm thanh" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="24" y="439.5" width="159" height="37" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_4" value="UC04. Giám sát realtime&lt;br&gt;&amp;amp; cảnh báo" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="222" y="355.5" width="238" height="52" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_5" value="Đọc khung hình từ nguồn" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="523" y="46" width="196" height="44" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_6" value="Nhận diện &amp;amp; bám vết xe&lt;br&gt;(YOLOv11 + bám vết mẫu)" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="495" y="130" width="252" height="55" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_7" value="Nhận diện làn xe chủ" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="535" y="225" width="172" height="39" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_8" value="Đo tốc độ xe chủ từ video" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="521.5" y="304" width="199" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_9" value="Tính khoảng cách IPM,&lt;br&gt;tốc độ tiếp cận, TTC" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="502.5" y="389" width="237" height="52" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_10" value="Phân loại mức rủi ro&lt;br&gt;theo ngưỡng" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="519.5" y="481" width="203" height="52" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_11" value="Cảnh báo hình ảnh&lt;br&gt;&amp;amp; âm thanh" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="526.5" y="573" width="189" height="52" as="geometry"/>
+    </mxCell>
+    <mxCell id="uc_12" value="Ghi nhật ký vi phạm&lt;br&gt;+ ảnh bằng chứng" style="ellipse;html=1;fillColor=#F1F1F1;strokeColor=#181818;whiteSpace=wrap;fontColor=#000000;fontSize=14;" vertex="1" parent="rect_0">
+      <mxGeometry x="520.5" y="665" width="201" height="52" as="geometry"/>
+    </mxCell>
+    <mxCell id="actor_13" value="" style="shape=umlActor;html=1;fillColor=#F1F1F1;strokeColor=#181818;fontColor=#000000;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="42" y="59" width="40" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="actorlbl_14" value="Camera /&#10;nguồn video" style="text;html=1;align=center;verticalAlign=middle;spacingBottom=1;fontColor=#000000;fontSize=14;part=1;" vertex="1" parent="actor_13">
+      <mxGeometry x="-65.5" y="62" width="171" height="17" as="geometry"/>
+    </mxCell>
+    <mxCell id="actor_15" value="" style="shape=umlActor;html=1;fillColor=#F1F1F1;strokeColor=#181818;fontColor=#000000;fontSize=14;" vertex="1" parent="1">
+      <mxGeometry x="42" y="372" width="40" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="actorlbl_16" value="Người dùng" style="text;html=1;align=center;verticalAlign=middle;spacingBottom=1;fontColor=#000000;fontSize=14;part=1;" vertex="1" parent="actor_15">
+      <mxGeometry x="-21.5" y="62" width="83" height="17" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_17" value="" style="endArrow=none;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;" edge="1" source="actor_15" target="uc_4" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_18" value="«include»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;labelPosition=right;align=left;" edge="1" source="uc_4" target="uc_5" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_19" value="«include»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_4" target="uc_6" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_20" value="«include»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_4" target="uc_7" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_21" value="«include»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_4" target="uc_8" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_22" value="«include»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_4" target="uc_9" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_23" value="«include»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_4" target="uc_10" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_24" value="«include»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_4" target="uc_11" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_25" value="«include»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;labelPosition=right;align=left;" edge="1" source="uc_4" target="uc_12" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_26" value="«extend»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_1" target="uc_4" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_27" value="«extend»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_2" target="uc_4" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_28" value="«extend»" style="endArrow=open;dashed=1;dashPattern=5 5;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;verticalAlign=bottom;" edge="1" source="uc_3" target="uc_4" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="rel_29" value="" style="endArrow=none;strokeColor=#181818;fontColor=#000000;fontSize=13;edgeStyle=none;rounded=0;html=1;" edge="1" source="uc_5" target="actor_13" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,46 @@
+@startuml 13_hoat_dong_UC04_giam_sat
+|Người dùng|
+start
+:Bấm "Bắt đầu" (F5),
+có thể bật "Ghi video" trước;
+|Giao diện|
+if (Đã chọn nguồn?) then (Chưa)
+  :Mở hộp chọn file video (UC01);
+  stop
+else (Rồi)
+endif
+:Đăng ký nguồn, nạp căn chỉnh của nguồn;
+:Tạo và khởi động luồng xử lý nền;
+|Luồng xử lý|
+:Mở nguồn, tải YOLOv11 (GPU nếu có,
+dự phòng yolo11n.pt), chạy khởi động;
+if (Mở được?) then (Không)
+  |Giao diện|
+  :Hộp thoại "Lỗi xử lý: …";
+  stop
+else (Có)
+endif
+|Luồng xử lý|
+:Đọc khung đầu, tạo pipeline,
+mở phiên giám sát, tạo bộ ghi vi phạm;
+repeat
+  :(1) Đọc khung hình (bám nhịp thời gian thực);
+  :(2) YOLOv11 mỗi N khung, bám vết mẫu
+  ở các khung giữa → khung bao, lớp, mã;
+  :(3) Làn xe chủ, tốc độ xe chủ từ vạch đứt,
+  IPM → khoảng cách, lọc Kalman → tốc độ tiếp cận, TTC;
+  :(4) Ngưỡng theo tốc độ & điều kiện, phân loại rủi ro,
+  chống nhiễu theo thời gian, phát bíp;
+  :Mở / cập nhật / đóng đợt vi phạm + ảnh bằng chứng;
+  :(5) Vẽ lớp phủ + BEV, ghi video nếu bật;
+  |Giao diện|
+  :Hiển thị video, BEV, thẻ trạng thái,
+  thời gian 5 tầng, danh sách vi phạm;
+  |Luồng xử lý|
+repeat while (Còn khung và chưa bấm Dừng (Esc)?) is (Có) not (Không)
+:Đóng đợt vi phạm đang mở,
+kết thúc phiên (số khung, FPS trung bình);
+|Giao diện|
+:Báo "Phiên #id: đã ghi n vi phạm vào CSDL";
+stop
+@enduml

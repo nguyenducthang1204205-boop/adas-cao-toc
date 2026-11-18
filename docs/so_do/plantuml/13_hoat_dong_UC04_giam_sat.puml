@@ -1,0 +1,91 @@
+@startuml 13_hoat_dong_UC04_giam_sat
+!pragma layout smetana
+skinparam defaultFontName "Times New Roman"
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam backgroundColor #FFFFFF
+skinparam ArrowColor #1F1F1F
+skinparam ArrowFontSize 13
+skinparam RoundCorner 12
+skinparam ActorBorderColor #1F1F1F
+skinparam ActorBackgroundColor #FFFFFF
+skinparam UsecaseBorderColor #1F1F1F
+skinparam UsecaseBackgroundColor #F4F8FD
+skinparam RectangleBorderColor #1F1F1F
+skinparam RectangleFontStyle bold
+skinparam PackageBorderColor #5A5A5A
+skinparam PackageBackgroundColor #FAFBFC
+skinparam ClassBorderColor #1F1F1F
+skinparam ClassBackgroundColor #F4F8FD
+skinparam ClassHeaderBackgroundColor #E3ECF6
+skinparam ClassAttributeIconSize 0
+skinparam ActivityBorderColor #1F1F1F
+skinparam ActivityBackgroundColor #F4F8FD
+skinparam ActivityDiamondBorderColor #1F1F1F
+skinparam ActivityDiamondBackgroundColor #FFFFFF
+skinparam SwimlaneBorderColor #1F1F1F
+skinparam SwimlaneTitleFontStyle bold
+skinparam SwimlaneTitleBackgroundColor #EEF2F7
+skinparam ParticipantBorderColor #1F1F1F
+skinparam ParticipantBackgroundColor #F4F8FD
+skinparam SequenceLifeLineBorderColor #7A7A7A
+skinparam SequenceGroupBorderColor #5A5A5A
+skinparam SequenceGroupHeaderFontStyle bold
+skinparam NoteBorderColor #9A8A3A
+skinparam NoteBackgroundColor #FFFBE6
+skinparam StateBorderColor #1F1F1F
+skinparam StateBackgroundColor #F4F8FD
+skinparam ComponentBorderColor #1F1F1F
+skinparam ComponentBackgroundColor #F4F8FD
+skinparam DatabaseBorderColor #1F1F1F
+skinparam DatabaseBackgroundColor #FFFFFF
+skinparam NodeBorderColor #1F1F1F
+skinparam NodeBackgroundColor #FAFBFC
+skinparam ArtifactBackgroundColor #FFFFFF
+skinparam EntityBorderColor #1F1F1F
+skinparam EntityBackgroundColor #F4F8FD
+|Người dùng|
+start
+:Bấm "Bắt đầu" (F5),
+có thể bật "Ghi video" trước;
+|Giao diện|
+if (Đã chọn nguồn?) then (Chưa)
+  :Mở hộp chọn file video (UC01);
+  stop
+else (Rồi)
+endif
+:Đăng ký nguồn, nạp căn chỉnh của nguồn;
+:Tạo và khởi động luồng xử lý nền;
+|Luồng xử lý|
+:Mở nguồn, tải YOLOv11 (GPU nếu có,
+dự phòng yolo11n.pt), chạy khởi động;
+if (Mở được?) then (Không)
+  |Giao diện|
+  :Hộp thoại "Lỗi xử lý: …";
+  stop
+else (Có)
+endif
+|Luồng xử lý|
+:Đọc khung đầu, tạo pipeline,
+mở phiên giám sát, tạo bộ ghi vi phạm;
+repeat
+  :(1) Đọc khung hình (bám nhịp thời gian thực);
+  :(2) YOLOv11 mỗi N khung, bám vết mẫu
+  ở các khung giữa → khung bao, lớp, mã;
+  :(3) Làn xe chủ, tốc độ xe chủ từ vạch đứt,
+  IPM → khoảng cách, lọc Kalman → tốc độ tiếp cận, TTC;
+  :(4) Ngưỡng theo tốc độ & điều kiện, phân loại rủi ro,
+  chống nhiễu theo thời gian, phát bíp;
+  :Mở / cập nhật / đóng đợt vi phạm + ảnh bằng chứng;
+  :(5) Vẽ lớp phủ + BEV, ghi video nếu bật;
+  |Giao diện|
+  :Hiển thị video, BEV, thẻ trạng thái,
+  thời gian 5 tầng, danh sách vi phạm;
+  |Luồng xử lý|
+repeat while (Còn khung và chưa bấm Dừng (Esc)?) is (Có) not (Không)
+:Đóng đợt vi phạm đang mở,
+kết thúc phiên (số khung, FPS trung bình);
+|Giao diện|
+:Báo "Phiên #id: đã ghi n vi phạm vào CSDL";
+stop
+@enduml

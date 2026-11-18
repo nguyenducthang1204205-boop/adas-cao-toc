@@ -1,0 +1,37 @@
+@startuml 19_tuan_tu_UC05_nhat_ky
+autonumber
+actor "Người dùng" as U
+participant "MainWindow" as MW
+participant "HistoryDialog" as HD
+database "Database" as DB
+participant "File hệ thống" as FS
+
+U -> MW : "Lịch sử"
+MW -> HD : HistoryDialog() + kết nối restore_config
+HD -> DB : stats(), list_sessions() (v_session_summary)
+HD -> DB : config_history(), list_calibrations()
+DB --> HD : thống kê, phiên, lịch sử cấu hình, ma trận camera
+U -> HD : chọn phiên, đặt bộ lọc ngày / mức / loại xe
+HD -> DB : list_violations(session_id, level, vehicle_class, date_from, date_to)
+DB --> HD : danh sách vi phạm
+U -> HD : chọn một vi phạm
+HD -> FS : đọc ảnh snapshot_path
+HD --> U : ảnh bằng chứng + tóm tắt
+alt Xuất CSV
+  U -> HD : "Xuất CSV", chọn nơi lưu
+  HD -> FS : ghi CSV (UTF-8 BOM)
+else Xóa vi phạm / phiên
+  U -> HD : "Xóa …" → xác nhận Yes
+  HD -> DB : delete_violations(ids) / delete_session(id) (CASCADE)
+  DB --> HD : đường dẫn ảnh cần xóa
+  HD -> FS : xóa file ảnh
+  HD -> HD : refresh()
+else Khôi phục cấu hình
+  U -> HD : tab "Lịch sử cấu hình" → "Khôi phục cấu hình này" → Yes
+  HD --> MW : restore_config(config_json)
+  MW -> MW : update_inplace(cfg, …), save("Khôi phục từ lịch sử cấu hình")
+else Xem ma trận camera
+  U -> HD : tab "Ma trận camera", chọn dòng
+  HD --> U : K, H, R, f, chiều cao, góc chúc, chân trời
+end
+@enduml
